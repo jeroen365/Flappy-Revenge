@@ -13,10 +13,7 @@
 		44D56D2B1A45C20000A0AB8C /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D56D2A1A45C20000A0AB8C /* GameScene.m */; };
 		44D56D2D1A45C20000A0AB8C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 44D56D2C1A45C20000A0AB8C /* GameScene.sks */; };
 		44D56D301A45C20000A0AB8C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D56D2F1A45C20000A0AB8C /* GameViewController.m */; };
-		44D56D331A45C20000A0AB8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D56D311A45C20000A0AB8C /* Main.storyboard */; };
 		44D56D351A45C20000A0AB8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44D56D341A45C20000A0AB8C /* Images.xcassets */; };
-		44D56D381A45C20000A0AB8C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44D56D361A45C20000A0AB8C /* LaunchScreen.xib */; };
-		44D56D441A45C20000A0AB8C /* FlappyBirdXLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D56D431A45C20000A0AB8C /* FlappyBirdXLTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,7 +22,7 @@
 			containerPortal = 44D56D171A45C20000A0AB8C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 44D56D1E1A45C20000A0AB8C;
-			remoteInfo = FlappyBirdXL;
+			remoteInfo = FlappyRevenge;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -46,8 +43,6 @@
 		44D56D341A45C20000A0AB8C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		44D56D371A45C20000A0AB8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		44D56D3D1A45C20000A0AB8C /* FlappyRevengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyRevengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		44D56D421A45C20000A0AB8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44D56D431A45C20000A0AB8C /* FlappyBirdXLTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlappyBirdXLTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +66,7 @@
 		44D56D161A45C20000A0AB8C = {
 			isa = PBXGroup;
 			children = (
-				44D56D211A45C20000A0AB8C /* FlappyBirdXL */,
-				44D56D401A45C20000A0AB8C /* FlappyBirdXLTests */,
+				44D56D211A45C20000A0AB8C /* FlappyRevenge */,
 				44D56D201A45C20000A0AB8C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,7 +80,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		44D56D211A45C20000A0AB8C /* FlappyBirdXL */ = {
+		44D56D211A45C20000A0AB8C /* FlappyRevenge */ = {
 			isa = PBXGroup;
 			children = (
 				44D56D261A45C20000A0AB8C /* AppDelegate.h */,
@@ -103,7 +97,7 @@
 				44D56D361A45C20000A0AB8C /* LaunchScreen.xib */,
 				44D56D221A45C20000A0AB8C /* Supporting Files */,
 			);
-			path = FlappyBirdXL;
+			path = FlappyRevenge;
 			sourceTree = "<group>";
 		};
 		44D56D221A45C20000A0AB8C /* Supporting Files */ = {
@@ -111,23 +105,6 @@
 			children = (
 				44D56D231A45C20000A0AB8C /* Info.plist */,
 				44D56D241A45C20000A0AB8C /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		44D56D401A45C20000A0AB8C /* FlappyBirdXLTests */ = {
-			isa = PBXGroup;
-			children = (
-				44D56D431A45C20000A0AB8C /* FlappyBirdXLTests.m */,
-				44D56D411A45C20000A0AB8C /* Supporting Files */,
-			);
-			path = FlappyBirdXLTests;
-			sourceTree = "<group>";
-		};
-		44D56D411A45C20000A0AB8C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				44D56D421A45C20000A0AB8C /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -148,7 +125,7 @@
 			dependencies = (
 			);
 			name = FlappyRevenge;
-			productName = FlappyBirdXL;
+			productName = FlappyRevenge;
 			productReference = 44D56D1F1A45C20000A0AB8C /* FlappyRevenge.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -166,7 +143,7 @@
 				44D56D3F1A45C20000A0AB8C /* PBXTargetDependency */,
 			);
 			name = FlappyRevengeTests;
-			productName = FlappyBirdXLTests;
+			productName = FlappyRevengeTests;
 			productReference = 44D56D3D1A45C20000A0AB8C /* FlappyRevengeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -212,10 +189,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44D56D381A45C20000A0AB8C /* LaunchScreen.xib in Resources */,
 				44D56D351A45C20000A0AB8C /* Images.xcassets in Resources */,
 				44D56D2D1A45C20000A0AB8C /* GameScene.sks in Resources */,
-				44D56D331A45C20000A0AB8C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +220,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44D56D441A45C20000A0AB8C /* FlappyBirdXLTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +333,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = FlappyBirdXL/Info.plist;
+				INFOPLIST_FILE = FlappyRevenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = FlappyRevenge;
 			};
@@ -369,7 +343,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = FlappyBirdXL/Info.plist;
+				INFOPLIST_FILE = FlappyRevenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = FlappyRevenge;
 			};
@@ -387,10 +361,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = FlappyBirdXLTests/Info.plist;
+				INFOPLIST_FILE = FlappyRevengeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = FlappyRevengeTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyBirdXL.app/FlappyBirdXL";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyRevenge.app/FlappyRevenge";
 			};
 			name = Debug;
 		};
@@ -402,10 +376,10 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = FlappyBirdXLTests/Info.plist;
+				INFOPLIST_FILE = FlappyRevengeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = FlappyRevengeTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyBirdXL.app/FlappyBirdXL";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyRevenge.app/FlappyRevenge";
 			};
 			name = Release;
 		};
