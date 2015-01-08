@@ -7,19 +7,18 @@
 //
 
 #import "GameScene.h"
+#import "GameBird.h"
+#import "GamePipes.h"
 
-@interface GameScene() {
-    SKSpriteNode* bird;
+@interface GameScene() <SKPhysicsContactDelegate> {
+    GameBird* bird;
     SKColor* skyColor;
     SKTexture* groundTexture;
     SKTexture* skylineTexture;
-    SKTexture* birdTexture1;
-    SKTexture* birdTexture2;
-    SKTexture* birdTexture3;
-    SKTexture* birdTexture4;
     SKTexture* pipeTexture1;
     SKTexture* pipeTexture2;
     SKAction* moveAndRemovePipes;
+    SKNode* moving;
 }
 
 
@@ -29,68 +28,65 @@
 
 @implementation GameScene
 
+static const uint32_t birdCategory = 1 << 0;
+static const uint32_t worldCategory = 1 << 1;
+static const uint32_t pipeCategory = 1 << 2;
+
 static NSInteger const kVerticalPipeGap = 125;
 
 -(void)didMoveToView:(SKView *)view {
+    
+    // initialize world
     self.physicsWorld.gravity = CGVectorMake( 0.0, -5.0 );
+    self.physicsWorld.contactDelegate = self;
+    moving = [SKNode node];
+    [self addChild:moving];
     
     // Background color
     skyColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
     [self setBackgroundColor:skyColor];
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     
-    [self addBird];
+    // Add bird
+    bird = [GameBird bird];
+    bird.position = CGPointMake((self.frame.size.width / 2.5), CGRectGetMidY(self.frame));
+    bird.physicsBody.categoryBitMask = birdCategory;
+    bird.physicsBody.collisionBitMask = worldCategory | pipeCategory;
+    bird.physicsBody.contactTestBitMask = worldCategory | pipeCategory;
+    [self addChild:bird];
+    
+    
     [self addGround];
     [self addSkyline];
     [self addPipes];
-    
-    
-    CGFloat distanceToMove = self.frame.size.width + 2 * pipeTexture1.size.width;
-    SKAction* movePipes = [SKAction moveByX:-distanceToMove y:0 duration:0.01 * distanceToMove];
-    SKAction* removePipes = [SKAction removeFromParent];
-    moveAndRemovePipes = [SKAction sequence:@[movePipes, removePipes]];
-    
-    SKAction* spawn = [SKAction performSelector:@selector(spawnPipes) onTarget:self];
-    SKAction* delay = [SKAction waitForDuration:5.0];
-    SKAction* spawnThenDelay = [SKAction sequence:@[spawn, delay]];
-    SKAction* spawnThenDelayForever = [SKAction repeatActionForever:spawnThenDelay];
-    [self runAction:spawnThenDelayForever];
-
-    
+    [self generateWorld];
 }
 
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    bird.physicsBody.velocity = CGVectorMake(0, 0);
-    [bird.physicsBody applyImpulse:CGVectorMake(0, 150)];
+    if(moving.speed > 0){
+        [bird fly];
+    }
 }
 
--(void)addBird{
-    
-    // Load bird textures
-    birdTexture1 = [SKTexture textureWithImageNamed:@"initBirdL1"];
-    birdTexture1.filteringMode = SKTextureFilteringNearest;
-    birdTexture2 = [SKTexture textureWithImageNamed:@"initBirdH1"];
-    birdTexture2.filteringMode = SKTextureFilteringNearest;
+- (void)didBeginContact:(SKPhysicsContact *)contact {
+    if(moving.speed > 0){
+        moving.speed = 0;
+        
+        bird.physicsBody.collisionBitMask = worldCategory;
+        bird.speed = 0;
 
-    
-    SKAction* flap = [SKAction repeatActionForever:[SKAction animateWithTextures:@[birdTexture1, birdTexture2] timePerFrame: 0.5]];
-    bird = [SKSpriteNode spriteNodeWithTexture:birdTexture1];
-
-    
-    [bird setScale:0.75];
-    bird.position = CGPointMake((self.frame.size.width / 2.5), CGRectGetMidY(self.frame));
-    [bird runAction:flap];
-    
-    bird.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:bird.size.height/2];
-    bird.physicsBody.dynamic = YES;
-    bird.physicsBody.allowsRotation = NO;
-    bird.physicsBody.mass = 0.5;
-    
-    [self addChild:bird];
-    
+        // Flash background if contact is detected
+        [self removeActionForKey:@"flash"];
+        [self runAction:[SKAction sequence:@[[SKAction repeatAction:[SKAction sequence:@[[SKAction runBlock:^{
+            self.backgroundColor = [SKColor colorWithRed:255.0/255.0 green:150.0/255.0 blue:180.0/255.0 alpha:1.0];
+        }], [SKAction waitForDuration:0.1], [SKAction runBlock:^{
+            self.backgroundColor = skyColor;
+        }], [SKAction waitForDuration:0.1]]] count:4]]] withKey:@"flash"];
+    }
 }
+
+
 -(void)addSkyline{
     // Load skyline
     skylineTexture = [SKTexture textureWithImageNamed:@"Skyline"];
@@ -107,7 +103,7 @@ static NSInteger const kVerticalPipeGap = 125;
         sprite.position = CGPointMake(i * sprite.size.width, groundTexture.size.height / 2);
         NSLog(@" skyline height %f", sprite.position.y);
         [sprite runAction: moveSkylineSpritesForever];
-        [self addChild:sprite];
+        [moving addChild:sprite];
     }
 }
 
@@ -151,13 +147,26 @@ static NSInteger const kVerticalPipeGap = 125;
     
 }
 
+-(void)generateWorld
+    {
+    CGFloat distanceToMove = self.frame.size.width + 2 * pipeTexture1.size.width;
+    SKAction* movePipes = [SKAction moveByX:-distanceToMove y:0 duration:0.01 * distanceToMove];
+    SKAction* removePipes = [SKAction removeFromParent];
+    moveAndRemovePipes = [SKAction sequence:@[movePipes, removePipes]];
+    
+    SKAction* spawn = [SKAction performSelector:@selector(spawnPipes) onTarget:self];
+    SKAction* delay = [SKAction waitForDuration:5.0];
+    SKAction* spawnThenDelay = [SKAction sequence:@[spawn, delay]];
+    SKAction* spawnThenDelayForever = [SKAction repeatActionForever:spawnThenDelay];
+    [self runAction:spawnThenDelayForever];
+}
+
 -(void)spawnPipes {
     SKNode* pipePair = [SKNode node];
     pipePair.position = CGPointMake( self.frame.size.width + pipeTexture1.size.width, 0 );
     pipePair.zPosition = -10;
     
     CGFloat y = (arc4random() % (NSInteger)( self.frame.size.height / 3 ) + groundTexture.size.height / 2);
-    NSLog(@" %u ", arc4random());
     
    // float y = [self randomValueBetween:groundTexture.size.height / 2 andValue: self.frame.size.height / 2];
     
@@ -166,6 +175,8 @@ static NSInteger const kVerticalPipeGap = 125;
     pipe1.position = CGPointMake( 0, y );
     pipe1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipe1.size];
     pipe1.physicsBody.dynamic = NO;
+    pipe1.physicsBody.categoryBitMask = pipeCategory;
+    pipe1.physicsBody.contactTestBitMask = birdCategory;
     [pipePair addChild:pipe1];
     
     SKSpriteNode* pipe2 = [SKSpriteNode spriteNodeWithTexture:pipeTexture2];
@@ -173,11 +184,13 @@ static NSInteger const kVerticalPipeGap = 125;
     pipe2.position = CGPointMake( 0, y + pipe1.size.height + kVerticalPipeGap );
     pipe2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipe2.size];
     pipe2.physicsBody.dynamic = NO;
+    pipe2.physicsBody.categoryBitMask = pipeCategory;
+    pipe2.physicsBody.contactTestBitMask = birdCategory;
     [pipePair addChild:pipe2];
     
     [pipePair runAction:moveAndRemovePipes];
     
-    [self addChild:pipePair];
+    [moving addChild:pipePair];
 }
 
 -(void)addGround{
@@ -198,16 +211,18 @@ static NSInteger const kVerticalPipeGap = 125;
         NSLog(@"ground text height %f", groundTexture.size.height);
         [sprite runAction:moveGroundSpritesForever];
         
-        [self addChild:sprite];
+        [moving addChild:sprite];
     }
     
     // Create ground physics container
     
-    SKNode* dummy = [SKNode node];
-    dummy.position = CGPointMake(0, groundTexture.size.height /2);
-    dummy.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.frame.size.width * 2, groundTexture.size.height)];
-    dummy.physicsBody.dynamic = NO;
-    [self addChild:dummy];
+    SKNode* groundBody = [SKNode node];
+    groundBody.position = CGPointMake(0, groundTexture.size.height /2);
+    groundBody.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.frame.size.width * 2, groundTexture.size.height)];
+    groundBody.physicsBody.dynamic = NO;
+    groundBody.physicsBody.categoryBitMask = worldCategory;
+    groundBody.physicsBody.collisionBitMask = birdCategory;
+    [self addChild:groundBody];
 
 }
 
@@ -222,8 +237,9 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 }
 
 -(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
-    bird.zRotation = clamp( -1, 0.5, bird.physicsBody.velocity.dy * ( bird.physicsBody.velocity.dy < 0 ? 0.003 : 0.001 ) );
+    if(moving > 0){
+        bird.zRotation = clamp( -1, 0.5, bird.physicsBody.velocity.dy * ( bird.physicsBody.velocity.dy < 0 ? 0.003 : 0.001 ) );
+    }
 }
 
 @end

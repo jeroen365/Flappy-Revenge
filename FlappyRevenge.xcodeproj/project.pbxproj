@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		443A29AA1A5E9B39006DF7C3 /* GameBird.m in Sources */ = {isa = PBXBuildFile; fileRef = 443A29A91A5E9B39006DF7C3 /* GameBird.m */; };
 		44D56D251A45C20000A0AB8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D56D241A45C20000A0AB8C /* main.m */; };
 		44D56D281A45C20000A0AB8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D56D271A45C20000A0AB8C /* AppDelegate.m */; };
 		44D56D2B1A45C20000A0AB8C /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D56D2A1A45C20000A0AB8C /* GameScene.m */; };
@@ -29,7 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		44D56D1F1A45C20000A0AB8C /* FlappyBirdXL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBirdXL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		443A29A81A5E9B39006DF7C3 /* GameBird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBird.h; sourceTree = "<group>"; };
+		443A29A91A5E9B39006DF7C3 /* GameBird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBird.m; sourceTree = "<group>"; };
+		44D56D1F1A45C20000A0AB8C /* FlappyRevenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyRevenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44D56D231A45C20000A0AB8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44D56D241A45C20000A0AB8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		44D56D261A45C20000A0AB8C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -42,7 +45,7 @@
 		44D56D321A45C20000A0AB8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44D56D341A45C20000A0AB8C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		44D56D371A45C20000A0AB8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		44D56D3D1A45C20000A0AB8C /* FlappyBirdXLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyBirdXLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44D56D3D1A45C20000A0AB8C /* FlappyRevengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyRevengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44D56D421A45C20000A0AB8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44D56D431A45C20000A0AB8C /* FlappyBirdXLTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlappyBirdXLTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,8 +80,8 @@
 		44D56D201A45C20000A0AB8C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				44D56D1F1A45C20000A0AB8C /* FlappyBirdXL.app */,
-				44D56D3D1A45C20000A0AB8C /* FlappyBirdXLTests.xctest */,
+				44D56D1F1A45C20000A0AB8C /* FlappyRevenge.app */,
+				44D56D3D1A45C20000A0AB8C /* FlappyRevengeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,6 +93,8 @@
 				44D56D271A45C20000A0AB8C /* AppDelegate.m */,
 				44D56D291A45C20000A0AB8C /* GameScene.h */,
 				44D56D2A1A45C20000A0AB8C /* GameScene.m */,
+				443A29A81A5E9B39006DF7C3 /* GameBird.h */,
+				443A29A91A5E9B39006DF7C3 /* GameBird.m */,
 				44D56D2C1A45C20000A0AB8C /* GameScene.sks */,
 				44D56D2E1A45C20000A0AB8C /* GameViewController.h */,
 				44D56D2F1A45C20000A0AB8C /* GameViewController.m */,
@@ -130,9 +135,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		44D56D1E1A45C20000A0AB8C /* FlappyBirdXL */ = {
+		44D56D1E1A45C20000A0AB8C /* FlappyRevenge */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44D56D471A45C20000A0AB8C /* Build configuration list for PBXNativeTarget "FlappyBirdXL" */;
+			buildConfigurationList = 44D56D471A45C20000A0AB8C /* Build configuration list for PBXNativeTarget "FlappyRevenge" */;
 			buildPhases = (
 				44D56D1B1A45C20000A0AB8C /* Sources */,
 				44D56D1C1A45C20000A0AB8C /* Frameworks */,
@@ -142,14 +147,14 @@
 			);
 			dependencies = (
 			);
-			name = FlappyBirdXL;
+			name = FlappyRevenge;
 			productName = FlappyBirdXL;
-			productReference = 44D56D1F1A45C20000A0AB8C /* FlappyBirdXL.app */;
+			productReference = 44D56D1F1A45C20000A0AB8C /* FlappyRevenge.app */;
 			productType = "com.apple.product-type.application";
 		};
-		44D56D3C1A45C20000A0AB8C /* FlappyBirdXLTests */ = {
+		44D56D3C1A45C20000A0AB8C /* FlappyRevengeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44D56D4A1A45C20000A0AB8C /* Build configuration list for PBXNativeTarget "FlappyBirdXLTests" */;
+			buildConfigurationList = 44D56D4A1A45C20000A0AB8C /* Build configuration list for PBXNativeTarget "FlappyRevengeTests" */;
 			buildPhases = (
 				44D56D391A45C20000A0AB8C /* Sources */,
 				44D56D3A1A45C20000A0AB8C /* Frameworks */,
@@ -160,9 +165,9 @@
 			dependencies = (
 				44D56D3F1A45C20000A0AB8C /* PBXTargetDependency */,
 			);
-			name = FlappyBirdXLTests;
+			name = FlappyRevengeTests;
 			productName = FlappyBirdXLTests;
-			productReference = 44D56D3D1A45C20000A0AB8C /* FlappyBirdXLTests.xctest */;
+			productReference = 44D56D3D1A45C20000A0AB8C /* FlappyRevengeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -183,7 +188,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 44D56D1A1A45C20000A0AB8C /* Build configuration list for PBXProject "FlappyBirdXL" */;
+			buildConfigurationList = 44D56D1A1A45C20000A0AB8C /* Build configuration list for PBXProject "FlappyRevenge" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -196,8 +201,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				44D56D1E1A45C20000A0AB8C /* FlappyBirdXL */,
-				44D56D3C1A45C20000A0AB8C /* FlappyBirdXLTests */,
+				44D56D1E1A45C20000A0AB8C /* FlappyRevenge */,
+				44D56D3C1A45C20000A0AB8C /* FlappyRevengeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -229,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D56D301A45C20000A0AB8C /* GameViewController.m in Sources */,
+				443A29AA1A5E9B39006DF7C3 /* GameBird.m in Sources */,
 				44D56D281A45C20000A0AB8C /* AppDelegate.m in Sources */,
 				44D56D2B1A45C20000A0AB8C /* GameScene.m in Sources */,
 				44D56D251A45C20000A0AB8C /* main.m in Sources */,
@@ -248,7 +254,7 @@
 /* Begin PBXTargetDependency section */
 		44D56D3F1A45C20000A0AB8C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 44D56D1E1A45C20000A0AB8C /* FlappyBirdXL */;
+			target = 44D56D1E1A45C20000A0AB8C /* FlappyRevenge */;
 			targetProxy = 44D56D3E1A45C20000A0AB8C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -355,7 +361,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FlappyBirdXL/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlappyRevenge;
 			};
 			name = Debug;
 		};
@@ -365,7 +371,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FlappyBirdXL/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlappyRevenge;
 			};
 			name = Release;
 		};
@@ -383,7 +389,7 @@
 				);
 				INFOPLIST_FILE = FlappyBirdXLTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlappyRevengeTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyBirdXL.app/FlappyBirdXL";
 			};
 			name = Debug;
@@ -398,7 +404,7 @@
 				);
 				INFOPLIST_FILE = FlappyBirdXLTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlappyRevengeTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyBirdXL.app/FlappyBirdXL";
 			};
 			name = Release;
@@ -406,7 +412,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		44D56D1A1A45C20000A0AB8C /* Build configuration list for PBXProject "FlappyBirdXL" */ = {
+		44D56D1A1A45C20000A0AB8C /* Build configuration list for PBXProject "FlappyRevenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44D56D451A45C20000A0AB8C /* Debug */,
@@ -415,7 +421,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44D56D471A45C20000A0AB8C /* Build configuration list for PBXNativeTarget "FlappyBirdXL" */ = {
+		44D56D471A45C20000A0AB8C /* Build configuration list for PBXNativeTarget "FlappyRevenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44D56D481A45C20000A0AB8C /* Debug */,
@@ -424,7 +430,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44D56D4A1A45C20000A0AB8C /* Build configuration list for PBXNativeTarget "FlappyBirdXLTests" */ = {
+		44D56D4A1A45C20000A0AB8C /* Build configuration list for PBXNativeTarget "FlappyRevengeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44D56D4B1A45C20000A0AB8C /* Debug */,

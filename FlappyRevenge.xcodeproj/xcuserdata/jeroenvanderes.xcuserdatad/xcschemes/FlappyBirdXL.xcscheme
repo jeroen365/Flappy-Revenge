@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "44D56D1E1A45C20000A0AB8C"
-               BuildableName = "FlappyBirdXL.app"
-               BlueprintName = "FlappyBirdXL"
-               ReferencedContainer = "container:FlappyBirdXL.xcodeproj">
+               BuildableName = "FlappyRevenge.app"
+               BlueprintName = "FlappyRevenge"
+               ReferencedContainer = "container:FlappyRevenge.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "44D56D3C1A45C20000A0AB8C"
-               BuildableName = "FlappyBirdXLTests.xctest"
-               BlueprintName = "FlappyBirdXLTests"
-               ReferencedContainer = "container:FlappyBirdXL.xcodeproj">
+               BuildableName = "FlappyRevengeTests.xctest"
+               BlueprintName = "FlappyRevengeTests"
+               ReferencedContainer = "container:FlappyRevenge.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "44D56D3C1A45C20000A0AB8C"
-               BuildableName = "FlappyBirdXLTests.xctest"
-               BlueprintName = "FlappyBirdXLTests"
-               ReferencedContainer = "container:FlappyBirdXL.xcodeproj">
+               BuildableName = "FlappyRevengeTests.xctest"
+               BlueprintName = "FlappyRevengeTests"
+               ReferencedContainer = "container:FlappyRevenge.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "44D56D1E1A45C20000A0AB8C"
-            BuildableName = "FlappyBirdXL.app"
-            BlueprintName = "FlappyBirdXL"
-            ReferencedContainer = "container:FlappyBirdXL.xcodeproj">
+            BuildableName = "FlappyRevenge.app"
+            BlueprintName = "FlappyRevenge"
+            ReferencedContainer = "container:FlappyRevenge.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "44D56D1E1A45C20000A0AB8C"
-            BuildableName = "FlappyBirdXL.app"
-            BlueprintName = "FlappyBirdXL"
-            ReferencedContainer = "container:FlappyBirdXL.xcodeproj">
+            BuildableName = "FlappyRevenge.app"
+            BlueprintName = "FlappyRevenge"
+            ReferencedContainer = "container:FlappyRevenge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "44D56D1E1A45C20000A0AB8C"
-            BuildableName = "FlappyBirdXL.app"
-            BlueprintName = "FlappyBirdXL"
-            ReferencedContainer = "container:FlappyBirdXL.xcodeproj">
+            BuildableName = "FlappyRevenge.app"
+            BlueprintName = "FlappyRevenge"
+            ReferencedContainer = "container:FlappyRevenge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
