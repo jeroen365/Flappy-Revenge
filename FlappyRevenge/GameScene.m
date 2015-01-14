@@ -9,8 +9,9 @@
 #import "GameScene.h"
 #import "GameBird.h"
 #import "GamePipes.h"
+#import "StartGameMenu.h"
 
-@interface GameScene() <SKPhysicsContactDelegate> {
+@interface GameScene() <SKPhysicsContactDelegate, StartGameMenuDelegate> {
     GameBird* bird;
     SKColor* skyColor;
     SKTexture* groundTexture;
@@ -18,6 +19,8 @@
     SKTexture* pipeTexture1;
     SKTexture* pipeTexture2;
     SKAction* moveAndRemovePipes;
+    StartGameMenu* startGameMenu;
+    BOOL* gameStarted;
     SKNode* moving;
 }
 
@@ -32,7 +35,7 @@ static const uint32_t birdCategory = 1 << 0;
 static const uint32_t worldCategory = 1 << 1;
 static const uint32_t pipeCategory = 1 << 2;
 
-static NSInteger const kVerticalPipeGap = 125;
+static NSInteger const kVerticalPipeGap = 140;
 
 -(void)didMoveToView:(SKView *)view {
     
@@ -46,6 +49,9 @@ static NSInteger const kVerticalPipeGap = 125;
     skyColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
     [self setBackgroundColor:skyColor];
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+    
+    gameStarted = NO;
+
     
     // Add bird
     bird = [GameBird bird];
@@ -140,6 +146,13 @@ static NSInteger const kVerticalPipeGap = 125;
 
     [pipePair runAction:movePipes];
     
+}
+
+- (void) initializeStartGameLayer
+{
+    startGameMenu = [[StartGameMenu alloc]initWithSize:self.size];
+    startGameMenu.userInteractionEnabled = YES;
+    startGameMenu.delegate = self;
 }
 
 -(float)randomValueBetween:(float)low andValue: (float)high {

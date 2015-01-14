@@ -14,6 +14,8 @@
 		44D56D2D1A45C20000A0AB8C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 44D56D2C1A45C20000A0AB8C /* GameScene.sks */; };
 		44D56D301A45C20000A0AB8C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D56D2F1A45C20000A0AB8C /* GameViewController.m */; };
 		44D56D351A45C20000A0AB8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44D56D341A45C20000A0AB8C /* Images.xcassets */; };
+		44E2A8BA1A63EA6B0048B80F /* GameMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E2A8B91A63EA6B0048B80F /* GameMenuLayer.m */; };
+		44E2A8BD1A63EAFD0048B80F /* StartGameMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E2A8BC1A63EAFD0048B80F /* StartGameMenu.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,10 @@
 		44D56D341A45C20000A0AB8C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		44D56D371A45C20000A0AB8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		44D56D3D1A45C20000A0AB8C /* FlappyRevengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyRevengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44E2A8B81A63EA6B0048B80F /* GameMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuLayer.h; sourceTree = "<group>"; };
+		44E2A8B91A63EA6B0048B80F /* GameMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuLayer.m; sourceTree = "<group>"; };
+		44E2A8BB1A63EAFD0048B80F /* StartGameMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameMenu.h; sourceTree = "<group>"; };
+		44E2A8BC1A63EAFD0048B80F /* StartGameMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameMenu.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,10 @@
 				44D56D271A45C20000A0AB8C /* AppDelegate.m */,
 				44D56D291A45C20000A0AB8C /* GameScene.h */,
 				44D56D2A1A45C20000A0AB8C /* GameScene.m */,
+				44E2A8B81A63EA6B0048B80F /* GameMenuLayer.h */,
+				44E2A8B91A63EA6B0048B80F /* GameMenuLayer.m */,
+				44E2A8BB1A63EAFD0048B80F /* StartGameMenu.h */,
+				44E2A8BC1A63EAFD0048B80F /* StartGameMenu.m */,
 				443A29A81A5E9B39006DF7C3 /* GameBird.h */,
 				443A29A91A5E9B39006DF7C3 /* GameBird.m */,
 				44D56D2C1A45C20000A0AB8C /* GameScene.sks */,
@@ -212,7 +222,9 @@
 				443A29AA1A5E9B39006DF7C3 /* GameBird.m in Sources */,
 				44D56D281A45C20000A0AB8C /* AppDelegate.m in Sources */,
 				44D56D2B1A45C20000A0AB8C /* GameScene.m in Sources */,
+				44E2A8BA1A63EA6B0048B80F /* GameMenuLayer.m in Sources */,
 				44D56D251A45C20000A0AB8C /* main.m in Sources */,
+				44E2A8BD1A63EAFD0048B80F /* StartGameMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
