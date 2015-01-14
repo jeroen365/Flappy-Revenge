@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "44D56D1E1A45C20000A0AB8C"
+               BlueprintIdentifier = "17B345E81A66811200946A2E"
                BuildableName = "FlappyRevenge.app"
                BlueprintName = "FlappyRevenge"
+               ReferencedContainer = "container:FlappyRevenge.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "17B346011A66811200946A2E"
+               BuildableName = "FlappyRevengeTests.xctest"
+               BlueprintName = "FlappyRevengeTests"
                ReferencedContainer = "container:FlappyRevenge.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,11 +42,21 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "17B346011A66811200946A2E"
+               BuildableName = "FlappyRevengeTests.xctest"
+               BlueprintName = "FlappyRevengeTests"
+               ReferencedContainer = "container:FlappyRevenge.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "44D56D1E1A45C20000A0AB8C"
+            BlueprintIdentifier = "17B345E81A66811200946A2E"
             BuildableName = "FlappyRevenge.app"
             BlueprintName = "FlappyRevenge"
             ReferencedContainer = "container:FlappyRevenge.xcodeproj">
@@ -51,7 +75,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "44D56D1E1A45C20000A0AB8C"
+            BlueprintIdentifier = "17B345E81A66811200946A2E"
             BuildableName = "FlappyRevenge.app"
             BlueprintName = "FlappyRevenge"
             ReferencedContainer = "container:FlappyRevenge.xcodeproj">
@@ -69,7 +93,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "44D56D1E1A45C20000A0AB8C"
+            BlueprintIdentifier = "17B345E81A66811200946A2E"
             BuildableName = "FlappyRevenge.app"
             BlueprintName = "FlappyRevenge"
             ReferencedContainer = "container:FlappyRevenge.xcodeproj">

@@ -1,19 +1,19 @@
 //
-//  FlappyBirdXLTests.m
-//  FlappyBirdXLTests
+//  FlappyRevengeTests.m
+//  FlappyRevengeTests
 //
-//  Created by Jeroen van der Es on 20-12-14.
-//  Copyright (c) 2014 Jeroen van der Es. All rights reserved.
+//  Created by Emiel on 1/14/15.
+//  Copyright (c) 2015 mprog. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface FlappyBirdXLTests : XCTestCase
+@interface FlappyRevengeTests : XCTestCase
 
 @end
 
-@implementation FlappyBirdXLTests
+@implementation FlappyRevengeTests
 
 - (void)setUp {
     [super setUp];

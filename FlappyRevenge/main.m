@@ -1,9 +1,9 @@
 //
 //  main.m
-//  FlappyBirdXL
+//  FlappyRevenge
 //
-//  Created by Jeroen van der Es on 20-12-14.
-//  Copyright (c) 2014 Jeroen van der Es. All rights reserved.
+//  Created by Emiel on 1/14/15.
+//  Copyright (c) 2015 mprog. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

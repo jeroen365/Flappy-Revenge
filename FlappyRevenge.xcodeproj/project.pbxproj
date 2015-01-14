@@ -7,59 +7,70 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		443A29AA1A5E9B39006DF7C3 /* GameBird.m in Sources */ = {isa = PBXBuildFile; fileRef = 443A29A91A5E9B39006DF7C3 /* GameBird.m */; };
-		44D56D251A45C20000A0AB8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D56D241A45C20000A0AB8C /* main.m */; };
-		44D56D281A45C20000A0AB8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D56D271A45C20000A0AB8C /* AppDelegate.m */; };
-		44D56D2B1A45C20000A0AB8C /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D56D2A1A45C20000A0AB8C /* GameScene.m */; };
-		44D56D2D1A45C20000A0AB8C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 44D56D2C1A45C20000A0AB8C /* GameScene.sks */; };
-		44D56D301A45C20000A0AB8C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D56D2F1A45C20000A0AB8C /* GameViewController.m */; };
-		44D56D351A45C20000A0AB8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44D56D341A45C20000A0AB8C /* Images.xcassets */; };
-		44E2A8BA1A63EA6B0048B80F /* GameMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E2A8B91A63EA6B0048B80F /* GameMenuLayer.m */; };
-		44E2A8BD1A63EAFD0048B80F /* StartGameMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E2A8BC1A63EAFD0048B80F /* StartGameMenu.m */; };
+		17B345EF1A66811200946A2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B345EE1A66811200946A2E /* main.m */; };
+		17B346091A66811200946A2E /* FlappyRevengeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B346081A66811200946A2E /* FlappyRevengeTests.m */; };
+		17B346141A6681FC00946A2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B346131A6681FC00946A2E /* AppDelegate.m */; };
+		17B346211A66821000946A2E /* GameBird.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B346161A66821000946A2E /* GameBird.m */; };
+		17B346221A66821000946A2E /* GameMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B346181A66821000946A2E /* GameMenuLayer.m */; };
+		17B346241A66821000946A2E /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B3461C1A66821000946A2E /* GameScene.m */; };
+		17B346251A66821000946A2E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 17B3461D1A66821000946A2E /* GameScene.sks */; };
+		17B346271A66821000946A2E /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B346201A66821000946A2E /* GameViewController.m */; };
+		17B3462A1A66822200946A2E /* StartGameMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B346291A66822200946A2E /* StartGameMenu.m */; };
+		17B3462C1A66824D00946A2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462B1A66824D00946A2E /* Images.xcassets */; };
+		17B346311A66827400946A2E /* gameplay.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462D1A66827400946A2E /* gameplay.PNG */; };
+		17B346321A66827400946A2E /* menu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462E1A66827400946A2E /* menu.jpg */; };
+		17B346331A66827400946A2E /* shop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462F1A66827400946A2E /* shop.jpg */; };
+		17B346341A66827400946A2E /* Views.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B346301A66827400946A2E /* Views.jpg */; };
+		17B346361A6682B700946A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B346351A6682B700946A2E /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		44D56D3E1A45C20000A0AB8C /* PBXContainerItemProxy */ = {
+		17B346031A66811200946A2E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 44D56D171A45C20000A0AB8C /* Project object */;
+			containerPortal = 17B345E11A66811200946A2E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 44D56D1E1A45C20000A0AB8C;
+			remoteGlobalIDString = 17B345E81A66811200946A2E;
 			remoteInfo = FlappyRevenge;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		443A29A81A5E9B39006DF7C3 /* GameBird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBird.h; sourceTree = "<group>"; };
-		443A29A91A5E9B39006DF7C3 /* GameBird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBird.m; sourceTree = "<group>"; };
-		44D56D1F1A45C20000A0AB8C /* FlappyRevenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyRevenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		44D56D231A45C20000A0AB8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44D56D241A45C20000A0AB8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		44D56D261A45C20000A0AB8C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		44D56D271A45C20000A0AB8C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		44D56D291A45C20000A0AB8C /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		44D56D2A1A45C20000A0AB8C /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
-		44D56D2C1A45C20000A0AB8C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		44D56D2E1A45C20000A0AB8C /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		44D56D2F1A45C20000A0AB8C /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		44D56D321A45C20000A0AB8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		44D56D341A45C20000A0AB8C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		44D56D371A45C20000A0AB8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		44D56D3D1A45C20000A0AB8C /* FlappyRevengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyRevengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		44E2A8B81A63EA6B0048B80F /* GameMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuLayer.h; sourceTree = "<group>"; };
-		44E2A8B91A63EA6B0048B80F /* GameMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuLayer.m; sourceTree = "<group>"; };
-		44E2A8BB1A63EAFD0048B80F /* StartGameMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameMenu.h; sourceTree = "<group>"; };
-		44E2A8BC1A63EAFD0048B80F /* StartGameMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameMenu.m; sourceTree = "<group>"; };
+		17B345E91A66811200946A2E /* FlappyRevenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyRevenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17B345ED1A66811200946A2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17B345EE1A66811200946A2E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		17B346021A66811200946A2E /* FlappyRevengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyRevengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17B346071A66811200946A2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17B346081A66811200946A2E /* FlappyRevengeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlappyRevengeTests.m; sourceTree = "<group>"; };
+		17B346121A6681FC00946A2E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		17B346131A6681FC00946A2E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		17B346151A66821000946A2E /* GameBird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBird.h; sourceTree = "<group>"; };
+		17B346161A66821000946A2E /* GameBird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBird.m; sourceTree = "<group>"; };
+		17B346171A66821000946A2E /* GameMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuLayer.h; sourceTree = "<group>"; };
+		17B346181A66821000946A2E /* GameMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuLayer.m; sourceTree = "<group>"; };
+		17B3461B1A66821000946A2E /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		17B3461C1A66821000946A2E /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		17B3461D1A66821000946A2E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		17B3461F1A66821000946A2E /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		17B346201A66821000946A2E /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		17B346281A66822200946A2E /* StartGameMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameMenu.h; sourceTree = "<group>"; };
+		17B346291A66822200946A2E /* StartGameMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameMenu.m; sourceTree = "<group>"; };
+		17B3462B1A66824D00946A2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		17B3462D1A66827400946A2E /* gameplay.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay.PNG; sourceTree = "<group>"; };
+		17B3462E1A66827400946A2E /* menu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menu.jpg; sourceTree = "<group>"; };
+		17B3462F1A66827400946A2E /* shop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shop.jpg; sourceTree = "<group>"; };
+		17B346301A66827400946A2E /* Views.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Views.jpg; sourceTree = "<group>"; };
+		17B346351A6682B700946A2E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		44D56D1C1A45C20000A0AB8C /* Frameworks */ = {
+		17B345E61A66811200946A2E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44D56D3A1A45C20000A0AB8C /* Frameworks */ = {
+		17B345FF1A66811200946A2E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -69,52 +80,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		44D56D161A45C20000A0AB8C = {
+		17B345E01A66811200946A2E = {
 			isa = PBXGroup;
 			children = (
-				44D56D211A45C20000A0AB8C /* FlappyRevenge */,
-				44D56D201A45C20000A0AB8C /* Products */,
+				17B345EB1A66811200946A2E /* FlappyRevenge */,
+				17B346051A66811200946A2E /* FlappyRevengeTests */,
+				17B345EA1A66811200946A2E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		44D56D201A45C20000A0AB8C /* Products */ = {
+		17B345EA1A66811200946A2E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				44D56D1F1A45C20000A0AB8C /* FlappyRevenge.app */,
-				44D56D3D1A45C20000A0AB8C /* FlappyRevengeTests.xctest */,
+				17B345E91A66811200946A2E /* FlappyRevenge.app */,
+				17B346021A66811200946A2E /* FlappyRevengeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		44D56D211A45C20000A0AB8C /* FlappyRevenge */ = {
+		17B345EB1A66811200946A2E /* FlappyRevenge */ = {
 			isa = PBXGroup;
 			children = (
-				44D56D261A45C20000A0AB8C /* AppDelegate.h */,
-				44D56D271A45C20000A0AB8C /* AppDelegate.m */,
-				44D56D291A45C20000A0AB8C /* GameScene.h */,
-				44D56D2A1A45C20000A0AB8C /* GameScene.m */,
-				44E2A8B81A63EA6B0048B80F /* GameMenuLayer.h */,
-				44E2A8B91A63EA6B0048B80F /* GameMenuLayer.m */,
-				44E2A8BB1A63EAFD0048B80F /* StartGameMenu.h */,
-				44E2A8BC1A63EAFD0048B80F /* StartGameMenu.m */,
-				443A29A81A5E9B39006DF7C3 /* GameBird.h */,
-				443A29A91A5E9B39006DF7C3 /* GameBird.m */,
-				44D56D2C1A45C20000A0AB8C /* GameScene.sks */,
-				44D56D2E1A45C20000A0AB8C /* GameViewController.h */,
-				44D56D2F1A45C20000A0AB8C /* GameViewController.m */,
-				44D56D311A45C20000A0AB8C /* Main.storyboard */,
-				44D56D341A45C20000A0AB8C /* Images.xcassets */,
-				44D56D361A45C20000A0AB8C /* LaunchScreen.xib */,
-				44D56D221A45C20000A0AB8C /* Supporting Files */,
+				17B346351A6682B700946A2E /* Main.storyboard */,
+				17B3462D1A66827400946A2E /* gameplay.PNG */,
+				17B3462E1A66827400946A2E /* menu.jpg */,
+				17B3462F1A66827400946A2E /* shop.jpg */,
+				17B346301A66827400946A2E /* Views.jpg */,
+				17B346151A66821000946A2E /* GameBird.h */,
+				17B346161A66821000946A2E /* GameBird.m */,
+				17B346171A66821000946A2E /* GameMenuLayer.h */,
+				17B346181A66821000946A2E /* GameMenuLayer.m */,
+				17B3461B1A66821000946A2E /* GameScene.h */,
+				17B3461C1A66821000946A2E /* GameScene.m */,
+				17B3461D1A66821000946A2E /* GameScene.sks */,
+				17B3461F1A66821000946A2E /* GameViewController.h */,
+				17B346201A66821000946A2E /* GameViewController.m */,
+				17B346281A66822200946A2E /* StartGameMenu.h */,
+				17B346291A66822200946A2E /* StartGameMenu.m */,
+				17B3462B1A66824D00946A2E /* Images.xcassets */,
+				17B345EC1A66811200946A2E /* Supporting Files */,
 			);
 			path = FlappyRevenge;
 			sourceTree = "<group>";
 		};
-		44D56D221A45C20000A0AB8C /* Supporting Files */ = {
+		17B345EC1A66811200946A2E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				44D56D231A45C20000A0AB8C /* Info.plist */,
-				44D56D241A45C20000A0AB8C /* main.m */,
+				17B346121A6681FC00946A2E /* AppDelegate.h */,
+				17B346131A6681FC00946A2E /* AppDelegate.m */,
+				17B345ED1A66811200946A2E /* Info.plist */,
+				17B345EE1A66811200946A2E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		17B346051A66811200946A2E /* FlappyRevengeTests */ = {
+			isa = PBXGroup;
+			children = (
+				17B346081A66811200946A2E /* FlappyRevengeTests.m */,
+				17B346061A66811200946A2E /* Supporting Files */,
+			);
+			path = FlappyRevengeTests;
+			sourceTree = "<group>";
+		};
+		17B346061A66811200946A2E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				17B346071A66811200946A2E /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -122,13 +154,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		44D56D1E1A45C20000A0AB8C /* FlappyRevenge */ = {
+		17B345E81A66811200946A2E /* FlappyRevenge */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44D56D471A45C20000A0AB8C /* Build configuration list for PBXNativeTarget "FlappyRevenge" */;
+			buildConfigurationList = 17B3460C1A66811200946A2E /* Build configuration list for PBXNativeTarget "FlappyRevenge" */;
 			buildPhases = (
-				44D56D1B1A45C20000A0AB8C /* Sources */,
-				44D56D1C1A45C20000A0AB8C /* Frameworks */,
-				44D56D1D1A45C20000A0AB8C /* Resources */,
+				17B345E51A66811200946A2E /* Sources */,
+				17B345E61A66811200946A2E /* Frameworks */,
+				17B345E71A66811200946A2E /* Resources */,
 			);
 			buildRules = (
 			);
@@ -136,46 +168,46 @@
 			);
 			name = FlappyRevenge;
 			productName = FlappyRevenge;
-			productReference = 44D56D1F1A45C20000A0AB8C /* FlappyRevenge.app */;
+			productReference = 17B345E91A66811200946A2E /* FlappyRevenge.app */;
 			productType = "com.apple.product-type.application";
 		};
-		44D56D3C1A45C20000A0AB8C /* FlappyRevengeTests */ = {
+		17B346011A66811200946A2E /* FlappyRevengeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44D56D4A1A45C20000A0AB8C /* Build configuration list for PBXNativeTarget "FlappyRevengeTests" */;
+			buildConfigurationList = 17B3460F1A66811200946A2E /* Build configuration list for PBXNativeTarget "FlappyRevengeTests" */;
 			buildPhases = (
-				44D56D391A45C20000A0AB8C /* Sources */,
-				44D56D3A1A45C20000A0AB8C /* Frameworks */,
-				44D56D3B1A45C20000A0AB8C /* Resources */,
+				17B345FE1A66811200946A2E /* Sources */,
+				17B345FF1A66811200946A2E /* Frameworks */,
+				17B346001A66811200946A2E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				44D56D3F1A45C20000A0AB8C /* PBXTargetDependency */,
+				17B346041A66811200946A2E /* PBXTargetDependency */,
 			);
 			name = FlappyRevengeTests;
 			productName = FlappyRevengeTests;
-			productReference = 44D56D3D1A45C20000A0AB8C /* FlappyRevengeTests.xctest */;
+			productReference = 17B346021A66811200946A2E /* FlappyRevengeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		44D56D171A45C20000A0AB8C /* Project object */ = {
+		17B345E11A66811200946A2E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = "Jeroen van der Es";
+				ORGANIZATIONNAME = mprog;
 				TargetAttributes = {
-					44D56D1E1A45C20000A0AB8C = {
+					17B345E81A66811200946A2E = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
-					44D56D3C1A45C20000A0AB8C = {
+					17B346011A66811200946A2E = {
 						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 44D56D1E1A45C20000A0AB8C;
+						TestTargetID = 17B345E81A66811200946A2E;
 					};
 				};
 			};
-			buildConfigurationList = 44D56D1A1A45C20000A0AB8C /* Build configuration list for PBXProject "FlappyRevenge" */;
+			buildConfigurationList = 17B345E41A66811200946A2E /* Build configuration list for PBXProject "FlappyRevenge" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -183,28 +215,33 @@
 				en,
 				Base,
 			);
-			mainGroup = 44D56D161A45C20000A0AB8C;
-			productRefGroup = 44D56D201A45C20000A0AB8C /* Products */;
+			mainGroup = 17B345E01A66811200946A2E;
+			productRefGroup = 17B345EA1A66811200946A2E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				44D56D1E1A45C20000A0AB8C /* FlappyRevenge */,
-				44D56D3C1A45C20000A0AB8C /* FlappyRevengeTests */,
+				17B345E81A66811200946A2E /* FlappyRevenge */,
+				17B346011A66811200946A2E /* FlappyRevengeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		44D56D1D1A45C20000A0AB8C /* Resources */ = {
+		17B345E71A66811200946A2E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44D56D351A45C20000A0AB8C /* Images.xcassets in Resources */,
-				44D56D2D1A45C20000A0AB8C /* GameScene.sks in Resources */,
+				17B3462C1A66824D00946A2E /* Images.xcassets in Resources */,
+				17B346331A66827400946A2E /* shop.jpg in Resources */,
+				17B346321A66827400946A2E /* menu.jpg in Resources */,
+				17B346361A6682B700946A2E /* Main.storyboard in Resources */,
+				17B346251A66821000946A2E /* GameScene.sks in Resources */,
+				17B346341A66827400946A2E /* Views.jpg in Resources */,
+				17B346311A66827400946A2E /* gameplay.PNG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44D56D3B1A45C20000A0AB8C /* Resources */ = {
+		17B346001A66811200946A2E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -214,58 +251,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		44D56D1B1A45C20000A0AB8C /* Sources */ = {
+		17B345E51A66811200946A2E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44D56D301A45C20000A0AB8C /* GameViewController.m in Sources */,
-				443A29AA1A5E9B39006DF7C3 /* GameBird.m in Sources */,
-				44D56D281A45C20000A0AB8C /* AppDelegate.m in Sources */,
-				44D56D2B1A45C20000A0AB8C /* GameScene.m in Sources */,
-				44E2A8BA1A63EA6B0048B80F /* GameMenuLayer.m in Sources */,
-				44D56D251A45C20000A0AB8C /* main.m in Sources */,
-				44E2A8BD1A63EAFD0048B80F /* StartGameMenu.m in Sources */,
+				17B346211A66821000946A2E /* GameBird.m in Sources */,
+				17B346141A6681FC00946A2E /* AppDelegate.m in Sources */,
+				17B346271A66821000946A2E /* GameViewController.m in Sources */,
+				17B346221A66821000946A2E /* GameMenuLayer.m in Sources */,
+				17B346241A66821000946A2E /* GameScene.m in Sources */,
+				17B345EF1A66811200946A2E /* main.m in Sources */,
+				17B3462A1A66822200946A2E /* StartGameMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44D56D391A45C20000A0AB8C /* Sources */ = {
+		17B345FE1A66811200946A2E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17B346091A66811200946A2E /* FlappyRevengeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		44D56D3F1A45C20000A0AB8C /* PBXTargetDependency */ = {
+		17B346041A66811200946A2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 44D56D1E1A45C20000A0AB8C /* FlappyRevenge */;
-			targetProxy = 44D56D3E1A45C20000A0AB8C /* PBXContainerItemProxy */;
+			target = 17B345E81A66811200946A2E /* FlappyRevenge */;
+			targetProxy = 17B346031A66811200946A2E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		44D56D311A45C20000A0AB8C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				44D56D321A45C20000A0AB8C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		44D56D361A45C20000A0AB8C /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				44D56D371A45C20000A0AB8C /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		44D56D451A45C20000A0AB8C /* Debug */ = {
+		17B3460A1A66811200946A2E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -299,14 +318,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
-		44D56D461A45C20000A0AB8C /* Release */ = {
+		17B3460B1A66811200946A2E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -334,34 +353,34 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		44D56D481A45C20000A0AB8C /* Debug */ = {
+		17B3460D1A66811200946A2E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FlappyRevenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = FlappyRevenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		44D56D491A45C20000A0AB8C /* Release */ = {
+		17B3460E1A66811200946A2E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FlappyRevenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = FlappyRevenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
-		44D56D4B1A45C20000A0AB8C /* Debug */ = {
+		17B346101A66811200946A2E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -375,12 +394,12 @@
 				);
 				INFOPLIST_FILE = FlappyRevengeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = FlappyRevengeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyRevenge.app/FlappyRevenge";
 			};
 			name = Debug;
 		};
-		44D56D4C1A45C20000A0AB8C /* Release */ = {
+		17B346111A66811200946A2E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -390,7 +409,7 @@
 				);
 				INFOPLIST_FILE = FlappyRevengeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = FlappyRevengeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyRevenge.app/FlappyRevenge";
 			};
 			name = Release;
@@ -398,34 +417,32 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		44D56D1A1A45C20000A0AB8C /* Build configuration list for PBXProject "FlappyRevenge" */ = {
+		17B345E41A66811200946A2E /* Build configuration list for PBXProject "FlappyRevenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				44D56D451A45C20000A0AB8C /* Debug */,
-				44D56D461A45C20000A0AB8C /* Release */,
+				17B3460A1A66811200946A2E /* Debug */,
+				17B3460B1A66811200946A2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44D56D471A45C20000A0AB8C /* Build configuration list for PBXNativeTarget "FlappyRevenge" */ = {
+		17B3460C1A66811200946A2E /* Build configuration list for PBXNativeTarget "FlappyRevenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				44D56D481A45C20000A0AB8C /* Debug */,
-				44D56D491A45C20000A0AB8C /* Release */,
+				17B3460D1A66811200946A2E /* Debug */,
+				17B3460E1A66811200946A2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		44D56D4A1A45C20000A0AB8C /* Build configuration list for PBXNativeTarget "FlappyRevengeTests" */ = {
+		17B3460F1A66811200946A2E /* Build configuration list for PBXNativeTarget "FlappyRevengeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				44D56D4B1A45C20000A0AB8C /* Debug */,
-				44D56D4C1A45C20000A0AB8C /* Release */,
+				17B346101A66811200946A2E /* Debug */,
+				17B346111A66811200946A2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 44D56D171A45C20000A0AB8C /* Project object */;
+	rootObject = 17B345E11A66811200946A2E /* Project object */;
 }
