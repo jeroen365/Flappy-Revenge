@@ -12,6 +12,7 @@
 
 +(id)bird;
 - (void)fly;
+- (void)flyIddle;
 
 
 @end

@@ -11,17 +11,26 @@
 		17B346091A66811200946A2E /* FlappyRevengeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B346081A66811200946A2E /* FlappyRevengeTests.m */; };
 		17B346141A6681FC00946A2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B346131A6681FC00946A2E /* AppDelegate.m */; };
 		17B346211A66821000946A2E /* GameBird.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B346161A66821000946A2E /* GameBird.m */; };
-		17B346221A66821000946A2E /* GameMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B346181A66821000946A2E /* GameMenuLayer.m */; };
 		17B346241A66821000946A2E /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B3461C1A66821000946A2E /* GameScene.m */; };
 		17B346251A66821000946A2E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 17B3461D1A66821000946A2E /* GameScene.sks */; };
 		17B346271A66821000946A2E /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B346201A66821000946A2E /* GameViewController.m */; };
-		17B3462A1A66822200946A2E /* StartGameMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B346291A66822200946A2E /* StartGameMenu.m */; };
 		17B3462C1A66824D00946A2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462B1A66824D00946A2E /* Images.xcassets */; };
 		17B346311A66827400946A2E /* gameplay.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462D1A66827400946A2E /* gameplay.PNG */; };
 		17B346321A66827400946A2E /* menu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462E1A66827400946A2E /* menu.jpg */; };
 		17B346331A66827400946A2E /* shop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462F1A66827400946A2E /* shop.jpg */; };
 		17B346341A66827400946A2E /* Views.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B346301A66827400946A2E /* Views.jpg */; };
 		17B346361A6682B700946A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B346351A6682B700946A2E /* Main.storyboard */; };
+		44DBEA3F1A6BC07100345928 /* GameBackGround.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DBEA3E1A6BC07100345928 /* GameBackGround.m */; };
+		44DBEA421A6BFAB200345928 /* GameMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DBEA411A6BFAB200345928 /* GameMenu.m */; };
+		44DBEA451A6D256F00345928 /* Fipps-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA441A6D256F00345928 /* Fipps-Regular.otf */; };
+		44DBEA461A6D258A00345928 /* Fipps-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA441A6D256F00345928 /* Fipps-Regular.otf */; };
+		44DBEA4A1A6D278400345928 /* visitor1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA471A6D278400345928 /* visitor1.ttf */; };
+		44DBEA4B1A6D278400345928 /* visitor1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA471A6D278400345928 /* visitor1.ttf */; };
+		44DBEA4C1A6D278400345928 /* visitor2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA481A6D278400345928 /* visitor2.ttf */; };
+		44DBEA4D1A6D278400345928 /* visitor2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA481A6D278400345928 /* visitor2.ttf */; };
+		44DBEA4E1A6D278400345928 /* VISITOR.FON in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA491A6D278400345928 /* VISITOR.FON */; };
+		44DBEA4F1A6D278400345928 /* VISITOR.FON in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA491A6D278400345928 /* VISITOR.FON */; };
+		44DD79E51A6E721300EAC83E /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DD79E41A6E721300EAC83E /* ShopViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,21 +54,27 @@
 		17B346131A6681FC00946A2E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		17B346151A66821000946A2E /* GameBird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBird.h; sourceTree = "<group>"; };
 		17B346161A66821000946A2E /* GameBird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBird.m; sourceTree = "<group>"; };
-		17B346171A66821000946A2E /* GameMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuLayer.h; sourceTree = "<group>"; };
-		17B346181A66821000946A2E /* GameMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuLayer.m; sourceTree = "<group>"; };
 		17B3461B1A66821000946A2E /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		17B3461C1A66821000946A2E /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		17B3461D1A66821000946A2E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		17B3461F1A66821000946A2E /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		17B346201A66821000946A2E /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		17B346281A66822200946A2E /* StartGameMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameMenu.h; sourceTree = "<group>"; };
-		17B346291A66822200946A2E /* StartGameMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameMenu.m; sourceTree = "<group>"; };
 		17B3462B1A66824D00946A2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		17B3462D1A66827400946A2E /* gameplay.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay.PNG; sourceTree = "<group>"; };
 		17B3462E1A66827400946A2E /* menu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menu.jpg; sourceTree = "<group>"; };
 		17B3462F1A66827400946A2E /* shop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shop.jpg; sourceTree = "<group>"; };
 		17B346301A66827400946A2E /* Views.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Views.jpg; sourceTree = "<group>"; };
 		17B346351A6682B700946A2E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		44DBEA3D1A6BC07100345928 /* GameBackGround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBackGround.h; sourceTree = "<group>"; };
+		44DBEA3E1A6BC07100345928 /* GameBackGround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBackGround.m; sourceTree = "<group>"; };
+		44DBEA401A6BFAB200345928 /* GameMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenu.h; sourceTree = "<group>"; };
+		44DBEA411A6BFAB200345928 /* GameMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenu.m; sourceTree = "<group>"; };
+		44DBEA441A6D256F00345928 /* Fipps-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fipps-Regular.otf"; sourceTree = "<group>"; };
+		44DBEA471A6D278400345928 /* visitor1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = visitor1.ttf; sourceTree = "<group>"; };
+		44DBEA481A6D278400345928 /* visitor2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = visitor2.ttf; sourceTree = "<group>"; };
+		44DBEA491A6D278400345928 /* VISITOR.FON */ = {isa = PBXFileReference; lastKnownFileType = file; path = VISITOR.FON; sourceTree = "<group>"; };
+		44DD79E31A6E721300EAC83E /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
+		44DD79E41A6E721300EAC83E /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,23 +116,18 @@
 		17B345EB1A66811200946A2E /* FlappyRevenge */ = {
 			isa = PBXGroup;
 			children = (
+				4404203E1A6686260024952C /* GameMenu */,
+				4404203D1A6685E10024952C /* Screenshots */,
+				4404203C1A6685CA0024952C /* GameObjects */,
 				17B346351A6682B700946A2E /* Main.storyboard */,
-				17B3462D1A66827400946A2E /* gameplay.PNG */,
-				17B3462E1A66827400946A2E /* menu.jpg */,
-				17B3462F1A66827400946A2E /* shop.jpg */,
-				17B346301A66827400946A2E /* Views.jpg */,
-				17B346151A66821000946A2E /* GameBird.h */,
-				17B346161A66821000946A2E /* GameBird.m */,
-				17B346171A66821000946A2E /* GameMenuLayer.h */,
-				17B346181A66821000946A2E /* GameMenuLayer.m */,
-				17B3461B1A66821000946A2E /* GameScene.h */,
-				17B3461C1A66821000946A2E /* GameScene.m */,
+				44DD79E31A6E721300EAC83E /* ShopViewController.h */,
+				44DD79E41A6E721300EAC83E /* ShopViewController.m */,
 				17B3461D1A66821000946A2E /* GameScene.sks */,
 				17B3461F1A66821000946A2E /* GameViewController.h */,
 				17B346201A66821000946A2E /* GameViewController.m */,
-				17B346281A66822200946A2E /* StartGameMenu.h */,
-				17B346291A66822200946A2E /* StartGameMenu.m */,
-				17B3462B1A66824D00946A2E /* Images.xcassets */,
+				17B3461B1A66821000946A2E /* GameScene.h */,
+				17B3461C1A66821000946A2E /* GameScene.m */,
+				44DBEA431A6D254100345928 /* Resources */,
 				17B345EC1A66811200946A2E /* Supporting Files */,
 			);
 			path = FlappyRevenge;
@@ -149,6 +159,49 @@
 				17B346071A66811200946A2E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4404203C1A6685CA0024952C /* GameObjects */ = {
+			isa = PBXGroup;
+			children = (
+				44DBEA3D1A6BC07100345928 /* GameBackGround.h */,
+				44DBEA3E1A6BC07100345928 /* GameBackGround.m */,
+				17B346151A66821000946A2E /* GameBird.h */,
+				17B346161A66821000946A2E /* GameBird.m */,
+			);
+			name = GameObjects;
+			sourceTree = "<group>";
+		};
+		4404203D1A6685E10024952C /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				17B3462D1A66827400946A2E /* gameplay.PNG */,
+				17B3462E1A66827400946A2E /* menu.jpg */,
+				17B3462F1A66827400946A2E /* shop.jpg */,
+				17B346301A66827400946A2E /* Views.jpg */,
+			);
+			name = Screenshots;
+			sourceTree = "<group>";
+		};
+		4404203E1A6686260024952C /* GameMenu */ = {
+			isa = PBXGroup;
+			children = (
+				44DBEA401A6BFAB200345928 /* GameMenu.h */,
+				44DBEA411A6BFAB200345928 /* GameMenu.m */,
+			);
+			name = GameMenu;
+			sourceTree = "<group>";
+		};
+		44DBEA431A6D254100345928 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				44DBEA471A6D278400345928 /* visitor1.ttf */,
+				44DBEA481A6D278400345928 /* visitor2.ttf */,
+				44DBEA491A6D278400345928 /* VISITOR.FON */,
+				44DBEA441A6D256F00345928 /* Fipps-Regular.otf */,
+				17B3462B1A66824D00946A2E /* Images.xcassets */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +253,7 @@
 				TargetAttributes = {
 					17B345E81A66811200946A2E = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = DV6MACWMG2;
 					};
 					17B346011A66811200946A2E = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -231,7 +285,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44DBEA4C1A6D278400345928 /* visitor2.ttf in Resources */,
 				17B3462C1A66824D00946A2E /* Images.xcassets in Resources */,
+				44DBEA4E1A6D278400345928 /* VISITOR.FON in Resources */,
+				44DBEA4A1A6D278400345928 /* visitor1.ttf in Resources */,
+				44DBEA451A6D256F00345928 /* Fipps-Regular.otf in Resources */,
 				17B346331A66827400946A2E /* shop.jpg in Resources */,
 				17B346321A66827400946A2E /* menu.jpg in Resources */,
 				17B346361A6682B700946A2E /* Main.storyboard in Resources */,
@@ -245,6 +303,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44DBEA4F1A6D278400345928 /* VISITOR.FON in Resources */,
+				44DBEA461A6D258A00345928 /* Fipps-Regular.otf in Resources */,
+				44DBEA4D1A6D278400345928 /* visitor2.ttf in Resources */,
+				44DBEA4B1A6D278400345928 /* visitor1.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,13 +317,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44DD79E51A6E721300EAC83E /* ShopViewController.m in Sources */,
 				17B346211A66821000946A2E /* GameBird.m in Sources */,
 				17B346141A6681FC00946A2E /* AppDelegate.m in Sources */,
 				17B346271A66821000946A2E /* GameViewController.m in Sources */,
-				17B346221A66821000946A2E /* GameMenuLayer.m in Sources */,
 				17B346241A66821000946A2E /* GameScene.m in Sources */,
+				44DBEA421A6BFAB200345928 /* GameMenu.m in Sources */,
+				44DBEA3F1A6BC07100345928 /* GameBackGround.m in Sources */,
 				17B345EF1A66811200946A2E /* main.m in Sources */,
-				17B3462A1A66822200946A2E /* StartGameMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +428,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FlappyRevenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -375,6 +439,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FlappyRevenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -433,6 +498,7 @@
 				17B3460E1A66811200946A2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17B3460F1A66811200946A2E /* Build configuration list for PBXNativeTarget "FlappyRevengeTests" */ = {
 			isa = XCConfigurationList;
@@ -441,6 +507,7 @@
 				17B346111A66811200946A2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

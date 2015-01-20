@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>nl.mrpog.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>nl.mprog.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -29,6 +29,13 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Fipps-Regular.otf</string>
+		<string>visitor1.ttf</string>
+		<string>visitor2.ttf</string>
+		<string>VISITOR.FON</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
