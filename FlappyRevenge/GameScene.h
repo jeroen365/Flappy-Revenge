@@ -8,6 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+@class SpriteViewController;
+
 @interface GameScene : SKScene
+
+@property (weak, nonatomic) SpriteViewController *spriteViewController;
 
 @end

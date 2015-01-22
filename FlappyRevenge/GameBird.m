@@ -25,7 +25,6 @@
     
     [bird setScale:0.7];
     [bird runAction:flap];
-    bird.name = @"world";
     
     bird.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:bird.size.height/2];
     bird.physicsBody.dynamic = YES;
@@ -44,7 +43,6 @@
 {
     // zero gravity =
     
-     
     SKAction* wiggleUp =[SKAction sequence:@[[SKAction runBlock:^{ [self.physicsBody applyImpulse: CGVectorMake(0, 20)];}], [SKAction waitForDuration:0.8], [SKAction runBlock:^{ [self.physicsBody applyImpulse: CGVectorMake( 0, -15)];}],[SKAction waitForDuration:0.4], [SKAction runBlock:^{ [self.physicsBody applyImpulse: CGVectorMake( 0, -5)];}]]];
     SKAction* wiggleDown =[SKAction sequence:@[[SKAction runBlock:^{ [self.physicsBody applyImpulse: CGVectorMake(0, -20)];}], [SKAction waitForDuration:0.8], [SKAction runBlock:^{ [self.physicsBody applyImpulse: CGVectorMake( 0, 15)];}],[SKAction waitForDuration:0.4], [SKAction runBlock:^{ [self.physicsBody applyImpulse: CGVectorMake( 0, 5)];}]]];
     SKAction* wiggleForever = [SKAction repeatActionForever:[SKAction sequence:@[wiggleUp,wiggleDown]]];

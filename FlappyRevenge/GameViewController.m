@@ -33,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
@@ -72,9 +72,6 @@
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
-- (IBAction)goToShop:(UIStoryboardSegue *)segue
-{
-    [self performSegueWithIdentifier:@"unwindToShop" sender:self];
-}
+
 
 @end

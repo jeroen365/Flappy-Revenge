@@ -10,19 +10,21 @@
 #import "GameBird.h"
 #import "GameMenu.h"
 #import "GameViewController.h"
+#import "ShopScene.h"
 
 @interface GameScene() <SKPhysicsContactDelegate> {
     GameBird* bird;
     SKColor* skyColor;
     SKTexture* groundTexture;
     SKTexture* skylineTexture;
-    SKTexture* pipeTexture1;
-    SKTexture* pipeTexture2;
+    SKTexture* pipeTextureDown;
+    SKTexture* pipeTextureTop;
     SKAction* moveAndRemovePipes;
     SKSpriteNode* playGameButton;
     SKSpriteNode* retryGameButton;
     SKSpriteNode* shopGameButton;
     NSInteger score;
+    NSInteger totalPoints;
     SKLabelNode* scoreLabel;
     CGFloat scoreLabelMid;
     BOOL startGame;
@@ -62,6 +64,7 @@ static NSInteger const kVerticalPipeGap = 140;
     moving = [SKNode node];
     [self addChild:moving];
     
+    // lower is faster
     gameSpeed = 0.008;
    
     score = 0;
@@ -129,13 +132,17 @@ static NSInteger const kVerticalPipeGap = 140;
                 [self resetScene];
             }
             if ([shopGameButton containsPoint:location]){
-                GameViewController* gameVC = [[GameViewController alloc] init];
-                [gameVC performSegueWithIdentifier:@"unwindToShop" sender:gameVC];
+                // initiate switch to shopscene
+                SKTransition *reveal = [SKTransition fadeWithDuration:1];
+                ShopScene *scene = [ShopScene sceneWithSize:self.view.bounds.size];
+                scene.scaleMode = SKSceneScaleModeAspectFill;
+                [self.view presentScene:scene transition:reveal];
             }
             
         }
     }
 }
+
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
     if(moving.speed > 0){
@@ -151,7 +158,7 @@ static NSInteger const kVerticalPipeGap = 140;
             scoreLabel.text = [NSString stringWithFormat:@"%ld", score];
         }
         else {
-            // Bird hit anything visible
+            // Bird hit anything visible and dies, stop scene
             moving.speed = 0;
             gameOver = YES;
             [self removeAllActions];
@@ -166,10 +173,13 @@ static NSInteger const kVerticalPipeGap = 140;
                 self.backgroundColor = skyColor;
             }], [SKAction waitForDuration:0.1]]] count:4]]] withKey:@"flash"];
             
-            // show final score
+            // Show final score
             scoreLabel.zPosition = 100;
             scoreLabel.alpha = 1;
             scoreLabel.position = CGPointMake( CGRectGetMidX( self.frame ), CGRectGetMidX(self.frame) - (scoreLabelMid / 2));
+            
+            // Save points
+            [self savePoints];
             
             retryGameButton = [GameMenu showRetryMenu];
             [retryGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)-50)];
@@ -187,6 +197,53 @@ static NSInteger const kVerticalPipeGap = 140;
     gameOver = NO;
     [self removeAllChildren];
     [self beginGame];
+}
+
+-(void)generateWorld {
+    SKAction* spawn = [SKAction performSelector:@selector(spawnPipes) onTarget:self];
+    SKAction* delay = [SKAction waitForDuration:2.2];
+    SKAction* spawnThenDelay = [SKAction sequence:@[spawn, delay]];
+    SKAction* spawnThenDelayForever = [SKAction repeatActionForever:spawnThenDelay];
+    [self runAction:spawnThenDelayForever];
+}
+
+-(void) pressedButton:(SKSpriteNode*)button{
+    SKAction* pressButton = [SKAction runBlock:^{ [button setPosition:CGPointMake(button.position.x, button.position.y -10)];}];
+    SKAction* unPressButton = [SKAction runBlock:^{ [button setPosition:CGPointMake(button.position.x, button.position.y +10)];}];
+    
+    SKAction* runAnimation = [SKAction sequence:@[pressButton, [SKAction waitForDuration:10],unPressButton]];
+    
+    [button runAction:runAnimation];
+}
+
+
+
+-(void) savePoints{
+    NSUserDefaults* Points = [NSUserDefaults standardUserDefaults];
+    NSInteger totalPointsTemp = [Points integerForKey:@"totalPoints"];
+    totalPoints = totalPointsTemp;
+    totalPoints += score;
+    NSLog(@"totalPoints %ld",(long)totalPoints);
+    [Points setInteger:totalPoints forKey:@"totalPoints"];
+    [Points synchronize];
+
+}
+
+
+CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
+    if( value > max ) {
+        return max;
+    } else if( value < min ) {
+        return min;
+    } else {
+        return value;
+    }
+}
+
+-(void)update:(CFTimeInterval)currentTime {
+    if(startGame == YES){
+        bird.zRotation = clamp( -1, 0.5, bird.physicsBody.velocity.dy * ( bird.physicsBody.velocity.dy < 0 ? 0.003 : 0.001 ) );
+    }
 }
 
 -(void)addSkyline{
@@ -216,29 +273,22 @@ static NSInteger const kVerticalPipeGap = 140;
     
 }
 
--(void)generateWorld {
-    SKAction* spawn = [SKAction performSelector:@selector(spawnPipes) onTarget:self];
-    SKAction* delay = [SKAction waitForDuration:2.2];
-    SKAction* spawnThenDelay = [SKAction sequence:@[spawn, delay]];
-    SKAction* spawnThenDelayForever = [SKAction repeatActionForever:spawnThenDelay];
-    [self runAction:spawnThenDelayForever];
-}
 
 -(void)spawnPipes {
-    pipeTexture1 = [SKTexture textureWithImageNamed:@"Pipe1"];
-    pipeTexture1.filteringMode = SKTextureFilteringNearest;
-    pipeTexture2 = [SKTexture textureWithImageNamed:@"Pipe2"];
-    pipeTexture2.filteringMode = SKTextureFilteringNearest;
+    pipeTextureDown = [SKTexture textureWithImageNamed:@"Pipe1"];
+    pipeTextureDown.filteringMode = SKTextureFilteringNearest;
+    pipeTextureTop = [SKTexture textureWithImageNamed:@"Pipe2"];
+    pipeTextureTop.filteringMode = SKTextureFilteringNearest;
     
     SKNode* pipePair = [SKNode node];
-    pipePair.position = CGPointMake( self.frame.size.width + pipeTexture1.size.width, 0 );
+    pipePair.position = CGPointMake( self.frame.size.width + pipeTextureDown.size.width, 0 );
     pipePair.zPosition = -10;
     
     CGFloat y = (arc4random() % (NSInteger)( self.frame.size.height / 3 ) + groundTexture.size.height / 2);
     
    // float y = [self randomValueBetween:groundTexture.size.height / 2 andValue: self.frame.size.height / 2];
     
-    SKSpriteNode* pipe1 = [SKSpriteNode spriteNodeWithTexture:pipeTexture1];
+    SKSpriteNode* pipe1 = [SKSpriteNode spriteNodeWithTexture:pipeTextureDown];
     [pipe1 setScale:2];
     pipe1.name = @"world";
     pipe1.position = CGPointMake( 0, y );
@@ -248,7 +298,7 @@ static NSInteger const kVerticalPipeGap = 140;
     pipe1.physicsBody.contactTestBitMask = birdCategory;
     [pipePair addChild:pipe1];
     
-    SKSpriteNode* pipe2 = [SKSpriteNode spriteNodeWithTexture:pipeTexture2];
+    SKSpriteNode* pipe2 = [SKSpriteNode spriteNodeWithTexture:pipeTextureTop];
     [pipe2 setScale:2];
     pipe2.name = @"world";
     pipe2.position = CGPointMake( 0, y + pipe1.size.height + kVerticalPipeGap );
@@ -262,7 +312,7 @@ static NSInteger const kVerticalPipeGap = 140;
     
     
     // Moving Pipes function
-    CGFloat distanceToMove = self.frame.size.width + 2 * pipeTexture1.size.width;
+    CGFloat distanceToMove = self.frame.size.width + 2 * pipeTextureDown.size.width;
     SKAction* movePipes = [SKAction moveByX:-distanceToMove y:0 duration:gameSpeed * distanceToMove];
     SKAction* removePipes = [SKAction removeFromParent];
     moveAndRemovePipes = [SKAction sequence:@[movePipes, removePipes]];
@@ -311,34 +361,6 @@ static NSInteger const kVerticalPipeGap = 140;
     groundBody.physicsBody.collisionBitMask = birdCategory;
     [self addChild:groundBody];
 
-}
-
-
-
--(void) pressedButton:(SKSpriteNode*)button{
-    SKAction* pressButton = [SKAction runBlock:^{ [button setPosition:CGPointMake(button.position.x, button.position.y -10)];}];
-    SKAction* unPressButton = [SKAction runBlock:^{ [button setPosition:CGPointMake(button.position.x, button.position.y +10)];}];
-    
-    SKAction* runAnimation = [SKAction sequence:@[pressButton, [SKAction waitForDuration:10],unPressButton]];
-    
-    [button runAction:runAnimation];
-    }
-
-
-CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
-    if( value > max ) {
-        return max;
-    } else if( value < min ) {
-        return min;
-    } else {
-        return value;
-    }
-}
-
--(void)update:(CFTimeInterval)currentTime {
-    if(startGame == YES){
-        bird.zRotation = clamp( -1, 0.5, bird.physicsBody.velocity.dy * ( bird.physicsBody.velocity.dy < 0 ? 0.003 : 0.001 ) );
-    }
 }
 
 @end

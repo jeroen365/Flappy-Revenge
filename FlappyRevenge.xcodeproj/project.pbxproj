@@ -20,6 +20,7 @@
 		17B346331A66827400946A2E /* shop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462F1A66827400946A2E /* shop.jpg */; };
 		17B346341A66827400946A2E /* Views.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B346301A66827400946A2E /* Views.jpg */; };
 		17B346361A6682B700946A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B346351A6682B700946A2E /* Main.storyboard */; };
+		44DBD06A1A7079390059123F /* ShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DBD0691A7079390059123F /* ShopScene.m */; };
 		44DBEA3F1A6BC07100345928 /* GameBackGround.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DBEA3E1A6BC07100345928 /* GameBackGround.m */; };
 		44DBEA421A6BFAB200345928 /* GameMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DBEA411A6BFAB200345928 /* GameMenu.m */; };
 		44DBEA451A6D256F00345928 /* Fipps-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA441A6D256F00345928 /* Fipps-Regular.otf */; };
@@ -30,7 +31,6 @@
 		44DBEA4D1A6D278400345928 /* visitor2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA481A6D278400345928 /* visitor2.ttf */; };
 		44DBEA4E1A6D278400345928 /* VISITOR.FON in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA491A6D278400345928 /* VISITOR.FON */; };
 		44DBEA4F1A6D278400345928 /* VISITOR.FON in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA491A6D278400345928 /* VISITOR.FON */; };
-		44DD79E51A6E721300EAC83E /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DD79E41A6E721300EAC83E /* ShopViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +65,8 @@
 		17B3462F1A66827400946A2E /* shop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shop.jpg; sourceTree = "<group>"; };
 		17B346301A66827400946A2E /* Views.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Views.jpg; sourceTree = "<group>"; };
 		17B346351A6682B700946A2E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		44DBD0681A7079390059123F /* ShopScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopScene.h; sourceTree = "<group>"; };
+		44DBD0691A7079390059123F /* ShopScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopScene.m; sourceTree = "<group>"; };
 		44DBEA3D1A6BC07100345928 /* GameBackGround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBackGround.h; sourceTree = "<group>"; };
 		44DBEA3E1A6BC07100345928 /* GameBackGround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBackGround.m; sourceTree = "<group>"; };
 		44DBEA401A6BFAB200345928 /* GameMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenu.h; sourceTree = "<group>"; };
@@ -73,8 +75,6 @@
 		44DBEA471A6D278400345928 /* visitor1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = visitor1.ttf; sourceTree = "<group>"; };
 		44DBEA481A6D278400345928 /* visitor2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = visitor2.ttf; sourceTree = "<group>"; };
 		44DBEA491A6D278400345928 /* VISITOR.FON */ = {isa = PBXFileReference; lastKnownFileType = file; path = VISITOR.FON; sourceTree = "<group>"; };
-		44DD79E31A6E721300EAC83E /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
-		44DD79E41A6E721300EAC83E /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,13 +120,13 @@
 				4404203D1A6685E10024952C /* Screenshots */,
 				4404203C1A6685CA0024952C /* GameObjects */,
 				17B346351A6682B700946A2E /* Main.storyboard */,
-				44DD79E31A6E721300EAC83E /* ShopViewController.h */,
-				44DD79E41A6E721300EAC83E /* ShopViewController.m */,
 				17B3461D1A66821000946A2E /* GameScene.sks */,
 				17B3461F1A66821000946A2E /* GameViewController.h */,
 				17B346201A66821000946A2E /* GameViewController.m */,
 				17B3461B1A66821000946A2E /* GameScene.h */,
 				17B3461C1A66821000946A2E /* GameScene.m */,
+				44DBD0681A7079390059123F /* ShopScene.h */,
+				44DBD0691A7079390059123F /* ShopScene.m */,
 				44DBEA431A6D254100345928 /* Resources */,
 				17B345EC1A66811200946A2E /* Supporting Files */,
 			);
@@ -317,9 +317,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44DD79E51A6E721300EAC83E /* ShopViewController.m in Sources */,
 				17B346211A66821000946A2E /* GameBird.m in Sources */,
 				17B346141A6681FC00946A2E /* AppDelegate.m in Sources */,
+				44DBD06A1A7079390059123F /* ShopScene.m in Sources */,
 				17B346271A66821000946A2E /* GameViewController.m in Sources */,
 				17B346241A66821000946A2E /* GameScene.m in Sources */,
 				44DBEA421A6BFAB200345928 /* GameMenu.m in Sources */,
