@@ -10,4 +10,7 @@
 
 @interface GameBackGround : SKNode
 
++(id) addPipeDown;
++(id) addPipeTop;
+
 @end

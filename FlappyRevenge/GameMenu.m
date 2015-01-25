@@ -34,6 +34,13 @@
     return shopGameButton;
 }
 
++(id) showFireButton{
+    SKSpriteNode* showFireButton = [SKSpriteNode spriteNodeWithImageNamed:@"FireButton"];
+    showFireButton.scale = 0.2;
+    showFireButton.name = @"fireButton";
+    return showFireButton;
+}
+
 -(SKLabelNode*) scoreLabel:(NSInteger)score{
     // Initialize label and create a label which holds the score
     scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];

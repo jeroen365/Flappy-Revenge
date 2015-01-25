@@ -8,7 +8,9 @@
 
 #import "GameBird.h"
 
+
 @implementation GameBird
+
 
 + (id)bird
 {
@@ -36,8 +38,9 @@
 - (void)fly
 {
     self.physicsBody.velocity = CGVectorMake(0, 0);
-    [self.physicsBody applyImpulse:CGVectorMake(0, 170)];
+    [self.physicsBody applyImpulse:CGVectorMake(0, 180)];
 }
+
 
 - (void)flyIddle
 {

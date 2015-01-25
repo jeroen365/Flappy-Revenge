@@ -16,59 +16,32 @@
 
 @implementation GameBackGround
 
-//+ (id) skyLine{
-   /*
-    
-    // Load skyline
-    SKTexture* skylineTexture = [SKTexture textureWithImageNamed:@"Skyline"];
-    skylineTexture.filteringMode = SKTextureFilteringNearest;
-    
-    SKAction* moveSkylineSprite = [SKAction moveByX:-skylineTexture.size.width*2 y:0 duration:0.1 * skylineTexture.size.width*2];
-    SKAction* resetSkylineSprite = [SKAction moveByX:skylineTexture.size.width*2 y:0 duration:0];
-    SKAction* moveSkylineSpritesForever = [SKAction repeatActionForever:[SKAction sequence:@[moveSkylineSprite, resetSkylineSprite]]];
-    
-    
-    for( int i = 0; i < 2 + self.frame.size.width / ( skylineTexture.size.width ); ++i ) {
-        SKSpriteNode* sprite = [SKSpriteNode spriteNodeWithTexture:skylineTexture];
-        sprite.zPosition = -20;
-        sprite.position = CGPointMake(i * sprite.size.width, groundTexture.size.height / 2);
-        
-        [sprite runAction: moveSkylineSpritesForever];
-        sprite.name = @"world";
-        [moving addChild:sprite];
-    }
-    */
 
++ (id) addPipeDown{
+    SKTexture* pipeTextureDown = [SKTexture textureWithImageNamed:@"Pipe1"];
+    pipeTextureDown.filteringMode = SKTextureFilteringNearest;
 
-/*+ (id) addGround{
-    // Load ground
-    SKTexture* groundTexture = [SKTexture textureWithImageNamed:
-                     @"Ground"];
-    groundTexture.filteringMode = SKTextureFilteringNearest;
-    
-    SKAction* moveGroundSprite = [SKAction moveByX:-groundTexture.size.width * 2 y:0 duration:0.01 * groundTexture.size.width*2];
-    SKAction* resetGroundSprite = [SKAction moveByX:groundTexture.size.width * 2 y:0 duration:0];
-    SKAction* moveGroundSpritesForever = [SKAction repeatActionForever:[SKAction sequence:@[moveGroundSprite, resetGroundSprite]]];
+    SKSpriteNode* pipeDown = [SKSpriteNode spriteNodeWithTexture:pipeTextureDown];
+    [pipeDown setScale:2];
+    pipeDown.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeDown.size];
+    pipeDown.name = @"pipe";
+    pipeDown.physicsBody.dynamic = NO;
     
     
-    for( int i = 0; i < 2 + self.frame.size.width / ( groundTexture.size.width ); ++i ) {
-        SKSpriteNode* sprite = [SKSpriteNode spriteNodeWithTexture:groundTexture];
-        sprite.position = CGPointMake(i * sprite.size.width, groundTexture.size.height / 2);
-        [sprite runAction:moveGroundSpritesForever];
-        sprite.name = @"world";
-        [moving addChild:sprite];
-    }
-    
-    // Create ground physics container
-    
-    SKNode* groundBody = [SKNode node];
-    groundBody.position = CGPointMake(0, groundTexture.size.height /2);
-    groundBody.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.frame.size.width * 2, groundTexture.size.height)];
-    groundBody.physicsBody.dynamic = NO;
-    groundBody.physicsBody.categoryBitMask = worldCategory;
-    groundBody.physicsBody.collisionBitMask = birdCategory;
-    [self addChild:groundBody];
-    
+    return pipeDown;
 }
-*/
+
++(id) addPipeTop{
+    SKTexture* pipeTextureTop = [SKTexture textureWithImageNamed:@"Pipe2"];
+    pipeTextureTop.filteringMode = SKTextureFilteringNearest;
+    
+    SKSpriteNode* pipeTop = [SKSpriteNode spriteNodeWithTexture:pipeTextureTop];
+    [pipeTop setScale:2];
+    pipeTop.name = @"pipe";
+    pipeTop.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeTop.size];
+    pipeTop.physicsBody.dynamic = NO;
+    
+    return pipeTop;
+
+}
 @end
