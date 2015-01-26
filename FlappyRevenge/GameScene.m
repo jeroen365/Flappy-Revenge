@@ -14,29 +14,32 @@
 #import "ShopScene.h"
 
 @interface GameScene() <SKPhysicsContactDelegate> {
+    // Scene textures/nodes
     GameBird* bird;
-    NSMutableArray* birdLasers;
     SKColor* skyColor;
     SKTexture* groundTexture;
     SKTexture* skylineTexture;
-    SKTexture* pipeTextureDown;
     SKSpriteNode* pipeDown;
-    SKTexture* pipeTextureTop;
     SKSpriteNode* pipeTop;
     SKNode* pipePair;
-    SKAction* moveAndRemovePipes;
+    
+    // Menu labels
     SKSpriteNode* playGameButton;
     SKSpriteNode* retryGameButton;
     SKSpriteNode* shopGameButton;
     SKSpriteNode* fireButton;
     SKLabelNode *fireLabel;
-    SKSpriteNode* birdLaser;
-    NSInteger score;
     NSInteger totalPoints;
     SKLabelNode* scoreLabel;
     CGFloat scoreLabelMid;
+
+    // GamePlay variables
+    SKSpriteNode* birdLaser;
     BOOL startGame;
     BOOL gameOver;
+    NSInteger score;
+    SKAction* moveAndRemovePipes;
+    NSMutableArray* birdLasers;
     SKNode* moving;
     CGFloat gameSpeed;
     NSInteger kVerticalPipeGap;
@@ -59,8 +62,6 @@ static const uint32_t laserCategory = 1 << 4;
 
 
 
-
-
 -(void)didMoveToView:(SKView *)view {
     [self beginGame];
 }
@@ -68,17 +69,18 @@ static const uint32_t laserCategory = 1 << 4;
 -(void)beginGame{
     // initialize world
        
-    // Zero gravity to keep the bird in centre
+    // Set zero gravity to keep the bird in centre
     self.physicsWorld.gravity = CGVectorMake( 0.0, 0.0 );
     self.physicsWorld.contactDelegate = self;
     
-    // Set nodes for moving the world
+    // Set global node for moving the world
     moving = [SKNode node];
     [self addChild:moving];
     
-    // lower is faster
+    // Lower is faster
     gameSpeed = 0.005;
     
+    // Load easy game tokens
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     NSInteger easyGameTokens = [Inventory integerForKey:@"easyGameTokens"];
     if (easyGameTokens > 0){
@@ -92,6 +94,8 @@ static const uint32_t laserCategory = 1 << 4;
         kVerticalPipeGap = 140;
         NSLog(@"normal");
     }
+    
+    // Reset score
     score = 0;
     
     // Background color
@@ -115,7 +119,6 @@ static const uint32_t laserCategory = 1 << 4;
     [self addBird];
     [bird flyIddle];
     
-
     [self addGround];
     [self addSkyline];
     
@@ -196,31 +199,6 @@ static const uint32_t laserCategory = 1 << 4;
     }
 }
 
--(void) resetScene{
-    
-    gameOver = NO;
-    [self removeAllChildren];
-    [self beginGame];
-}
-
--(void)generateWorld {
-    SKAction* spawn = [SKAction performSelector:@selector(spawnPipes) onTarget:self];
-    SKAction* delay = [SKAction waitForDuration:1.5];
-    SKAction* spawnThenDelay = [SKAction sequence:@[spawn, delay]];
-    SKAction* spawnThenDelayForever = [SKAction repeatActionForever:spawnThenDelay];
-    [self runAction:spawnThenDelayForever];
-}
-
--(void) pressedButton:(SKSpriteNode*)button{
-    SKAction* pressButton = [SKAction runBlock:^{ [button setPosition:CGPointMake(button.position.x, button.position.y -10)];}];
-    SKAction* unPressButton = [SKAction runBlock:^{ [button setPosition:CGPointMake(button.position.x, button.position.y +10)];}];
-    
-    SKAction* runAnimation = [SKAction sequence:@[pressButton, [SKAction waitForDuration:10],unPressButton]];
-    
-    [button runAction:runAnimation];
-}
-
-
 
 -(void) savePoints{
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
@@ -273,6 +251,33 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     
 
 }
+
+
+-(void) resetScene{
+    
+    gameOver = NO;
+    [self removeAllChildren];
+    [self beginGame];
+}
+
+-(void)generateWorld {
+    SKAction* spawn = [SKAction performSelector:@selector(spawnPipes) onTarget:self];
+    SKAction* delay = [SKAction waitForDuration:1.5];
+    SKAction* spawnThenDelay = [SKAction sequence:@[spawn, delay]];
+    SKAction* spawnThenDelayForever = [SKAction repeatActionForever:spawnThenDelay];
+    [self runAction:spawnThenDelayForever];
+}
+
+-(void) pressedButton:(SKSpriteNode*)button{
+    SKAction* pressButton = [SKAction runBlock:^{ [button setPosition:CGPointMake(button.position.x, button.position.y -10)];}];
+    SKAction* unPressButton = [SKAction runBlock:^{ [button setPosition:CGPointMake(button.position.x, button.position.y +10)];}];
+    
+    SKAction* runAnimation = [SKAction sequence:@[pressButton, [SKAction waitForDuration:10],unPressButton]];
+    
+    [button runAction:runAnimation];
+}
+
+
 
 -(void) fireLaser{
     SKSpriteNode* birdLaserTemp = [birdLasers objectAtIndex: numLasers - 1];
@@ -371,50 +376,41 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
 
 -(void)spawnPipes {
-    pipeTextureDown = [SKTexture textureWithImageNamed:@"Pipe1"];
-    pipeTextureDown.filteringMode = SKTextureFilteringNearest;
-    pipeTextureTop = [SKTexture textureWithImageNamed:@"Pipe2"];
-    pipeTextureTop.filteringMode = SKTextureFilteringNearest;
     
-    pipePair = [SKNode node];
-    pipePair.position = CGPointMake( self.frame.size.width + pipeTextureDown.size.width, 0 );
-    pipePair.zPosition = -10;
-
-    //CGFloat y = (arc4random() % (NSInteger)( self.frame.size.height / 3 ) + groundTexture.size.height / 2);
-    
+    // Random y to generate random height pipes
     float y = [self randomValueBetween:CGRectGetHeight(self.frame) / 15  andValue:  CGRectGetHeight(self.frame) /3];
     
-    pipeDown = [SKSpriteNode spriteNodeWithTexture:pipeTextureDown];
-    [pipeDown setScale:2];
+    pipeDown = [GameBackGround addPipeDown];
     pipeDown.position = CGPointMake( 0, y );
-    pipeDown.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeDown.size];
-    pipeDown.name = @"pipe";
-    pipeDown.physicsBody.dynamic = NO;
     pipeDown.physicsBody.categoryBitMask = pipeCategory;
     pipeDown.physicsBody.contactTestBitMask = birdCategory & laserCategory;
 
-    [pipePair addChild:pipeDown];
-    
-    pipeTop = [SKSpriteNode spriteNodeWithTexture:pipeTextureTop];
-    [pipeTop setScale:2];
+  
+    pipeTop = [GameBackGround addPipeTop];
     pipeTop.position = CGPointMake( 0, y + pipeDown.size.height + kVerticalPipeGap );
-    pipeTop.name = @"pipe";
-    pipeTop.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeTop.size];
-    pipeTop.physicsBody.dynamic = NO;
     pipeTop.physicsBody.categoryBitMask = pipeCategory;
     pipeTop.physicsBody.contactTestBitMask = birdCategory & laserCategory;
 
+    pipePair = [SKNode node];
+    pipePair.position = CGPointMake( self.frame.size.width + pipeDown.size.width, 0 );
+    pipePair.zPosition = -10;
 
-    
+    [pipePair addChild:pipeDown];
     [pipePair addChild:pipeTop];
     
     
     // Moving Pipes function
-    CGFloat distanceToMove = self.frame.size.width + 2 * pipeTextureDown.size.width;
+    CGFloat distanceToMove = self.frame.size.width + 2 * pipeDown.size.width;
     SKAction* movePipes = [SKAction moveByX:-distanceToMove y:0 duration:gameSpeed * distanceToMove];
     SKAction* removePipes = [SKAction removeFromParent];
     moveAndRemovePipes = [SKAction sequence:@[movePipes, removePipes]];
     
+    [self addScoreNode];
+    [pipePair runAction:moveAndRemovePipes];
+    [moving addChild:pipePair];
+}
+
+-(void) addScoreNode{
     // Score node
     SKNode* contactNode = [SKNode node];
     contactNode.position = CGPointMake( pipeDown.size.width + bird.size.width / 2, CGRectGetMidY( self.frame ) );
@@ -424,10 +420,6 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     contactNode.physicsBody.contactTestBitMask = birdCategory;
     
     [pipePair addChild:contactNode];
-    
-    [pipePair runAction:moveAndRemovePipes];
-    
-    [moving addChild:pipePair];
 }
 
 -(void)addGround{
@@ -449,6 +441,11 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
         [moving addChild:sprite];
     }
     
+    [self addGroundPhysics];
+
+}
+
+-(void) addGroundPhysics{
     // Create ground physics container
     
     SKNode* groundBody = [SKNode node];
@@ -458,8 +455,8 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     groundBody.physicsBody.categoryBitMask = worldCategory;
     groundBody.physicsBody.collisionBitMask = birdCategory;
     [self addChild:groundBody];
-
 }
+
 -(void) addLasers{
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     numLasers = [Inventory integerForKey:@"numLasers"];
@@ -471,7 +468,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
         birdLaser.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:birdLaser.size];
         birdLaser.physicsBody.dynamic = NO;
         birdLaser.physicsBody.categoryBitMask = laserCategory;
-        birdLaser.physicsBody.collisionBitMask = pipeCategory;
+        birdLaser.physicsBody.contactTestBitMask = pipeCategory;
 
         [birdLasers addObject:birdLaser];
         [self addChild:birdLaser];
@@ -485,6 +482,8 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     fireButton = [GameMenu showFireButton];
     [fireButton setPosition:CGPointMake(CGRectGetWidth(self.frame) / 3 + 10, CGRectGetHeight(self.frame) / 10 + 10)];
     fireButton.zPosition = 100;
+    
+    // Show amount of lasers left
     fireLabel = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];
     fireLabel.text = [NSString stringWithFormat:@"%li", (long)numLasers];
     fireLabel.fontSize = 300;
