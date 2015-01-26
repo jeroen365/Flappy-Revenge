@@ -147,31 +147,10 @@ static const uint32_t laserCategory = 1 << 4;
             for (UITouch *touch in touches) {
                 CGPoint location = [touch locationInNode:self];
                 if ([fireButton containsPoint:location]){
-                    SKSpriteNode* birdLaserTemp = [birdLasers objectAtIndex: numLasers - 1];
-                    numLasers--;
-
-                    birdLaserTemp.position = CGPointMake(bird.position.x+birdLaserTemp.size.width/2, bird.position.y+0);
-                    birdLaserTemp.hidden = NO;
-                    [birdLaserTemp removeAllActions];
-                    
-                    CGPoint location = CGPointMake(self.frame.size.width, bird.position.y);
-                    
-                    SKAction* laserMoveAction = [SKAction moveTo:location duration:0.5];
-                    
-                    SKAction* laserDoneAction = [SKAction runBlock:(dispatch_block_t)^() {
-                        // animation done
-                        birdLaserTemp.hidden = YES;
-                    }];
-                    
-                    SKAction* moveLaserActionWithDone = [SKAction sequence:@[laserMoveAction, laserDoneAction]];
-                    [birdLaserTemp runAction:moveLaserActionWithDone withKey: @"laserFired"];
-                    fireLabel.text = [NSString stringWithFormat:@"%ld",numLasers];
-                    NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
-                    [Inventory setInteger:numLasers forKey:@"numLasers"];
+                    [self fireLaser];
                 }
             }
         }
-            
     }
     
     else if (gameOver == YES){
@@ -295,6 +274,30 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
 }
 
+-(void) fireLaser{
+    SKSpriteNode* birdLaserTemp = [birdLasers objectAtIndex: numLasers - 1];
+    numLasers--;
+    
+    birdLaserTemp.position = CGPointMake(bird.position.x+birdLaserTemp.size.width/2, bird.position.y+0);
+    birdLaserTemp.hidden = NO;
+    [birdLaserTemp removeAllActions];
+    
+    CGPoint location = CGPointMake(self.frame.size.width, bird.position.y);
+    
+    SKAction* laserMoveAction = [SKAction moveTo:location duration:0.5];
+    
+    SKAction* laserDoneAction = [SKAction runBlock:(dispatch_block_t)^() {
+        // animation done
+        birdLaserTemp.hidden = YES;
+    }];
+    
+    SKAction* moveLaserActionWithDone = [SKAction sequence:@[laserMoveAction, laserDoneAction]];
+    [birdLaserTemp runAction:moveLaserActionWithDone withKey: @"laserFired"];
+    fireLabel.text = [NSString stringWithFormat:@"%ld",numLasers];
+    NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
+    [Inventory setInteger:numLasers forKey:@"numLasers"];
+}
+
 -(void)dieScene{
     // Bird hit anything visible and dies, stop scene
     moving.speed = 0;
@@ -343,7 +346,9 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     skylineTexture = [SKTexture textureWithImageNamed:@"Skyline"];
     skylineTexture.filteringMode = SKTextureFilteringNearest;
     
-    SKAction* moveSkylineSprite = [SKAction moveByX:-skylineTexture.size.width*2 y:0 duration:0.1 * skylineTexture.size.width*2];
+    // refractor: replace skylinetexture size with skylineNode size, load skylineNode in GameBackground.
+    
+    SKAction* moveSkylineSprite = [SKAction moveByX:-skylineTexture.size.width*2 y:0 duration:0.05 * skylineTexture.size.width*2];
     SKAction* resetSkylineSprite = [SKAction moveByX:skylineTexture.size.width*2 y:0 duration:0];
     SKAction* moveSkylineSpritesForever = [SKAction repeatActionForever:[SKAction sequence:@[moveSkylineSprite, resetSkylineSprite]]];
     
