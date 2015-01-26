@@ -20,6 +20,8 @@
 		17B346331A66827400946A2E /* shop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462F1A66827400946A2E /* shop.jpg */; };
 		17B346341A66827400946A2E /* Views.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B346301A66827400946A2E /* Views.jpg */; };
 		17B346361A6682B700946A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B346351A6682B700946A2E /* Main.storyboard */; };
+		440A98BC1A7669B60054121F /* pokecenter sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 440A98BB1A7669B60054121F /* pokecenter sound.mp3 */; };
+		440A98BF1A766BB40054121F /* ShopMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = 440A98BE1A766BB40054121F /* ShopMusic.m */; };
 		44DBD06A1A7079390059123F /* ShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DBD0691A7079390059123F /* ShopScene.m */; };
 		44DBD06D1A7145580059123F /* ShopItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DBD06C1A7145580059123F /* ShopItems.m */; };
 		44DBD0701A7154370059123F /* ShopItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DBD06F1A7154370059123F /* ShopItem.m */; };
@@ -67,6 +69,9 @@
 		17B3462F1A66827400946A2E /* shop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shop.jpg; sourceTree = "<group>"; };
 		17B346301A66827400946A2E /* Views.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Views.jpg; sourceTree = "<group>"; };
 		17B346351A6682B700946A2E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		440A98BB1A7669B60054121F /* pokecenter sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pokecenter sound.mp3"; sourceTree = "<group>"; };
+		440A98BD1A766BB40054121F /* ShopMusic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopMusic.h; sourceTree = "<group>"; };
+		440A98BE1A766BB40054121F /* ShopMusic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopMusic.m; sourceTree = "<group>"; };
 		44DBD0681A7079390059123F /* ShopScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopScene.h; sourceTree = "<group>"; };
 		44DBD0691A7079390059123F /* ShopScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopScene.m; sourceTree = "<group>"; };
 		44DBD06B1A7145580059123F /* ShopItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopItems.h; sourceTree = "<group>"; };
@@ -133,6 +138,8 @@
 				17B3461C1A66821000946A2E /* GameScene.m */,
 				44DBD0681A7079390059123F /* ShopScene.h */,
 				44DBD0691A7079390059123F /* ShopScene.m */,
+				440A98BD1A766BB40054121F /* ShopMusic.h */,
+				440A98BE1A766BB40054121F /* ShopMusic.m */,
 				44DBD06E1A7154370059123F /* ShopItem.h */,
 				44DBD06F1A7154370059123F /* ShopItem.m */,
 				44DBD06B1A7145580059123F /* ShopItems.h */,
@@ -210,6 +217,7 @@
 				44DBEA491A6D278400345928 /* VISITOR.FON */,
 				44DBEA441A6D256F00345928 /* Fipps-Regular.otf */,
 				17B3462B1A66824D00946A2E /* Images.xcassets */,
+				440A98BB1A7669B60054121F /* pokecenter sound.mp3 */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -298,6 +306,7 @@
 				44DBEA4C1A6D278400345928 /* visitor2.ttf in Resources */,
 				17B3462C1A66824D00946A2E /* Images.xcassets in Resources */,
 				44DBEA4E1A6D278400345928 /* VISITOR.FON in Resources */,
+				440A98BC1A7669B60054121F /* pokecenter sound.mp3 in Resources */,
 				44DBEA4A1A6D278400345928 /* visitor1.ttf in Resources */,
 				44DBEA451A6D256F00345928 /* Fipps-Regular.otf in Resources */,
 				17B346331A66827400946A2E /* shop.jpg in Resources */,
@@ -327,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				440A98BF1A766BB40054121F /* ShopMusic.m in Sources */,
 				17B346211A66821000946A2E /* GameBird.m in Sources */,
 				17B346141A6681FC00946A2E /* AppDelegate.m in Sources */,
 				44DBD06A1A7079390059123F /* ShopScene.m in Sources */,

@@ -34,7 +34,7 @@
     CGFloat scoreLabelMid;
 
     // GamePlay variables
-    SKSpriteNode* birdLaser;
+
     BOOL startGame;
     BOOL gameOver;
     NSInteger score;
@@ -56,9 +56,10 @@
 
 static const uint32_t birdCategory = 1 << 0;
 static const uint32_t worldCategory = 1 << 1;
-static const uint32_t pipeCategory = 1 << 2;
-static const uint32_t scoreCategory = 1 << 3;
-static const uint32_t laserCategory = 1 << 4;
+static const uint32_t laserCategory = 1 << 2;
+static const uint32_t pipeCategory = 1 << 3;
+static const uint32_t scoreCategory = 1 << 4;
+
 
 
 
@@ -115,10 +116,12 @@ static const uint32_t laserCategory = 1 << 4;
     scoreLabel.position = CGPointMake( CGRectGetMidX( self.frame ), CGRectGetMidX(self.frame) - scoreLabelMid );
     [self addChild:scoreLabel];
     
+    
+    numLasers = [Inventory integerForKey:@"numLasers"];
 
     [self addBird];
     [bird flyIddle];
-    
+
     [self addGround];
     [self addSkyline];
     
@@ -138,7 +141,8 @@ static const uint32_t laserCategory = 1 << 4;
         [self removeAllActions];
         [bird removeActionForKey:@"flyIddle"];
         self.physicsWorld.gravity = CGVectorMake( 0.0, -7 );
-        [self addLasers];
+        //[self addLasers];
+        [self addFireButton];
         [self generateWorld];
         
         
@@ -177,6 +181,8 @@ static const uint32_t laserCategory = 1 << 4;
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
     if(moving.speed > 0){
+//        NSLog(@"node namea %@", contact.bodyA.node.name);
+//        NSLog(@"node nameb %@", contact.bodyB.node.name);
         if( ( contact.bodyA.categoryBitMask & scoreCategory ) == scoreCategory || ( contact.bodyB.categoryBitMask & scoreCategory ) == scoreCategory ) {
             // Bird passed pipe
             score++;
@@ -188,12 +194,13 @@ static const uint32_t laserCategory = 1 << 4;
             }
             scoreLabel.text = [NSString stringWithFormat:@"%ld", score];
         }
-//        else if (([contact.bodyA.node.name isEqualToString:@"laser"]) || ([contact.bodyA.node.name isEqualToString:@"pipe"] && [contact.bodyB.node.name isEqualToString:@"laser"])){
-//            NSLog(@"hit1");
-//            [contact.bodyA.node removeFromParent];
-//            [contact.bodyB.node removeFromParent];
-//        }
-        else {
+        else if( ( contact.bodyA.categoryBitMask & laserCategory ) == laserCategory|| ( contact.bodyB.categoryBitMask & laserCategory ) == laserCategory ) {
+            NSLog(@"hit1");
+            NSLog(@"laser y after hit %f", contact.bodyA.node.position.y);
+            [contact.bodyA.node removeFromParent];
+            [contact.bodyB.node removeFromParent];
+        }
+        else if( ( contact.bodyA.categoryBitMask & birdCategory ) == birdCategory || ( contact.bodyB.categoryBitMask & birdCategory ) == birdCategory ) {
             [self dieScene];
         }
     }
@@ -204,7 +211,7 @@ static const uint32_t laserCategory = 1 << 4;
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     NSInteger totalPointsTemp = [Inventory integerForKey:@"totalPoints"];
     totalPoints = totalPointsTemp;
-    totalPoints += score;
+    totalPoints += score + 100;
     NSLog(@"totalPoints %ld",(long)totalPoints);
     [Inventory setInteger:totalPoints forKey:@"totalPoints"];
     [Inventory synchronize];
@@ -225,31 +232,29 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 -(void)update:(CFTimeInterval)currentTime {
     if(startGame == YES){
         bird.zRotation = clamp( -1, 0.5, bird.physicsBody.velocity.dy * ( bird.physicsBody.velocity.dy < 0 ? 0.003 : 0.001 ) );
-        for (SKSpriteNode* birdLaserTemp in birdLasers) {
-            if (birdLaserTemp.hidden) {
-                continue;
-            }
-            
-            if ([birdLaserTemp intersectsNode:pipeDown]) {
-                birdLaserTemp.hidden = YES;
-                [pipeDown removeFromParent];
-                
-                NSLog(@"you just destroyed a pipedown");
-                NSLog(@"name %@" , birdLaserTemp.name);
-                continue;
-            }
-            else if ([birdLaserTemp intersectsNode:pipeTop]){
-                birdLaserTemp.hidden = YES;
-                [pipeTop removeFromParent];
-                
-                NSLog(@"you just destroyed a pipeup");
-                continue;
-            }
-        }
-        
-    }
-    
 
+//        for (SKSpriteNode* birdLaserTemp in birdLasers) {
+//            if (birdLaserTemp.hidden) {
+//                continue;
+//            }
+//            
+//            if ([birdLaserTemp intersectsNode:pipeDown]) {
+//                birdLaserTemp.hidden = YES;
+//                 NSLog(@"you just destroyed a pipedown %@", pipeDown.name);
+//                [pipeDown removeFromParent];
+//                
+//                NSLog(@"name %@" , birdLaserTemp.name);
+//                continue;
+//            }
+//            else if ([birdLaserTemp intersectsNode:pipeTop]){
+//                birdLaserTemp.hidden = YES;
+//                NSLog(@"you just destroyed a pipeup %@", pipeTop.name);
+//                [pipeTop removeFromParent];
+//                
+//                continue;
+//            }
+//        }
+    }
 }
 
 
@@ -280,27 +285,42 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
 
 -(void) fireLaser{
-    SKSpriteNode* birdLaserTemp = [birdLasers objectAtIndex: numLasers - 1];
-    numLasers--;
-    
-    birdLaserTemp.position = CGPointMake(bird.position.x+birdLaserTemp.size.width/2, bird.position.y+0);
-    birdLaserTemp.hidden = NO;
-    [birdLaserTemp removeAllActions];
-    
-    CGPoint location = CGPointMake(self.frame.size.width, bird.position.y);
-    
-    SKAction* laserMoveAction = [SKAction moveTo:location duration:0.5];
-    
-    SKAction* laserDoneAction = [SKAction runBlock:(dispatch_block_t)^() {
-        // animation done
-        birdLaserTemp.hidden = YES;
-    }];
-    
-    SKAction* moveLaserActionWithDone = [SKAction sequence:@[laserMoveAction, laserDoneAction]];
-    [birdLaserTemp runAction:moveLaserActionWithDone withKey: @"laserFired"];
-    fireLabel.text = [NSString stringWithFormat:@"%ld",numLasers];
+    //SKSpriteNode* birdLaserTemp = [birdLasers objectAtIndex: numLasers - 1];
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
-    [Inventory setInteger:numLasers forKey:@"numLasers"];
+    numLasers = [Inventory integerForKey:@"numLasers"];
+    NSLog(@"numLasers %ld", (long)numLasers);
+    if (numLasers > 0){
+        numLasers--;
+
+        SKSpriteNode* birdLaserTemp = [SKSpriteNode spriteNodeWithImageNamed:@"Laserbeam"];
+        
+        birdLaserTemp.position = CGPointMake(bird.position.x+birdLaserTemp.size.width/2, bird.position.y);
+        birdLaserTemp.name = @"laser";
+        birdLaserTemp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:birdLaserTemp.size];
+        birdLaserTemp.physicsBody.allowsRotation = NO;
+        birdLaserTemp.physicsBody.categoryBitMask = laserCategory;
+        birdLaserTemp.physicsBody.contactTestBitMask = pipeCategory;
+        
+        [self addChild:birdLaserTemp];
+        //[birdLaserTemp removeAllActions];
+        NSLog(@" laser rotation %f", birdLaserTemp.zRotation);
+        NSLog(@" laser position pre hit  %f", birdLaserTemp.position.y);
+        
+        CGPoint location = CGPointMake(self.frame.size.width, bird.position.y);
+        
+        SKAction* laserMoveAction = [SKAction moveTo:location duration:0.5];
+        
+        SKAction* laserDoneAction = [SKAction runBlock:(dispatch_block_t)^() {
+            // animation done
+            birdLaserTemp.hidden = YES;
+        }];
+        
+        
+        SKAction* moveLaserActionWithDone = [SKAction sequence:@[laserMoveAction, laserDoneAction]];
+        [birdLaserTemp runAction:moveLaserActionWithDone withKey: @"laserFired"];
+        fireLabel.text = [NSString stringWithFormat:@"%ld",numLasers];
+        [Inventory setInteger:numLasers forKey:@"numLasers"];
+    }
 }
 
 -(void)dieScene{
@@ -383,13 +403,12 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     pipeDown = [GameBackGround addPipeDown];
     pipeDown.position = CGPointMake( 0, y );
     pipeDown.physicsBody.categoryBitMask = pipeCategory;
-    pipeDown.physicsBody.contactTestBitMask = birdCategory & laserCategory;
-
-  
+    //pipeDown.physicsBody.contactTestBitMask = birdCategory | laserCategory;
+    
     pipeTop = [GameBackGround addPipeTop];
     pipeTop.position = CGPointMake( 0, y + pipeDown.size.height + kVerticalPipeGap );
     pipeTop.physicsBody.categoryBitMask = pipeCategory;
-    pipeTop.physicsBody.contactTestBitMask = birdCategory & laserCategory;
+   // pipeTop.physicsBody.contactTestBitMask = birdCategory | laserCategory;
 
     pipePair = [SKNode node];
     pipePair.position = CGPointMake( self.frame.size.width + pipeDown.size.width, 0 );
@@ -412,14 +431,14 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
 -(void) addScoreNode{
     // Score node
-    SKNode* contactNode = [SKNode node];
-    contactNode.position = CGPointMake( pipeDown.size.width + bird.size.width / 2, CGRectGetMidY( self.frame ) );
-    contactNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake( pipeTop.size.width, self.frame.size.height )];
-    contactNode.physicsBody.dynamic = NO;
-    contactNode.physicsBody.categoryBitMask = scoreCategory;
-    contactNode.physicsBody.contactTestBitMask = birdCategory;
+    SKNode* scoreNode = [SKNode node];
+    scoreNode.position = CGPointMake( pipeDown.size.width + bird.size.width / 2, CGRectGetMidY( self.frame ) );
+    scoreNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake( pipeTop.size.width, self.frame.size.height )];
+    scoreNode.physicsBody.dynamic = NO;
+    scoreNode.physicsBody.categoryBitMask = scoreCategory;
+    scoreNode.physicsBody.contactTestBitMask = birdCategory;
     
-    [pipePair addChild:contactNode];
+    [pipePair addChild:scoreNode];
 }
 
 -(void)addGround{
@@ -446,6 +465,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 }
 
 -(void) addGroundPhysics{
+    
     // Create ground physics container
     
     SKNode* groundBody = [SKNode node];
@@ -458,15 +478,16 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 }
 
 -(void) addLasers{
+    NSLog(@"mag niet");
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     numLasers = [Inventory integerForKey:@"numLasers"];
     birdLasers = [[NSMutableArray alloc] initWithCapacity:numLasers];
     for (int i = 0; i < numLasers; ++i) {
-        birdLaser = [SKSpriteNode spriteNodeWithImageNamed:@"Laserbeam"];
+        SKSpriteNode* birdLaser = [SKSpriteNode spriteNodeWithImageNamed:@"Laserbeam"];
         birdLaser.hidden = YES;
         birdLaser.name = @"laser";
-        birdLaser.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:birdLaser.size];
         birdLaser.physicsBody.dynamic = NO;
+        birdLaser.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:birdLaser.size];
         birdLaser.physicsBody.categoryBitMask = laserCategory;
         birdLaser.physicsBody.contactTestBitMask = pipeCategory;
 

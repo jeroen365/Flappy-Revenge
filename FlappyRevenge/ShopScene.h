@@ -8,8 +8,14 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 
-@interface ShopScene : SKScene
+@interface ShopScene : SKScene <AVAudioPlayerDelegate>{
+    AVAudioPlayer *player;
+}
+
+@property (nonatomic, retain) AVAudioPlayer *player;
+
 
 @end
