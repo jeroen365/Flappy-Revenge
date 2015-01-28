@@ -8,11 +8,7 @@
 
 #import "GameMenu.h"
 
-@interface GameMenu(){
-    SKLabelNode *scoreLabel;
-}
 
-@end
 
 @implementation GameMenu
 
@@ -41,9 +37,9 @@
     return showFireButton;
 }
 
--(SKLabelNode*) scoreLabel:(NSInteger)score{
++(SKLabelNode*) scoreLabel:(NSInteger)score{
     // Initialize label and create a label which holds the score
-    scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];
+    SKLabelNode* scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];
     scoreLabel.fontSize = 800;
     scoreLabel.alpha = 0.5;
     scoreLabel.zPosition = -50;

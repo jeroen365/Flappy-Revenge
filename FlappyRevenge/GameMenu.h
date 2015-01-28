@@ -14,6 +14,6 @@
 +(id) showRetryMenu;
 +(id) showShopMenu;
 +(id) showFireButton;
-- (SKLabelNode*) scoreLabel:(NSInteger)score;
++ (SKLabelNode*) scoreLabel:(NSInteger)score;
 
 @end

@@ -39,6 +39,7 @@
     BOOL startGame;
     BOOL gameOver;
     NSInteger score;
+    NSInteger highScore;
     SKAction* moveAndRemovePipes;
     SKAction* laserFireSoundAction;
     SKAction* birdJumpSoundAction;
@@ -122,15 +123,15 @@ static const uint32_t scoreCategory = 1 << 4;
     [playGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame)+5,CGRectGetMidY(self.frame)-40)];
     [self addChild:playGameButton];
     
-    GameMenu* scoreLabelTemp = [[GameMenu alloc] init];
-    scoreLabel = [scoreLabelTemp scoreLabel:score];
+    
+    scoreLabel = [GameMenu scoreLabel:score];
     scoreLabelMid = scoreLabel.fontSize / 4;
     scoreLabel.position = CGPointMake( CGRectGetMidX( self.frame ), CGRectGetMidX(self.frame) - scoreLabelMid );
     [self addChild:scoreLabel];
     
     // Get amount of lasers
     numLasers = [Inventory integerForKey:@"numLasers"];
-    
+    highScore = [Inventory integerForKey:@"highScore"];
 
     [self addBird];
     [bird flyIddle];
@@ -226,7 +227,7 @@ static const uint32_t scoreCategory = 1 << 4;
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     NSInteger totalPointsTemp = [Inventory integerForKey:@"totalPoints"];
     totalPoints = totalPointsTemp;
-    totalPoints += score + 50;
+    totalPoints += score;
     NSLog(@"totalPoints %ld",(long)totalPoints);
     [Inventory setInteger:totalPoints forKey:@"totalPoints"];
     [Inventory synchronize];
@@ -283,51 +284,41 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     numLasers = [Inventory integerForKey:@"numLasers"];
     NSLog(@"numLasers %ld", (long)numLasers);
     if (numLasers > 0){
+        [self createLaser];
         [self runAction:laserFireSoundAction];
         numLasers--;
-        SKTexture* birdLaserTexture =[SKTexture textureWithImageNamed:@"Laserbeam"];
-        birdLaserTexture.filteringMode = SKTextureFilteringNearest;
         
-        birdLaserTemp = [SKSpriteNode spriteNodeWithTexture:birdLaserTexture];
-        
-        //birdLaserTemp = [SKSpriteNode spriteNodeWithColor:[SKColor redColor] size:CGSizeMake(10, 10)];
-        birdLaserTemp.position = CGPointMake(bird.position.x+birdLaserTemp.size.width/2, bird.position.y);
-        birdLaserTemp.name = @"laser";
-        birdLaserTemp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:birdLaserTemp.size];
-        birdLaserTemp.physicsBody.dynamic = YES;
-        birdLaserTemp.physicsBody.allowsRotation = NO;
-        birdLaserTemp.physicsBody.affectedByGravity = NO;
-        birdLaserTemp.physicsBody.mass = 0.1;
-        birdLaserTemp.physicsBody.linearDamping = 0.0;
-        birdLaserTemp.physicsBody.categoryBitMask = laserCategory;
-        birdLaserTemp.physicsBody.contactTestBitMask = pipeCategory;
-        birdLaserTemp.physicsBody.collisionBitMask = pipeCategory;
-        
-        
-        NSLog(@" laser rotation %f", birdLaserTemp.zRotation);
-        NSLog(@" laser position pre hit  %f", birdLaserTemp.position.y);
-        
-//        CGPoint location = CGPointMake(self.frame.size.width, bird.position.y);
-        [self addChild:birdLaserTemp];
         birdLaserTemp.physicsBody.velocity = CGVectorMake(0, 0);
         [birdLaserTemp.physicsBody applyImpulse:CGVectorMake(180, 0)];
 
-        
-//        SKAction* laserMoveAction = [SKAction moveTo:location duration:0.5];
-//        
-//        SKAction* laserDoneAction = [SKAction runBlock:(dispatch_block_t)^() {
-//            // animation done
-//            [birdLaserTemp removeFromParent];
-//        }];
-//        
-//        
-//        SKAction* moveLaserActionWithDone = [SKAction sequence:@[laserMoveAction, laserDoneAction]];
-
-//        [birdLaserTemp runAction:moveLaserActionWithDone withKey: @"laserFired"];
+    
         
         fireLabel.text = [NSString stringWithFormat:@"%ld",numLasers];
         [Inventory setInteger:numLasers forKey:@"numLasers"];
     }
+}
+
+-(void) createLaser{
+    SKTexture* birdLaserTexture =[SKTexture textureWithImageNamed:@"Laserbeam"];
+    birdLaserTexture.filteringMode = SKTextureFilteringNearest;
+    
+    birdLaserTemp = [SKSpriteNode spriteNodeWithTexture:birdLaserTexture];
+
+    birdLaserTemp.position = CGPointMake(bird.position.x+birdLaserTemp.size.width/2, bird.position.y);
+    birdLaserTemp.name = @"laser";
+    birdLaserTemp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:birdLaserTemp.size];
+    birdLaserTemp.physicsBody.dynamic = YES;
+    birdLaserTemp.physicsBody.allowsRotation = NO;
+    birdLaserTemp.physicsBody.affectedByGravity = NO;
+    birdLaserTemp.physicsBody.mass = 0.1;
+    birdLaserTemp.physicsBody.linearDamping = 0.0;
+    birdLaserTemp.physicsBody.categoryBitMask = laserCategory;
+    birdLaserTemp.physicsBody.contactTestBitMask = pipeCategory;
+    birdLaserTemp.physicsBody.collisionBitMask = pipeCategory;
+    
+    
+    [self addChild:birdLaserTemp];
+
 }
 
 -(void)dieScene{
@@ -352,6 +343,10 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     scoreLabel.alpha = 1;
     scoreLabel.position = CGPointMake( CGRectGetMidX( self.frame ), CGRectGetMidX(self.frame) - (scoreLabelMid / 2));
     
+    if ([self checkHighScore]){
+        NSLog(@"yay");
+    }
+    
     // Save points
     [self savePoints];
     
@@ -362,6 +357,16 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     shopGameButton = [GameMenu showShopMenu];
     [shopGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame),retryGameButton.position.y-50)];
     [self addChild:shopGameButton];
+}
+
+-(BOOL) checkHighScore{
+    NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
+    if (score> highScore){
+        highScore = score;
+        [Inventory setInteger:highScore forKey:@"highScore"];
+        return YES;
+    }
+    return NO;
 }
 
 -(void)addBird{
