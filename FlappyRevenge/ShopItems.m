@@ -48,6 +48,11 @@
     easyMode.name = @"easyMode";
     [self addChild:easyMode];
     
+    ShopItem* mechaFlappyItem = [ShopItem shopItemWithTextureNamed:@"MechaFlappyItem" withSize:size withCost:100];
+    mechaFlappyItem.position = CGPointMake(0, easyMode.position.y - mechaFlappyItem.size.height);
+    mechaFlappyItem.name = @"mechaFlappyItem";
+    [self addChild:mechaFlappyItem];
+    
     return self;
 }
 

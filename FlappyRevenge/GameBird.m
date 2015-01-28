@@ -14,24 +14,39 @@
 
 + (id)bird
 {
-    // Load bird textures
-    SKTexture *birdTexture1 = [SKTexture textureWithImageNamed:@"initBirdL1"];
-    birdTexture1.filteringMode = SKTextureFilteringNearest;
-    SKTexture *birdTexture2 = [SKTexture textureWithImageNamed:@"initBirdH1"];
-    birdTexture2.filteringMode = SKTextureFilteringNearest;
+    NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
+    NSInteger flappySkin = [Inventory integerForKey:@"flappySkin"];
     
+    SKTexture *birdTexture1;
+    SKTexture *birdTexture2;
+    
+    if (flappySkin == 1){
+        // Load mechaFlappy textures
+        birdTexture1 = [SKTexture textureWithImageNamed:@"MechaFlappyL"];
+        birdTexture1.filteringMode = SKTextureFilteringNearest;
+        birdTexture2 = [SKTexture textureWithImageNamed:@"MechaFlappyH"];
+        birdTexture2.filteringMode = SKTextureFilteringNearest;
+    }
+    else{
+        birdTexture1 = [SKTexture textureWithImageNamed:@"InitFlappyL"];
+        birdTexture1.filteringMode = SKTextureFilteringNearest;
+        birdTexture2 = [SKTexture textureWithImageNamed:@"InitFlappyH"];
+        birdTexture2.filteringMode = SKTextureFilteringNearest;
+
+    }
     
     SKAction* flap = [SKAction repeatActionForever:[SKAction animateWithTextures:@[birdTexture1, birdTexture2] timePerFrame: 0.5]];
     GameBird *bird = [GameBird spriteNodeWithTexture:birdTexture1];
     
     
-    [bird setScale:0.7];
-    [bird runAction:flap];
+
     
     bird.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:bird.size.height/2];
     bird.physicsBody.dynamic = YES;
     bird.physicsBody.allowsRotation = NO;
     bird.physicsBody.mass = 0.5;
+    [bird setScale:0.7];
+    [bird runAction:flap];
     return bird;
 }
 

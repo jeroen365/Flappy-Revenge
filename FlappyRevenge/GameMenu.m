@@ -21,12 +21,14 @@
 +(id) showRetryMenu{
     SKSpriteNode* retryGameButton = [SKSpriteNode spriteNodeWithImageNamed:@"Retrybutton"];
     retryGameButton.scale = 0.5;
+    retryGameButton.zPosition = 100;
     return retryGameButton;
 }
 
 +(id) showShopMenu{
     SKSpriteNode* shopGameButton = [SKSpriteNode spriteNodeWithImageNamed:@"Shopbutton"];
     shopGameButton.scale = 0.5;
+    shopGameButton.zPosition = 100;
     return shopGameButton;
 }
 

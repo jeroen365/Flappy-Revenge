@@ -20,6 +20,8 @@
     NSInteger numLasers;
     NSInteger itemCost;
     NSInteger easyGameTokens;
+    SKAction* buttonPressSoundAction;
+    SKAction* purchaseSoundAction;
     
 }
 
@@ -53,7 +55,9 @@
         
         [self setupShopMusic];
         [self loadInterface];
-        
+        buttonPressSoundAction = [SKAction playSoundFileNamed:@"ButtonPress.mp3" waitForCompletion:NO];
+        purchaseSoundAction = [SKAction playSoundFileNamed:@"Score.wav" waitForCompletion:NO];
+
     }
     return self;
 }
@@ -88,9 +92,8 @@
     SKNode *node = [self nodeAtPoint:location];
     
     if ([node.name isEqualToString:@"back button"]) {
-        
+        [self runAction:buttonPressSoundAction];
         SKTransition *reveal = [SKTransition fadeWithDuration:1];
-        
         GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         [self doVolumeFade];
@@ -101,6 +104,7 @@
         ShopItem* laserBundle = (ShopItem*) node;
         itemCost = laserBundle.cost;
         if (laserBundle.purchasable){
+            [self runAction:purchaseSoundAction];
             [self boughtLaserBundle];
         }
     }
@@ -108,7 +112,16 @@
         ShopItem* easyMode = (ShopItem*) node;
         itemCost = easyMode.cost;
         if (easyMode.purchasable){
+            [self runAction:purchaseSoundAction];
             [self boughtEasyMode];
+        }
+    }
+    if ([node.name isEqualToString:@"mechaFlappyItem"]){
+        ShopItem* mechaFlappyItem = (ShopItem*) node;
+        itemCost = mechaFlappyItem.cost;
+        if (mechaFlappyItem.purchasable){
+            [self runAction:purchaseSoundAction];
+            [self boughtMechaFlappy];
         }
     }
 
@@ -129,10 +142,7 @@
 
 -(void) boughtEasyMode{
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
-    // Substract cost from points
-    totalPoints = [Inventory integerForKey:@"totalPoints"];
-    totalPoints -= itemCost;
-    [Inventory setInteger:totalPoints forKey:@"totalPoints"];
+    [self substractPoints];
     
     // Add one easy game token to inventory
     easyGameTokens = [Inventory integerForKey:@"easyGameTokens"];
@@ -145,11 +155,7 @@
 
 -(void) boughtLaserBundle{
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
-    // Substract cost from points
-    totalPoints = [Inventory integerForKey:@"totalPoints"];
-    totalPoints -= itemCost;
-    [Inventory setInteger:totalPoints forKey:@"totalPoints"];
-    
+    [self substractPoints];
     // Add 3 lasers to inventory
     numLasers = [Inventory integerForKey:@"numLasers"];
     numLasers += 3;
@@ -157,6 +163,25 @@
     
     [Inventory synchronize];
     [self updateInterface];
+}
+
+-(void) boughtMechaFlappy{
+    NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
+    [self substractPoints];
+    
+    [Inventory setInteger:1 forKey:@"flappySkin"];
+    [Inventory synchronize];
+    [self updateInterface];
+}
+
+-(void) substractPoints{
+    // Substract cost from points
+    NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
+
+    totalPoints = [Inventory integerForKey:@"totalPoints"];
+    totalPoints -= itemCost;
+    [Inventory setInteger:totalPoints forKey:@"totalPoints"];
+
 }
 
 -(void) addBackGround{

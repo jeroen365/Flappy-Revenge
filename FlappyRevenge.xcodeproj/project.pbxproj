@@ -26,6 +26,8 @@
 		4405BA271A78450D00CBE398 /* BirdDied.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4405BA261A78450D00CBE398 /* BirdDied.wav */; };
 		440A98BC1A7669B60054121F /* pokecenter sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 440A98BB1A7669B60054121F /* pokecenter sound.mp3 */; };
 		440A98BF1A766BB40054121F /* ShopMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = 440A98BE1A766BB40054121F /* ShopMusic.m */; };
+		442F0CEF1A793EC500B26392 /* Score.wav in Resources */ = {isa = PBXBuildFile; fileRef = 442F0CEE1A793EC500B26392 /* Score.wav */; };
+		442F0CF11A79409600B26392 /* ButtonPress.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 442F0CF01A79409600B26392 /* ButtonPress.mp3 */; };
 		44DBD06A1A7079390059123F /* ShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DBD0691A7079390059123F /* ShopScene.m */; };
 		44DBD06D1A7145580059123F /* ShopItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DBD06C1A7145580059123F /* ShopItems.m */; };
 		44DBD0701A7154370059123F /* ShopItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DBD06F1A7154370059123F /* ShopItem.m */; };
@@ -80,6 +82,8 @@
 		440A98BB1A7669B60054121F /* pokecenter sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pokecenter sound.mp3"; sourceTree = "<group>"; };
 		440A98BD1A766BB40054121F /* ShopMusic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopMusic.h; sourceTree = "<group>"; };
 		440A98BE1A766BB40054121F /* ShopMusic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopMusic.m; sourceTree = "<group>"; };
+		442F0CEE1A793EC500B26392 /* Score.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Score.wav; sourceTree = "<group>"; };
+		442F0CF01A79409600B26392 /* ButtonPress.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ButtonPress.mp3; sourceTree = "<group>"; };
 		44DBD0681A7079390059123F /* ShopScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopScene.h; sourceTree = "<group>"; };
 		44DBD0691A7079390059123F /* ShopScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopScene.m; sourceTree = "<group>"; };
 		44DBD06B1A7145580059123F /* ShopItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopItems.h; sourceTree = "<group>"; };
@@ -225,8 +229,10 @@
 				44DBEA491A6D278400345928 /* VISITOR.FON */,
 				44DBEA441A6D256F00345928 /* Fipps-Regular.otf */,
 				17B3462B1A66824D00946A2E /* Images.xcassets */,
+				442F0CEE1A793EC500B26392 /* Score.wav */,
 				440A98BB1A7669B60054121F /* pokecenter sound.mp3 */,
 				4405BA1A1A782CE600CBE398 /* GameSceneMusic.mp3 */,
+				442F0CF01A79409600B26392 /* ButtonPress.mp3 */,
 				4405BA221A783EE100CBE398 /* LaserSound2.mp3 */,
 				4405BA241A78419300CBE398 /* JumpSound.wav */,
 				4405BA261A78450D00CBE398 /* BirdDied.wav */,
@@ -325,10 +331,12 @@
 				44DBEA451A6D256F00345928 /* Fipps-Regular.otf in Resources */,
 				17B346331A66827400946A2E /* shop.jpg in Resources */,
 				17B346321A66827400946A2E /* menu.jpg in Resources */,
+				442F0CEF1A793EC500B26392 /* Score.wav in Resources */,
 				17B346361A6682B700946A2E /* Main.storyboard in Resources */,
 				4405BA1B1A782CE600CBE398 /* GameSceneMusic.mp3 in Resources */,
 				17B346251A66821000946A2E /* GameScene.sks in Resources */,
 				17B346341A66827400946A2E /* Views.jpg in Resources */,
+				442F0CF11A79409600B26392 /* ButtonPress.mp3 in Resources */,
 				17B346311A66827400946A2E /* gameplay.PNG in Resources */,
 				4405BA271A78450D00CBE398 /* BirdDied.wav in Resources */,
 			);
