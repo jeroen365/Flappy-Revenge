@@ -47,9 +47,30 @@
     return scoreLabel;
 }
 
-+(void) setScoreLabel{
-    
++(SKLabelNode*) showScoreLabelText{
+    SKLabelNode* scoreLabelText = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];
+    scoreLabelText.fontSize = 50;
+    scoreLabelText.fontColor = [SKColor blackColor];
+    scoreLabelText.zPosition = 110;
+    scoreLabelText.text = [NSString stringWithFormat:@"Score"];
+    return scoreLabelText;
 }
 
++(SKLabelNode*) highScoreLabel:(NSInteger)highScore{
+    SKLabelNode* highScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];
+    highScoreLabel.fontSize = 300;
+    highScoreLabel.zPosition = 100;
+    highScoreLabel.text = [NSString stringWithFormat:@"%ld", (long)highScore];
+    return highScoreLabel;
+}
+
++(SKLabelNode*) highScoreLabelText{
+    SKLabelNode* highScoreLabelText = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];
+    highScoreLabelText.fontSize = 50;
+    highScoreLabelText.fontColor = [SKColor blackColor];
+    highScoreLabelText.zPosition = 110;
+    highScoreLabelText.text = [NSString stringWithFormat:@"Highscore"];
+    return highScoreLabelText;
+}
 
 @end

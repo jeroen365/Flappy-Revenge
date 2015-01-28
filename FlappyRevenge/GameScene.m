@@ -218,6 +218,7 @@ static const uint32_t scoreCategory = 1 << 4;
         }
         else if( ( contact.bodyA.categoryBitMask ) == birdCategory || ( contact.bodyB.categoryBitMask ) == birdCategory ) {
             [self dieScene];
+            [self showGameOverMenu];
         }
     }
 }
@@ -290,8 +291,6 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
         
         birdLaserTemp.physicsBody.velocity = CGVectorMake(0, 0);
         [birdLaserTemp.physicsBody applyImpulse:CGVectorMake(180, 0)];
-
-    
         
         fireLabel.text = [NSString stringWithFormat:@"%ld",numLasers];
         [Inventory setInteger:numLasers forKey:@"numLasers"];
@@ -337,26 +336,45 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
         self.backgroundColor = skyColor;
     }], [SKAction waitForDuration:0.1]]] count:4]]] withKey:@"flash"];
     [self runAction:birdDiesSoundAction];
-    
+
+}
+
+-(void) showGameOverMenu{
     // Show final score
     scoreLabel.zPosition = 100;
+    scoreLabel.fontSize = 300;
     scoreLabel.alpha = 1;
-    scoreLabel.position = CGPointMake( CGRectGetMidX( self.frame ), CGRectGetMidX(self.frame) - (scoreLabelMid / 2));
+    scoreLabel.position = CGPointMake( CGRectGetMidX( self.frame ), CGRectGetHeight(self.frame) - 5 * scoreLabelMid / 4);
+    
+    SKLabelNode* scoreLabelText = [GameMenu showScoreLabelText];
+    scoreLabelText.position = CGPointMake(scoreLabel.position.x, scoreLabel.position.y + scoreLabel.fontSize / 2);
+    [self addChild:scoreLabelText];
+    
     
     if ([self checkHighScore]){
         NSLog(@"yay");
     }
     
+    
+    SKLabelNode* highScoreLabelText = [GameMenu highScoreLabelText];
+    highScoreLabelText.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + highScoreLabelText.fontSize);
+    [self addChild:highScoreLabelText];
+    
+    SKLabelNode* highScoreLabel = [GameMenu highScoreLabel:highScore];
+    highScoreLabel.position = CGPointMake(CGRectGetMidX(self.frame), highScoreLabelText.position.y - highScoreLabel.fontSize / 2 );
+    [self addChild:highScoreLabel];
+
     // Save points
     [self savePoints];
     
     retryGameButton = [GameMenu showRetryMenu];
-    [retryGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)-50)];
+    [retryGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)-150)];
     [self addChild:retryGameButton];
     
     shopGameButton = [GameMenu showShopMenu];
     [shopGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame),retryGameButton.position.y-50)];
     [self addChild:shopGameButton];
+
 }
 
 -(BOOL) checkHighScore{

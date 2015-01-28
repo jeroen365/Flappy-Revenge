@@ -14,6 +14,8 @@
 +(id) showRetryMenu;
 +(id) showShopMenu;
 +(id) showFireButton;
-+ (SKLabelNode*) scoreLabel:(NSInteger)score;
-
++(SKLabelNode*) scoreLabel:(NSInteger)score;
++(SKLabelNode*) showScoreLabelText;
++(SKLabelNode*) highScoreLabel:(NSInteger)highScore;
++(SKLabelNode*) highScoreLabelText;
 @end
