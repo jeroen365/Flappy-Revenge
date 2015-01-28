@@ -20,6 +20,10 @@
 		17B346331A66827400946A2E /* shop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462F1A66827400946A2E /* shop.jpg */; };
 		17B346341A66827400946A2E /* Views.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B346301A66827400946A2E /* Views.jpg */; };
 		17B346361A6682B700946A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B346351A6682B700946A2E /* Main.storyboard */; };
+		4405BA1B1A782CE600CBE398 /* GameSceneMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4405BA1A1A782CE600CBE398 /* GameSceneMusic.mp3 */; };
+		4405BA231A783EE100CBE398 /* LaserSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4405BA221A783EE100CBE398 /* LaserSound2.mp3 */; };
+		4405BA251A78419300CBE398 /* JumpSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4405BA241A78419300CBE398 /* JumpSound.wav */; };
+		4405BA271A78450D00CBE398 /* BirdDied.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4405BA261A78450D00CBE398 /* BirdDied.wav */; };
 		440A98BC1A7669B60054121F /* pokecenter sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 440A98BB1A7669B60054121F /* pokecenter sound.mp3 */; };
 		440A98BF1A766BB40054121F /* ShopMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = 440A98BE1A766BB40054121F /* ShopMusic.m */; };
 		44DBD06A1A7079390059123F /* ShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DBD0691A7079390059123F /* ShopScene.m */; };
@@ -69,6 +73,10 @@
 		17B3462F1A66827400946A2E /* shop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shop.jpg; sourceTree = "<group>"; };
 		17B346301A66827400946A2E /* Views.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Views.jpg; sourceTree = "<group>"; };
 		17B346351A6682B700946A2E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4405BA1A1A782CE600CBE398 /* GameSceneMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GameSceneMusic.mp3; sourceTree = "<group>"; };
+		4405BA221A783EE100CBE398 /* LaserSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LaserSound2.mp3; sourceTree = "<group>"; };
+		4405BA241A78419300CBE398 /* JumpSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = JumpSound.wav; sourceTree = "<group>"; };
+		4405BA261A78450D00CBE398 /* BirdDied.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BirdDied.wav; sourceTree = "<group>"; };
 		440A98BB1A7669B60054121F /* pokecenter sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pokecenter sound.mp3"; sourceTree = "<group>"; };
 		440A98BD1A766BB40054121F /* ShopMusic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopMusic.h; sourceTree = "<group>"; };
 		440A98BE1A766BB40054121F /* ShopMusic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopMusic.m; sourceTree = "<group>"; };
@@ -218,6 +226,10 @@
 				44DBEA441A6D256F00345928 /* Fipps-Regular.otf */,
 				17B3462B1A66824D00946A2E /* Images.xcassets */,
 				440A98BB1A7669B60054121F /* pokecenter sound.mp3 */,
+				4405BA1A1A782CE600CBE398 /* GameSceneMusic.mp3 */,
+				4405BA221A783EE100CBE398 /* LaserSound2.mp3 */,
+				4405BA241A78419300CBE398 /* JumpSound.wav */,
+				4405BA261A78450D00CBE398 /* BirdDied.wav */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -304,6 +316,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				44DBEA4C1A6D278400345928 /* visitor2.ttf in Resources */,
+				4405BA231A783EE100CBE398 /* LaserSound2.mp3 in Resources */,
+				4405BA251A78419300CBE398 /* JumpSound.wav in Resources */,
 				17B3462C1A66824D00946A2E /* Images.xcassets in Resources */,
 				44DBEA4E1A6D278400345928 /* VISITOR.FON in Resources */,
 				440A98BC1A7669B60054121F /* pokecenter sound.mp3 in Resources */,
@@ -312,9 +326,11 @@
 				17B346331A66827400946A2E /* shop.jpg in Resources */,
 				17B346321A66827400946A2E /* menu.jpg in Resources */,
 				17B346361A6682B700946A2E /* Main.storyboard in Resources */,
+				4405BA1B1A782CE600CBE398 /* GameSceneMusic.mp3 in Resources */,
 				17B346251A66821000946A2E /* GameScene.sks in Resources */,
 				17B346341A66827400946A2E /* Views.jpg in Resources */,
 				17B346311A66827400946A2E /* gameplay.PNG in Resources */,
+				4405BA271A78450D00CBE398 /* BirdDied.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

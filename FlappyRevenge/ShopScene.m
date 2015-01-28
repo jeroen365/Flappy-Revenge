@@ -49,7 +49,9 @@
 
 
 -(id)initWithSize:(CGSize)size {
-    if (self = [super initWithSize:size]) {        
+    if (self = [super initWithSize:size]) {
+        
+        [self setupShopMusic];
         [self loadInterface];
         
     }
@@ -59,8 +61,6 @@
 -(void)loadInterface{
     // Set background image
     [self addBackGround];
-    
-    [self setupShopMusic];
     
     // Retrieve total points
     [self getPoints];
@@ -191,7 +191,6 @@
 -(void) setupShopMusic{
     NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
     resourcePath = [resourcePath stringByAppendingString:@"/pokecenter sound.mp3"];
-    NSLog(@"Path to play: %@", resourcePath);
     NSError* err;
     
     //Initialize our player pointing to the path to our resource

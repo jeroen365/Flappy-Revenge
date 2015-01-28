@@ -26,6 +26,7 @@
     pipeDown.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeDown.size];
     pipeDown.name = @"pipe";
     pipeDown.physicsBody.dynamic = NO;
+ 
     
     
     return pipeDown;
@@ -40,6 +41,8 @@
     pipeTop.name = @"pipe";
     pipeTop.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeTop.size];
     pipeTop.physicsBody.dynamic = NO;
+
+    
     
     return pipeTop;
 
