@@ -77,10 +77,8 @@
     
     // Add Shopitems
     ShopItems* shopItems = [[ShopItems alloc] initWithSize: CGSizeMake(CGRectGetWidth(self.frame)-25, 400)];
-    //shopItems.size = CGSizeMake(CGRectGetWidth(self.frame)-25, 400);
     shopItems.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + 100);
     shopItems.zPosition = 100;
-    shopItems.color = [SKColor colorWithWhite:1 alpha:0.8];
     [self addChild:shopItems];
 }
 

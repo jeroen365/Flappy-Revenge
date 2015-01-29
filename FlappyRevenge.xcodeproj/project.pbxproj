@@ -43,6 +43,7 @@
 		44DBEA4F1A6D278400345928 /* VISITOR.FON in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA491A6D278400345928 /* VISITOR.FON */; };
 		44ED6D0C1A7A6E1700857F9C /* GameMenuItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */; };
 		44ED6D0F1A7A77EA00857F9C /* InterfaceButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D0E1A7A77EA00857F9C /* InterfaceButtons.m */; };
+		44ED6D111A7A862900857F9C /* HighScoreSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 44ED6D101A7A862900857F9C /* HighScoreSound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuItems.m; sourceTree = "<group>"; };
 		44ED6D0D1A7A77EA00857F9C /* InterfaceButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceButtons.h; sourceTree = "<group>"; };
 		44ED6D0E1A7A77EA00857F9C /* InterfaceButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterfaceButtons.m; sourceTree = "<group>"; };
+		44ED6D101A7A862900857F9C /* HighScoreSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HighScoreSound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				442F0CF01A79409600B26392 /* ButtonPress.mp3 */,
 				4405BA221A783EE100CBE398 /* LaserSound2.mp3 */,
 				4405BA241A78419300CBE398 /* JumpSound.wav */,
+				44ED6D101A7A862900857F9C /* HighScoreSound.mp3 */,
 				4405BA261A78450D00CBE398 /* BirdDied.wav */,
 			);
 			name = Resources;
@@ -347,6 +350,7 @@
 				17B346251A66821000946A2E /* GameScene.sks in Resources */,
 				17B346341A66827400946A2E /* Views.jpg in Resources */,
 				442F0CF11A79409600B26392 /* ButtonPress.mp3 in Resources */,
+				44ED6D111A7A862900857F9C /* HighScoreSound.mp3 in Resources */,
 				17B346311A66827400946A2E /* gameplay.PNG in Resources */,
 				4405BA271A78450D00CBE398 /* BirdDied.wav in Resources */,
 			);

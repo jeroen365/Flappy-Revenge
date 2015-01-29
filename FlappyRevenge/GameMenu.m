@@ -16,6 +16,14 @@
 - (id)initWithSize: (CGSize)size and:(NSInteger)score and:(NSInteger)highScore {
     self = [super init];
     
+//    SKTexture* backgroundMenu = [SKTexture textureWithImageNamed:@"GameMenu"];
+//    backgroundMenu.filteringMode = SKTextureFilteringNearest;
+//    SKSpriteNode* background = [SKSpriteNode spriteNodeWithTexture:backgroundMenu];
+//    background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + 75);
+//    background.size = size;
+//    background.alpha = 0.8;
+//    [self addChild:background];
+    
     // Initialize first label, then position other labels under the next
     SKLabelNode* scoreLabelText = [GameMenuItems showScoreLabelText];
     scoreLabelText.position = CGPointMake(CGRectGetMidX(self.frame), 300);
@@ -47,4 +55,5 @@
 
     return self;
 }
+
 @end

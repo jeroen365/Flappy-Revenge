@@ -27,12 +27,8 @@
     
     // Menu labels
     SKSpriteNode* playGameButton;
-    SKSpriteNode* retryGameButton;
-    SKSpriteNode* shopGameButton;
     SKSpriteNode* fireButton;
-    SKLabelNode *fireLabel;
-    NSInteger totalPoints;
-    SKSpriteNode* birdLaserTemp;
+    SKSpriteNode* birdLaser;
     SKLabelNode* scoreLabel;
     CGFloat scoreLabelMid;
 
@@ -53,6 +49,7 @@
     SKAction* birdDiesSoundAction;
     SKAction* buttonPressSoundAction;
     SKAction* scoreSoundAction;
+    SKAction* highScoreSoundAction;
 }
 
 
@@ -81,7 +78,8 @@ static const uint32_t scoreCategory = 1 << 4;
     birdDiesSoundAction = [SKAction playSoundFileNamed:@"BirdDied.wav" waitForCompletion:NO];
     buttonPressSoundAction = [SKAction playSoundFileNamed:@"ButtonPress.mp3" waitForCompletion:NO];
     scoreSoundAction = [SKAction playSoundFileNamed:@"Score.wav" waitForCompletion:NO];
-    
+    highScoreSoundAction = [SKAction playSoundFileNamed:@"HighScoreSound.mp3" waitForCompletion:NO];
+
     [self initializeGame];
 }
 
@@ -95,8 +93,6 @@ static const uint32_t scoreCategory = 1 << 4;
     // Lower is faster
     gameSpeed = 0.005;
     
-
-    
     // Reset score
     score = 0;
     moving.speed = 1;
@@ -108,11 +104,10 @@ static const uint32_t scoreCategory = 1 << 4;
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     self.physicsBody.categoryBitMask = worldCategory;
     
-    // show menu
+    // Show Play Game Button
     playGameButton = [InterfaceButtons showPlayGameButton];
     [playGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame)+5,CGRectGetMidY(self.frame)-40)];
     [self addChild:playGameButton];
-    
     
     scoreLabel = [GameMenuItems scoreLabel:score];
     scoreLabelMid = scoreLabel.fontSize / 4;
@@ -128,6 +123,8 @@ static const uint32_t scoreCategory = 1 << 4;
     numLasers = [Inventory integerForKey:@"numLasers"];
     highScore = [Inventory integerForKey:@"highScore"];
     [self checkForEasyGameTokens];
+    if (numLasers > 0)
+        [self addFireButton];
 
     // Add Objects
     [self addBird];
@@ -138,18 +135,16 @@ static const uint32_t scoreCategory = 1 << 4;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (startGame == NO){
-        // if screen is touched while playbutton shows
-        [self beginGame];
-        
-        
-    }
     // Check for user interaction
+    if (startGame == NO)
+        [self beginGame];
+    
+    // Set variables interaction
     for (UITouch* touch in touches){
         CGPoint location = [touch locationInNode:self];
         SKNode *node = [self nodeAtPoint:location];
         
-        // During the game
+        // Touches during the game
         if(moving.speed > 0 & startGame == YES){
             [bird fly];
             [self runAction:birdJumpSoundAction];
@@ -177,15 +172,7 @@ static const uint32_t scoreCategory = 1 << 4;
     if(moving.speed > 0){
         if( ( contact.bodyA.categoryBitMask ) == scoreCategory || ( contact.bodyB.categoryBitMask ) == scoreCategory ) {
             // Bird passed scorenode
-            score++;
-            [self runAction:scoreSoundAction];
-            if (score >= 10){
-                scoreLabel.fontSize = 550;
-                if (score >= 100){
-                    scoreLabel.fontSize = 400;
-                }
-            }
-            scoreLabel.text = [NSString stringWithFormat:@"%ld", score];
+            [self updateScore];
         }
         else if( ( contact.bodyA.categoryBitMask ) == laserCategory|| ( contact.bodyB.categoryBitMask) == laserCategory ) {
             // Laser hit Pipe
@@ -194,17 +181,29 @@ static const uint32_t scoreCategory = 1 << 4;
         }
         else if( ( contact.bodyA.categoryBitMask ) == birdCategory || ( contact.bodyB.categoryBitMask ) == birdCategory ) {
             // Bird dies
-            [self dieScene];
-            [self showGameOverMenu];
+            [self stopScene];
+            bool finished = [self hitAnimation];
+            if (finished)
+                [self showGameOverMenu];
         }
     }
 }
 
+-(void) updateScore{
+    score++;
+    [self runAction:scoreSoundAction];
+    if (score >= 10){
+        scoreLabel.fontSize = 550;
+        if (score >= 100){
+            scoreLabel.fontSize = 400;
+        }
+    }
+    scoreLabel.text = [NSString stringWithFormat:@"%ld", score];
+}
 
 -(void) savePoints{
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
-    NSInteger totalPointsTemp = [Inventory integerForKey:@"totalPoints"];
-    totalPoints = totalPointsTemp;
+    NSInteger totalPoints = [Inventory integerForKey:@"totalPoints"];
     totalPoints += score;
     NSLog(@"totalPoints %ld",(long)totalPoints);
     [Inventory setInteger:totalPoints forKey:@"totalPoints"];
@@ -237,7 +236,6 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     [self removeAllActions];
     [bird removeActionForKey:@"flyIddle"];
     self.physicsWorld.gravity = CGVectorMake( 0.0, -7 );
-    [self addFireButton];
     [self generateWorld];
 }
 
@@ -261,19 +259,18 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
 
 -(void) fireLaser{
-    //SKSpriteNode* birdLaserTemp = [birdLasers objectAtIndex: numLasers - 1];
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     numLasers = [Inventory integerForKey:@"numLasers"];
-    NSLog(@"numLasers %ld", (long)numLasers);
+
     if (numLasers > 0){
         [self createLaser];
         [self runAction:laserFireSoundAction];
         numLasers--;
         
-        birdLaserTemp.physicsBody.velocity = CGVectorMake(0, 0);
-        [birdLaserTemp.physicsBody applyImpulse:CGVectorMake(180, 0)];
+        birdLaser.physicsBody.velocity = CGVectorMake(0, 0);
+        [birdLaser.physicsBody applyImpulse:CGVectorMake(180, 0)];
         
-        fireLabel.text = [NSString stringWithFormat:@"%ld",numLasers];
+        [self updateFireButton];
         [Inventory setInteger:numLasers forKey:@"numLasers"];
     }
 }
@@ -282,23 +279,21 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     SKTexture* birdLaserTexture =[SKTexture textureWithImageNamed:@"Laserbeam"];
     birdLaserTexture.filteringMode = SKTextureFilteringNearest;
     
-    birdLaserTemp = [SKSpriteNode spriteNodeWithTexture:birdLaserTexture];
+    birdLaser = [SKSpriteNode spriteNodeWithTexture:birdLaserTexture];
 
-    birdLaserTemp.position = CGPointMake(bird.position.x+birdLaserTemp.size.width/2, bird.position.y);
-    birdLaserTemp.name = @"laser";
-    birdLaserTemp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:birdLaserTemp.size];
-    birdLaserTemp.physicsBody.dynamic = YES;
-    birdLaserTemp.physicsBody.allowsRotation = NO;
-    birdLaserTemp.physicsBody.affectedByGravity = NO;
-    birdLaserTemp.physicsBody.mass = 0.1;
-    birdLaserTemp.physicsBody.linearDamping = 0.0;
-    birdLaserTemp.physicsBody.categoryBitMask = laserCategory;
-    birdLaserTemp.physicsBody.contactTestBitMask = pipeCategory;
-    birdLaserTemp.physicsBody.collisionBitMask = pipeCategory;
+    birdLaser.position = CGPointMake(bird.position.x+birdLaser.size.width/2, bird.position.y);
+    birdLaser.name = @"laser";
+    birdLaser.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:birdLaser.size];
+    birdLaser.physicsBody.dynamic = YES;
+    birdLaser.physicsBody.allowsRotation = NO;
+    birdLaser.physicsBody.affectedByGravity = NO;
+    birdLaser.physicsBody.mass = 0.1;
+    birdLaser.physicsBody.linearDamping = 0.0;
+    birdLaser.physicsBody.categoryBitMask = laserCategory;
+    birdLaser.physicsBody.contactTestBitMask = pipeCategory;
+    birdLaser.physicsBody.collisionBitMask = pipeCategory;
     
-    
-    [self addChild:birdLaserTemp];
-
+    [self addChild:birdLaser];
 }
 
 -(void) checkForEasyGameTokens{
@@ -316,7 +311,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
         NSLog(@"normal");
     }
 }
--(void)dieScene{
+-(void)stopScene{
     // Bird hit anything visible and dies, stop scene
     moving.speed = 0;
     gameOver = YES;
@@ -325,7 +320,11 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     bird.physicsBody.collisionBitMask = worldCategory;
     bird.speed = 0;
     
+}
+
+-(BOOL) hitAnimation{
     // Flash background if bird dies
+    NSLog(@"jaja");
     [self removeActionForKey:@"flash"];
     [self runAction:[SKAction sequence:@[[SKAction repeatAction:[SKAction sequence:@[[SKAction runBlock:^{
         self.backgroundColor = [SKColor colorWithRed:255.0/255.0 green:150.0/255.0 blue:180.0/255.0 alpha:1.0];
@@ -333,17 +332,20 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
         self.backgroundColor = skyColor;
     }], [SKAction waitForDuration:0.1]]] count:4]]] withKey:@"flash"];
     [self runAction:birdDiesSoundAction];
-
+    return true;
 }
 
 -(void) showGameOverMenu{
     
     if ([self checkHighScore]){
         NSLog(@"yay");
+        [self runAction:highScoreSoundAction];
+        // highscore sound
     }
     
-    GameMenu* gameOverMenu = [[GameMenu alloc] initWithSize: CGSizeMake(CGRectGetMidX(self.frame) / 2, CGRectGetHeight(self.frame)) and:score and:highScore];
-    gameOverMenu.size = CGSizeMake(CGRectGetMidX(self.frame) / 2, CGRectGetHeight(self.frame) - 100);
+    NSLog(@"size x %f, size y %f",CGRectGetMidX(self.frame) / 2, CGRectGetHeight(self.frame) );
+    
+    GameMenu* gameOverMenu = [[GameMenu alloc] initWithSize: CGSizeMake(CGRectGetMidX(self.frame) / 2, CGRectGetHeight(self.frame) - 200) and:score and:highScore];
     gameOverMenu.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) );
     gameOverMenu.zPosition = 100;
     gameOverMenu.color = [SKColor colorWithWhite:1 alpha:0.8];
@@ -496,6 +498,10 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     fireButton.zPosition = 100;
     [self addChild:fireButton];
     
+}
+-(void) updateFireButton{
+    [fireButton removeFromParent];
+    [self addFireButton];
 }
 
 -(void) switchToShopScene{
