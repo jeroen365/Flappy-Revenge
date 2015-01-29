@@ -2,6 +2,8 @@
 //  GameViewController.m
 //  FlappyBirdXL
 //
+//  Is initial ViewController, presents the GameScene.
+//
 //  Created by Jeroen van der Es on 20-12-14.
 //  Copyright (c) 2014 Jeroen van der Es. All rights reserved.
 //
@@ -36,8 +38,7 @@
     
     // Configure the view.
     SKView * skView = (SKView *)self.view;
-//    skView.showsFPS = YES;
-//    skView.showsNodeCount = YES;
+
     /* Sprite Kit applies additional optimizations to improve rendering performance */
     skView.ignoresSiblingOrder = YES;
     

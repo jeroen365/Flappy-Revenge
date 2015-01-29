@@ -154,6 +154,7 @@ static const uint32_t scoreCategory = 1 << 4;
         if(moving.speed > 0 & startGame == YES){
             [bird fly];
             [self runAction:birdJumpSoundAction];
+            // Fire laser is fireButton is touched while player has a laser
             if (numLasers > 0) {
                 if ([node.name isEqualToString:@"fireButton"]){
                     NSLog(@"yes");
@@ -163,10 +164,12 @@ static const uint32_t scoreCategory = 1 << 4;
         }
         // Touches in the game over menu
         else if (gameOver == YES){
+            // Retry button touched, reset scene
             if ([node.name isEqualToString:@"retryButton"]){
                 [self runAction:buttonPressSoundAction];
                 [self resetScene];
             }
+            // Shop button touched, switch to shop 
             if ([node.name isEqualToString:@"shopButton"]){
                 [self runAction:buttonPressSoundAction];
                 [self switchToShopScene];
@@ -188,7 +191,7 @@ static const uint32_t scoreCategory = 1 << 4;
             [contact.bodyB.node removeFromParent];
         }
         else if( ( contact.bodyA.categoryBitMask ) == birdCategory || ( contact.bodyB.categoryBitMask ) == birdCategory ) {
-            // Bird dies
+            // Bird hit anything visible and dies, stop scene
             [self stopScene];
             [self hitAnimation];
             [self showGameOverMenu];
@@ -199,12 +202,14 @@ static const uint32_t scoreCategory = 1 << 4;
 -(void) updateScore{
     score++;
     [self runAction:scoreSoundAction];
+    // If score is to large, lower the font
     if (score >= 10){
         scoreLabel.fontSize = 550;
         if (score >= 100){
             scoreLabel.fontSize = 400;
         }
     }
+    // Update the scorelabel
     scoreLabel.text = [NSString stringWithFormat:@"%ld", score];
 }
 
@@ -229,13 +234,14 @@ static const uint32_t scoreCategory = 1 << 4;
 }
 
 -(void) resetScene{
-    
+    // Remove current scene and re-initialize
     gameOver = NO;
     [self removeAllChildren];
     [self initializeGame];
 }
 
 -(void)generateWorld {
+    // Spawn pipes forever
     SKAction* spawn = [SKAction performSelector:@selector(spawnPipes) onTarget:self];
     SKAction* delay = [SKAction waitForDuration:1.5];
     SKAction* spawnThenDelay = [SKAction sequence:@[spawn, delay]];
@@ -245,8 +251,10 @@ static const uint32_t scoreCategory = 1 << 4;
 
 
 -(void) checkForEasyGameTokens{
+    // Loads easyGameTokens
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     NSInteger easyGameTokens = [Inventory integerForKey:@"easyGameTokens"];
+    // If any tokens, widen the pipeGap
     if (easyGameTokens > 0){
         kVerticalPipeGap = 170;
         NSLog(@"easy");
@@ -260,7 +268,7 @@ static const uint32_t scoreCategory = 1 << 4;
     }
 }
 -(void)stopScene{
-    // Bird hit anything visible and dies, stop scene
+    // Stops animating the scene
     moving.speed = 0;
     gameOver = YES;
     [scoreLabel removeFromParent];
@@ -271,7 +279,9 @@ static const uint32_t scoreCategory = 1 << 4;
 }
 
 -(BOOL) checkHighScore{
+    // Load highscore
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
+    // If highscore is broken, set new highscore
     if (score> highScore){
         highScore = score;
         [Inventory setInteger:highScore forKey:@"highScore"];
@@ -281,12 +291,13 @@ static const uint32_t scoreCategory = 1 << 4;
 }
 
 -(void) showGameOverMenu{
-    
+    // Check for highscore
     if ([self checkHighScore])
         [self runAction:highScoreSoundAction];
     
     [self savePointsToInventory];
     
+    // Initializes and shows gameOverMenu
     GameMenu* gameOverMenu = [[GameMenu alloc] initWithSize: CGSizeMake(CGRectGetMidX(self.frame) / 2, CGRectGetHeight(self.frame) - 200) and:score and:highScore];
     gameOverMenu.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) );
     gameOverMenu.zPosition = 100;
@@ -295,13 +306,13 @@ static const uint32_t scoreCategory = 1 << 4;
 
 -(void) hitAnimation{
     // Flash background if bird dies
-    NSLog(@"jaja");
     [self removeActionForKey:@"flash"];
     [self runAction:[SKAction sequence:@[[SKAction repeatAction:[SKAction sequence:@[[SKAction runBlock:^{
         self.backgroundColor = [SKColor colorWithRed:255.0/255.0 green:150.0/255.0 blue:180.0/255.0 alpha:1.0];
     }], [SKAction waitForDuration:0.1], [SKAction runBlock:^{
         self.backgroundColor = skyColor;
     }], [SKAction waitForDuration:0.1]]] count:4]]] withKey:@"flash"];
+    
     [self runAction:birdDiesSoundAction];
 }
 
@@ -316,21 +327,23 @@ static const uint32_t scoreCategory = 1 << 4;
 }
 
 -(void)addSkyline{
-    // Load skyline
+    // Load skyline texture
     skylineTexture = [GameBackGround loadSkyline];
     
     [self loadAnimationSkyline];
     
+    // Places several sprites next to eachother to fill the screen
     for( int i = 0; i < 2 + self.frame.size.width / ( skylineTexture.size.width ); ++i ) {
-        SKSpriteNode* sprite = [SKSpriteNode spriteNodeWithTexture:skylineTexture];
-        sprite.zPosition = -20;
-        sprite.position = CGPointMake(i * sprite.size.width, groundTexture.size.height / 2);
-        [sprite runAction: moveSkylineSpritesForever];
-        [moving addChild:sprite];
+        SKSpriteNode* skylineSprite = [SKSpriteNode spriteNodeWithTexture:skylineTexture];
+        skylineSprite.zPosition = -20;
+        skylineSprite.position = CGPointMake(i * skylineSprite.size.width, groundTexture.size.height / 2);
+        [skylineSprite runAction: moveSkylineSpritesForever];
+        [moving addChild:skylineSprite];
     }
 }
 
 -(void) loadAnimationSkyline{
+    // Moves skylineSprites to the left then resets them, forever
     SKAction* moveSkylineSprite = [SKAction moveByX:-skylineTexture.size.width*2 y:0 duration:0.05 * skylineTexture.size.width*2];
     SKAction* resetSkylineSprite = [SKAction moveByX:skylineTexture.size.width*2 y:0 duration:0];
     moveSkylineSpritesForever = [SKAction repeatActionForever:[SKAction sequence:@[moveSkylineSprite, resetSkylineSprite]]];
@@ -346,7 +359,7 @@ static const uint32_t scoreCategory = 1 << 4;
 
 -(void)spawnPipes {
     
-    // Random y to generate random height pipes
+    // Generate random y to generate random height pipes
     float y = [self randomValueBetween:CGRectGetHeight(self.frame) / 15  andValue:  CGRectGetHeight(self.frame) /3];
     
     pipeDown = [GameBackGround addPipeDown];
@@ -363,12 +376,7 @@ static const uint32_t scoreCategory = 1 << 4;
 }
 
 -(void) animatePipes{
-    // Moving Pipes function
-    CGFloat distanceToMove = self.frame.size.width + 2 * pipeDown.size.width;
-    SKAction* movePipes = [SKAction moveByX:-distanceToMove y:0 duration:gameSpeed * distanceToMove];
-    SKAction* removePipes = [SKAction removeFromParent];
-    moveAndRemovePipes = [SKAction sequence:@[movePipes, removePipes]];
-    
+    // Add both pipes to 1 pair node
     pipePair = [SKNode node];
     pipePair.position = CGPointMake( self.frame.size.width + pipeDown.size.width, 0 );
     pipePair.zPosition = -10;
@@ -376,13 +384,24 @@ static const uint32_t scoreCategory = 1 << 4;
     [pipePair addChild:pipeDown];
     [pipePair addChild:pipeTop];
     
+    // Animate the pipes
+    [self loadAnimationPipes];
     [pipePair runAction:moveAndRemovePipes];
     [moving addChild:pipePair];
  
 }
 
+-(void) loadAnimationPipes{
+    // Moving Pipes function
+    CGFloat distanceToMove = self.frame.size.width + 2 * pipeDown.size.width;
+    SKAction* movePipes = [SKAction moveByX:-distanceToMove y:0 duration:gameSpeed * distanceToMove];
+    SKAction* removePipes = [SKAction removeFromParent];
+    moveAndRemovePipes = [SKAction sequence:@[movePipes, removePipes]];
+
+}
+
 -(void) addScoreNode{
-    // Score node
+    // Load scoreNode
     SKNode* scoreNode = [SKNode node];
     scoreNode.position = CGPointMake( pipeDown.size.width + bird.size.width / 2, CGRectGetMidY( self.frame ) );
     scoreNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake( pipeTop.size.width, self.frame.size.height )];
@@ -390,27 +409,30 @@ static const uint32_t scoreCategory = 1 << 4;
     scoreNode.physicsBody.categoryBitMask = scoreCategory;
     scoreNode.physicsBody.contactTestBitMask = birdCategory;
     
+    // Add scoreNode to the pipePair
     [pipePair addChild:scoreNode];
 }
 
 -(void)addGround{
-    // Load ground
+    // Load ground texture
     groundTexture = [GameBackGround loadGround];
     
     [self loadAnimationGround];
     
+    // Places several sprites next to eachother to fill the screen
     for( int i = 0; i < 2 + self.frame.size.width / ( groundTexture.size.width ); ++i ) {
-        SKSpriteNode* sprite = [SKSpriteNode spriteNodeWithTexture:groundTexture];
-        sprite.position = CGPointMake(i * sprite.size.width, groundTexture.size.height / 2);
-        [sprite runAction:moveGroundSpritesForever];
-        sprite.name = @"world";
-        [moving addChild:sprite];
+        SKSpriteNode* groundSprite = [SKSpriteNode spriteNodeWithTexture:groundTexture];
+        groundSprite.position = CGPointMake(i * groundSprite.size.width, groundTexture.size.height / 2);
+        [groundSprite runAction:moveGroundSpritesForever];
+        groundSprite.name = @"world";
+        [moving addChild:groundSprite];
     }
     [self addGroundPhysics];
 
 }
 
 -(void) loadAnimationGround{
+     // Moves groundSprites to the left then resets them, forever
     SKAction* moveGroundSprite = [SKAction moveByX:-groundTexture.size.width * 2 y:0 duration:gameSpeed * groundTexture.size.width*2];
     SKAction* resetGroundSprite = [SKAction moveByX:groundTexture.size.width * 2 y:0 duration:0];
     moveGroundSpritesForever = [SKAction repeatActionForever:[SKAction sequence:@[moveGroundSprite, resetGroundSprite]]];
@@ -429,18 +451,16 @@ static const uint32_t scoreCategory = 1 << 4;
 }
 
 -(void) addFireButton{
+    // Load fireButton node
     fireButton = [InterfaceButtons showFireButton:numLasers];
     [fireButton setPosition:CGPointMake(CGRectGetWidth(self.frame) / 3 + 10, CGRectGetHeight(self.frame) / 10 + 10)];
     fireButton.zPosition = 100;
     [self addChild:fireButton];
     
 }
--(void) updateFireButton{
-    [fireButton removeFromParent];
-    [self addFireButton];
-}
 
 -(void) fireLaser{
+    // Get amount of lasers
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     numLasers = [Inventory integerForKey:@"numLasers"];
     
@@ -458,7 +478,14 @@ static const uint32_t scoreCategory = 1 << 4;
     }
 }
 
+-(void) updateFireButton{
+    // Update the counter on the fireButton
+    [fireButton removeFromParent];
+    [self addFireButton];
+}
+
 -(void) createLaser{
+    // Load birdLaserNode
     birdLaser = [BirdLaser loadLaser];
     birdLaser.position = CGPointMake(bird.position.x+birdLaser.size.width/2, bird.position.y);
     birdLaser.physicsBody.categoryBitMask = laserCategory;
@@ -498,8 +525,8 @@ static const uint32_t scoreCategory = 1 << 4;
     }
 }
 
--(void)doVolumeFade
-{
+-(void)doVolumeFade{
+    // Initializes a volumeFade for scene switch
     if (self.player.volume > 0.1) {
         self.player.volume = self.player.volume - 0.1;
         [self performSelector:@selector(doVolumeFade) withObject:nil afterDelay:0.1];
@@ -513,6 +540,7 @@ static const uint32_t scoreCategory = 1 << 4;
 }
 
 CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
+    // Creates value to rotate the bird as he moves
     if( value > max ) {
         return max;
     } else if( value < min ) {
@@ -523,6 +551,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 }
 
 -(void)update:(CFTimeInterval)currentTime {
+    // Rotates bird according to velocity
     if(startGame == YES){
         bird.zRotation = clamp( -1, 0.5, bird.physicsBody.velocity.dy * ( bird.physicsBody.velocity.dy < 0 ? 0.003 : 0.001 ) );
     }

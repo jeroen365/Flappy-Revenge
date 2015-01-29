@@ -158,6 +158,7 @@
 -(void) boughtLaserBundle{
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     [self substractPoints];
+    
     // Add 3 lasers to inventory
     numLasers = [Inventory integerForKey:@"numLasers"];
     numLasers += 3;
@@ -168,6 +169,7 @@
 }
 
 -(void) boughtMechaFlappy{
+    // Sets mechaFlappy skin
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     [self substractPoints];
     
@@ -234,8 +236,8 @@
     }
 }
 
--(void)doVolumeFade
-{
+-(void)doVolumeFade{
+    // Initializes a volumeFade for scene switch
     if (self.player.volume > 0.1) {
         self.player.volume = self.player.volume - 0.1;
         [self performSelector:@selector(doVolumeFade) withObject:nil afterDelay:0.1];
