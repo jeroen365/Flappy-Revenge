@@ -25,7 +25,6 @@
 		4405BA251A78419300CBE398 /* JumpSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4405BA241A78419300CBE398 /* JumpSound.wav */; };
 		4405BA271A78450D00CBE398 /* BirdDied.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4405BA261A78450D00CBE398 /* BirdDied.wav */; };
 		440A98BC1A7669B60054121F /* pokecenter sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 440A98BB1A7669B60054121F /* pokecenter sound.mp3 */; };
-		440A98BF1A766BB40054121F /* ShopMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = 440A98BE1A766BB40054121F /* ShopMusic.m */; };
 		442F0CEF1A793EC500B26392 /* Score.wav in Resources */ = {isa = PBXBuildFile; fileRef = 442F0CEE1A793EC500B26392 /* Score.wav */; };
 		442F0CF11A79409600B26392 /* ButtonPress.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 442F0CF01A79409600B26392 /* ButtonPress.mp3 */; };
 		44DBD06A1A7079390059123F /* ShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DBD0691A7079390059123F /* ShopScene.m */; };
@@ -45,6 +44,7 @@
 		44ED6D0F1A7A77EA00857F9C /* InterfaceButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D0E1A7A77EA00857F9C /* InterfaceButtons.m */; };
 		44ED6D111A7A862900857F9C /* HighScoreSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 44ED6D101A7A862900857F9C /* HighScoreSound.mp3 */; };
 		44ED6D141A7A9D8100857F9C /* BirdLaser.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D131A7A9D8100857F9C /* BirdLaser.m */; };
+		44ED6D171A7AB72000857F9C /* GameMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D161A7AB72000857F9C /* GameMusic.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,8 +84,6 @@
 		4405BA241A78419300CBE398 /* JumpSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = JumpSound.wav; sourceTree = "<group>"; };
 		4405BA261A78450D00CBE398 /* BirdDied.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BirdDied.wav; sourceTree = "<group>"; };
 		440A98BB1A7669B60054121F /* pokecenter sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pokecenter sound.mp3"; sourceTree = "<group>"; };
-		440A98BD1A766BB40054121F /* ShopMusic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopMusic.h; sourceTree = "<group>"; };
-		440A98BE1A766BB40054121F /* ShopMusic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopMusic.m; sourceTree = "<group>"; };
 		442F0CEE1A793EC500B26392 /* Score.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Score.wav; sourceTree = "<group>"; };
 		442F0CF01A79409600B26392 /* ButtonPress.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ButtonPress.mp3; sourceTree = "<group>"; };
 		44DBD0681A7079390059123F /* ShopScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopScene.h; sourceTree = "<group>"; };
@@ -109,6 +107,8 @@
 		44ED6D101A7A862900857F9C /* HighScoreSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HighScoreSound.mp3; sourceTree = "<group>"; };
 		44ED6D121A7A9D8100857F9C /* BirdLaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdLaser.h; sourceTree = "<group>"; };
 		44ED6D131A7A9D8100857F9C /* BirdLaser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdLaser.m; sourceTree = "<group>"; };
+		44ED6D151A7AB71F00857F9C /* GameMusic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMusic.h; sourceTree = "<group>"; };
+		44ED6D161A7AB72000857F9C /* GameMusic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMusic.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,16 +159,10 @@
 				17B346201A66821000946A2E /* GameViewController.m */,
 				17B3461B1A66821000946A2E /* GameScene.h */,
 				17B3461C1A66821000946A2E /* GameScene.m */,
-				44ED6D121A7A9D8100857F9C /* BirdLaser.h */,
-				44ED6D131A7A9D8100857F9C /* BirdLaser.m */,
 				44DBD0681A7079390059123F /* ShopScene.h */,
 				44DBD0691A7079390059123F /* ShopScene.m */,
-				440A98BD1A766BB40054121F /* ShopMusic.h */,
-				440A98BE1A766BB40054121F /* ShopMusic.m */,
-				44DBD06E1A7154370059123F /* ShopItem.h */,
-				44DBD06F1A7154370059123F /* ShopItem.m */,
-				44DBD06B1A7145580059123F /* ShopItems.h */,
-				44DBD06C1A7145580059123F /* ShopItems.m */,
+				44ED6D151A7AB71F00857F9C /* GameMusic.h */,
+				44ED6D161A7AB72000857F9C /* GameMusic.m */,
 				44DBEA431A6D254100345928 /* Resources */,
 				17B345EC1A66811200946A2E /* Supporting Files */,
 			);
@@ -210,6 +204,8 @@
 				44DBEA3E1A6BC07100345928 /* GameBackGround.m */,
 				17B346151A66821000946A2E /* GameBird.h */,
 				17B346161A66821000946A2E /* GameBird.m */,
+				44ED6D121A7A9D8100857F9C /* BirdLaser.h */,
+				44ED6D131A7A9D8100857F9C /* BirdLaser.m */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -234,6 +230,10 @@
 				44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */,
 				44ED6D0D1A7A77EA00857F9C /* InterfaceButtons.h */,
 				44ED6D0E1A7A77EA00857F9C /* InterfaceButtons.m */,
+				44DBD06E1A7154370059123F /* ShopItem.h */,
+				44DBD06F1A7154370059123F /* ShopItem.m */,
+				44DBD06B1A7145580059123F /* ShopItems.h */,
+				44DBD06C1A7145580059123F /* ShopItems.m */,
 			);
 			name = GameMenu;
 			sourceTree = "<group>";
@@ -379,10 +379,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				440A98BF1A766BB40054121F /* ShopMusic.m in Sources */,
 				17B346211A66821000946A2E /* GameBird.m in Sources */,
 				44ED6D141A7A9D8100857F9C /* BirdLaser.m in Sources */,
 				17B346141A6681FC00946A2E /* AppDelegate.m in Sources */,
+				44ED6D171A7AB72000857F9C /* GameMusic.m in Sources */,
 				44DBD06A1A7079390059123F /* ShopScene.m in Sources */,
 				44DBD06D1A7145580059123F /* ShopItems.m in Sources */,
 				17B346271A66821000946A2E /* GameViewController.m in Sources */,

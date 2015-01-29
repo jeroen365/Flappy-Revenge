@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "GameBird.h"
 #import "InterfaceButtons.h"
+#import "GameMusic.h"
 #import "GameMenu.h"
 #import "GameMenuItems.h"
 #import "GameBackGround.h"
@@ -479,14 +480,9 @@ static const uint32_t scoreCategory = 1 << 4;
 }
 
 -(void) setupGameMusic{
-    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
-    resourcePath = [resourcePath stringByAppendingString:@"/GameSceneMusic.mp3"];
-    
-    NSError* err;
-    
     //Initialize our player pointing to the path to our resource
-    player = [[AVAudioPlayer alloc] initWithContentsOfURL:
-              [NSURL fileURLWithPath:resourcePath] error:&err];
+    player = [GameMusic setupGameMusic];
+    NSError* err;
     
     if( err ){
         //bail!

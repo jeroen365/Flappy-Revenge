@@ -11,7 +11,7 @@
 #import "GameViewController.h"
 #import "ShopItems.h"
 #import "ShopItem.h"
-#import "ShopMusic.h"
+#import "GameMusic.h"
 
 
 
@@ -212,13 +212,9 @@
 }
 
 -(void) setupShopMusic{
-    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
-    resourcePath = [resourcePath stringByAppendingString:@"/pokecenter sound.mp3"];
-    NSError* err;
-    
     //Initialize our player pointing to the path to our resource
-    player = [[AVAudioPlayer alloc] initWithContentsOfURL:
-              [NSURL fileURLWithPath:resourcePath] error:&err];
+    player = [GameMusic setupShopMusic];
+    NSError* err;
     
     if( err ){
         //bail!
