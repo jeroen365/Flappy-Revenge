@@ -41,6 +41,7 @@
 		44DBEA4D1A6D278400345928 /* visitor2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA481A6D278400345928 /* visitor2.ttf */; };
 		44DBEA4E1A6D278400345928 /* VISITOR.FON in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA491A6D278400345928 /* VISITOR.FON */; };
 		44DBEA4F1A6D278400345928 /* VISITOR.FON in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA491A6D278400345928 /* VISITOR.FON */; };
+		44ED6D0C1A7A6E1700857F9C /* GameMenuItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,8 @@
 		44DBEA471A6D278400345928 /* visitor1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = visitor1.ttf; sourceTree = "<group>"; };
 		44DBEA481A6D278400345928 /* visitor2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = visitor2.ttf; sourceTree = "<group>"; };
 		44DBEA491A6D278400345928 /* VISITOR.FON */ = {isa = PBXFileReference; lastKnownFileType = file; path = VISITOR.FON; sourceTree = "<group>"; };
+		44ED6D0A1A7A6E1700857F9C /* GameMenuItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuItems.h; sourceTree = "<group>"; };
+		44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuItems.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +220,8 @@
 			children = (
 				44DBEA401A6BFAB200345928 /* GameMenu.h */,
 				44DBEA411A6BFAB200345928 /* GameMenu.m */,
+				44ED6D0A1A7A6E1700857F9C /* GameMenuItems.h */,
+				44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */,
 			);
 			name = GameMenu;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				44DBEA3F1A6BC07100345928 /* GameBackGround.m in Sources */,
 				44DBD0701A7154370059123F /* ShopItem.m in Sources */,
 				17B345EF1A66811200946A2E /* main.m in Sources */,
+				44ED6D0C1A7A6E1700857F9C /* GameMenuItems.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
