@@ -82,10 +82,10 @@ static const uint32_t scoreCategory = 1 << 4;
     buttonPressSoundAction = [SKAction playSoundFileNamed:@"ButtonPress.mp3" waitForCompletion:NO];
     scoreSoundAction = [SKAction playSoundFileNamed:@"Score.wav" waitForCompletion:NO];
     
-    [self beginGame];
+    [self initializeGame];
 }
 
--(void)beginGame{
+-(void)initializeGame{
     // initialize world
     
     // Set global node for moving the world
@@ -140,47 +140,33 @@ static const uint32_t scoreCategory = 1 << 4;
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if (startGame == NO){
         // if screen is touched while playbutton shows
-        
-        // Start moving the world
-        startGame = YES;
-        moving.speed = 1;
-        [playGameButton removeFromParent];
-        [self removeAllActions];
-        [bird removeActionForKey:@"flyIddle"];
-        self.physicsWorld.gravity = CGVectorMake( 0.0, -7 );
-        [self addFireButton];
-        [self generateWorld];
+        [self beginGame];
         
         
     }
-    
-    if(moving.speed > 0 & startGame == YES){
-        [bird fly];
-        [self runAction:birdJumpSoundAction];
-        if (numLasers > 0) {
-            for (UITouch *touch in touches) {
-                CGPoint location = [touch locationInNode:self];
-                if ([fireButton containsPoint:location]){
+    // Check for user interaction
+    for (UITouch* touch in touches){
+        CGPoint location = [touch locationInNode:self];
+        SKNode *node = [self nodeAtPoint:location];
+        
+        // During the game
+        if(moving.speed > 0 & startGame == YES){
+            [bird fly];
+            [self runAction:birdJumpSoundAction];
+            if (numLasers > 0) {
+                if ([node.name isEqualToString:@"fireButton"])
                     [self fireLaser];
-                }
             }
         }
-    }
-    else if (gameOver == YES){
-        for (UITouch *touch in touches) {
-            CGPoint location = [touch locationInNode:self];
-            if ([retryGameButton containsPoint:location]){
+        // Touches in the game over menu
+        else if (gameOver == YES){
+            if ([node.name isEqualToString:@"retryButton"]){
                 [self runAction:buttonPressSoundAction];
                 [self resetScene];
             }
-            if ([shopGameButton containsPoint:location]){
-                // initiate switch to shopscene
-                [self doVolumeFade];
+            if ([node.name isEqualToString:@"shopButton"]){
                 [self runAction:buttonPressSoundAction];
-                SKTransition *reveal = [SKTransition fadeWithDuration:1];
-                ShopScene *scene = [ShopScene sceneWithSize:self.view.bounds.size];
-                scene.scaleMode = SKSceneScaleModeAspectFill;
-                [self.view presentScene:scene transition:reveal];
+                [self switchToShopScene];
             }
         }
     }
@@ -243,12 +229,23 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     }
 }
 
+-(void) beginGame{
+    // Start moving the world
+    startGame = YES;
+    moving.speed = 1;
+    [playGameButton removeFromParent];
+    [self removeAllActions];
+    [bird removeActionForKey:@"flyIddle"];
+    self.physicsWorld.gravity = CGVectorMake( 0.0, -7 );
+    [self addFireButton];
+    [self generateWorld];
+}
 
 -(void) resetScene{
     
     gameOver = NO;
     [self removeAllChildren];
-    [self beginGame];
+    [self initializeGame];
 }
 
 -(void)generateWorld {
@@ -416,30 +413,33 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     pipeDown = [GameBackGround addPipeDown];
     pipeDown.position = CGPointMake( 0, y );
     pipeDown.physicsBody.categoryBitMask = pipeCategory;
-    //pipeDown.physicsBody.contactTestBitMask = birdCategory | laserCategory;
     
     pipeTop = [GameBackGround addPipeTop];
     pipeTop.position = CGPointMake( 0, y + pipeDown.size.height + kVerticalPipeGap );
     pipeTop.physicsBody.categoryBitMask = pipeCategory;
-   // pipeTop.physicsBody.contactTestBitMask = birdCategory | laserCategory;
-
-    pipePair = [SKNode node];
-    pipePair.position = CGPointMake( self.frame.size.width + pipeDown.size.width, 0 );
-    pipePair.zPosition = -10;
-
-    [pipePair addChild:pipeDown];
-    [pipePair addChild:pipeTop];
     
-    
+    [self addScoreNode];
+    [self animatePipes];
+   
+}
+
+-(void) animatePipes{
     // Moving Pipes function
     CGFloat distanceToMove = self.frame.size.width + 2 * pipeDown.size.width;
     SKAction* movePipes = [SKAction moveByX:-distanceToMove y:0 duration:gameSpeed * distanceToMove];
     SKAction* removePipes = [SKAction removeFromParent];
     moveAndRemovePipes = [SKAction sequence:@[movePipes, removePipes]];
     
-    [self addScoreNode];
+    pipePair = [SKNode node];
+    pipePair.position = CGPointMake( self.frame.size.width + pipeDown.size.width, 0 );
+    pipePair.zPosition = -10;
+    
+    [pipePair addChild:pipeDown];
+    [pipePair addChild:pipeTop];
+    
     [pipePair runAction:moveAndRemovePipes];
     [moving addChild:pipePair];
+ 
 }
 
 -(void) addScoreNode{
@@ -480,7 +480,6 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 -(void) addGroundPhysics{
     
     // Create ground physics container
-    
     SKNode* groundBody = [SKNode node];
     groundBody.position = CGPointMake(0, groundTexture.size.height /2);
     groundBody.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.frame.size.width * 2, groundTexture.size.height)];
@@ -497,6 +496,17 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     fireButton.zPosition = 100;
     [self addChild:fireButton];
     
+}
+
+-(void) switchToShopScene{
+    // initiate switch to shopscene
+    [self doVolumeFade];
+    [self runAction:buttonPressSoundAction];
+    SKTransition *reveal = [SKTransition fadeWithDuration:1];
+    ShopScene *scene = [ShopScene sceneWithSize:self.view.bounds.size];
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    [self.view presentScene:scene transition:reveal];
+
 }
 
 -(void) setupGameMusic{

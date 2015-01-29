@@ -16,10 +16,9 @@
 - (id)initWithSize: (CGSize)size and:(NSInteger)score and:(NSInteger)highScore {
     self = [super init];
     
+    // Initialize first label, then position other labels under the next
     SKLabelNode* scoreLabelText = [GameMenuItems showScoreLabelText];
-    NSLog(@"size height %f", size.height);
     scoreLabelText.position = CGPointMake(CGRectGetMidX(self.frame), 300);
-    scoreLabelText.zPosition = 500;
     [self addChild:scoreLabelText];
     
     SKLabelNode* scoreLabel = [GameMenuItems scoreLabel:score];
@@ -45,7 +44,6 @@
     SKLabelNode* shopGameButton = [GameMenuItems showShopMenu];
     [shopGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame),retryGameButton.position.y- shopGameButton.frame.size.height)];
     [self addChild:shopGameButton];
-
 
     return self;
 }

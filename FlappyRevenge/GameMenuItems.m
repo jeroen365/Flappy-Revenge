@@ -17,6 +17,7 @@
     SKSpriteNode* retryGameButton = [SKSpriteNode spriteNodeWithImageNamed:@"Retrybutton"];
     retryGameButton.scale = 0.5;
     retryGameButton.zPosition = 100;
+    retryGameButton.name = @"retryButton";
     return retryGameButton;
 }
 
@@ -24,6 +25,7 @@
     SKSpriteNode* shopGameButton = [SKSpriteNode spriteNodeWithImageNamed:@"Shopbutton"];
     shopGameButton.scale = 0.5;
     shopGameButton.zPosition = 100;
+    shopGameButton.name = @"shopButton";
     return shopGameButton;
 }
 
@@ -43,7 +45,7 @@
     SKLabelNode* scoreLabelText = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];
     scoreLabelText.fontSize = 50;
     scoreLabelText.fontColor = [SKColor blackColor];
-    scoreLabelText.zPosition = 110;
+    scoreLabelText.zPosition = 100;
     scoreLabelText.text = [NSString stringWithFormat:@"Score"];
     return scoreLabelText;
 }
