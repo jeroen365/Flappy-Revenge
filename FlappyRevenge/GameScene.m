@@ -20,7 +20,6 @@
     GameBird* bird;
     SKColor* skyColor;
     SKTexture* groundTexture;
-    SKTexture* skylineTexture;
     SKSpriteNode* pipeDown;
     SKSpriteNode* pipeTop;
     SKNode* pipePair;
@@ -30,7 +29,6 @@
     SKSpriteNode* fireButton;
     SKSpriteNode* birdLaser;
     SKLabelNode* scoreLabel;
-    CGFloat scoreLabelMid;
 
     // GamePlay variables
     BOOL startGame;
@@ -110,8 +108,7 @@ static const uint32_t scoreCategory = 1 << 4;
     [self addChild:playGameButton];
     
     scoreLabel = [GameMenuItems scoreLabel:score];
-    scoreLabelMid = scoreLabel.fontSize / 4;
-    scoreLabel.position = CGPointMake( CGRectGetMidX( self.frame ), CGRectGetMidX(self.frame) - scoreLabelMid );
+    scoreLabel.position = CGPointMake( CGRectGetMidX( self.frame ), CGRectGetMidX(self.frame) - scoreLabel.fontSize / 4 );
     [self addChild:scoreLabel];
     
     // Set zero gravity to keep the bird in centre
@@ -338,9 +335,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 -(void) showGameOverMenu{
     
     if ([self checkHighScore]){
-        NSLog(@"yay");
         [self runAction:highScoreSoundAction];
-        // highscore sound
     }
     
     NSLog(@"size x %f, size y %f",CGRectGetMidX(self.frame) / 2, CGRectGetHeight(self.frame) );
@@ -380,7 +375,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
 -(void)addSkyline{
     // Load skyline
-    skylineTexture = [SKTexture textureWithImageNamed:@"Skyline"];
+    SKTexture* skylineTexture = [SKTexture textureWithImageNamed:@"Skyline"];
     skylineTexture.filteringMode = SKTextureFilteringNearest;
     
     // refractor: replace skylinetexture size with skylineNode size, load skylineNode in GameBackground.
