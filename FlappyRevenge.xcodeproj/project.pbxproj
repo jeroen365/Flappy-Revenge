@@ -243,9 +243,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		17B345E81A66811200946A2E /* FlappyRevenge */ = {
+		17B345E81A66811200946A2E /* Revenge */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 17B3460C1A66811200946A2E /* Build configuration list for PBXNativeTarget "FlappyRevenge" */;
+			buildConfigurationList = 17B3460C1A66811200946A2E /* Build configuration list for PBXNativeTarget "Revenge" */;
 			buildPhases = (
 				17B345E51A66811200946A2E /* Sources */,
 				17B345E61A66811200946A2E /* Frameworks */,
@@ -255,7 +255,7 @@
 			);
 			dependencies = (
 			);
-			name = FlappyRevenge;
+			name = Revenge;
 			productName = FlappyRevenge;
 			productReference = 17B345E91A66811200946A2E /* FlappyRevenge.app */;
 			productType = "com.apple.product-type.application";
@@ -310,7 +310,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				17B345E81A66811200946A2E /* FlappyRevenge */,
+				17B345E81A66811200946A2E /* Revenge */,
 				17B346011A66811200946A2E /* FlappyRevengeTests */,
 			);
 		};
@@ -387,7 +387,7 @@
 /* Begin PBXTargetDependency section */
 		17B346041A66811200946A2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 17B345E81A66811200946A2E /* FlappyRevenge */;
+			target = 17B345E81A66811200946A2E /* Revenge */;
 			targetProxy = 17B346031A66811200946A2E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -537,7 +537,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		17B3460C1A66811200946A2E /* Build configuration list for PBXNativeTarget "FlappyRevenge" */ = {
+		17B3460C1A66811200946A2E /* Build configuration list for PBXNativeTarget "Revenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17B3460D1A66811200946A2E /* Debug */,
