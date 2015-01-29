@@ -42,6 +42,7 @@
 		44DBEA4E1A6D278400345928 /* VISITOR.FON in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA491A6D278400345928 /* VISITOR.FON */; };
 		44DBEA4F1A6D278400345928 /* VISITOR.FON in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA491A6D278400345928 /* VISITOR.FON */; };
 		44ED6D0C1A7A6E1700857F9C /* GameMenuItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */; };
+		44ED6D0F1A7A77EA00857F9C /* InterfaceButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D0E1A7A77EA00857F9C /* InterfaceButtons.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		44DBEA491A6D278400345928 /* VISITOR.FON */ = {isa = PBXFileReference; lastKnownFileType = file; path = VISITOR.FON; sourceTree = "<group>"; };
 		44ED6D0A1A7A6E1700857F9C /* GameMenuItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuItems.h; sourceTree = "<group>"; };
 		44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuItems.m; sourceTree = "<group>"; };
+		44ED6D0D1A7A77EA00857F9C /* InterfaceButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceButtons.h; sourceTree = "<group>"; };
+		44ED6D0E1A7A77EA00857F9C /* InterfaceButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterfaceButtons.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +225,8 @@
 				44DBEA411A6BFAB200345928 /* GameMenu.m */,
 				44ED6D0A1A7A6E1700857F9C /* GameMenuItems.h */,
 				44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */,
+				44ED6D0D1A7A77EA00857F9C /* InterfaceButtons.h */,
+				44ED6D0E1A7A77EA00857F9C /* InterfaceButtons.m */,
 			);
 			name = GameMenu;
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 				17B346271A66821000946A2E /* GameViewController.m in Sources */,
 				17B346241A66821000946A2E /* GameScene.m in Sources */,
 				44DBEA421A6BFAB200345928 /* GameMenu.m in Sources */,
+				44ED6D0F1A7A77EA00857F9C /* InterfaceButtons.m in Sources */,
 				44DBEA3F1A6BC07100345928 /* GameBackGround.m in Sources */,
 				44DBD0701A7154370059123F /* ShopItem.m in Sources */,
 				17B345EF1A66811200946A2E /* main.m in Sources */,

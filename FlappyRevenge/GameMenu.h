@@ -10,12 +10,6 @@
 
 @interface GameMenu : SKSpriteNode
 
-+ (id) showGameMenu;
-+(id) showRetryMenu;
-+(id) showShopMenu;
-+(id) showFireButton;
-+(SKLabelNode*) scoreLabel:(NSInteger)score;
-+(SKLabelNode*) showScoreLabelText;
-+(SKLabelNode*) highScoreLabel:(NSInteger)highScore;
-+(SKLabelNode*) highScoreLabelText;
+- (id)initWithSize: (CGSize)size and:(NSInteger)score and:(NSInteger)highScore ;
+
 @end

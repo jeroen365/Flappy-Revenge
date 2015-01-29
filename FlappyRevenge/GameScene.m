@@ -8,7 +8,9 @@
 
 #import "GameScene.h"
 #import "GameBird.h"
+#import "InterfaceButtons.h"
 #import "GameMenu.h"
+#import "GameMenuItems.h"
 #import "GameBackGround.h"
 #import "GameViewController.h"
 #import "ShopScene.h"
@@ -107,12 +109,12 @@ static const uint32_t scoreCategory = 1 << 4;
     self.physicsBody.categoryBitMask = worldCategory;
     
     // show menu
-    playGameButton = [GameMenu showGameMenu];
+    playGameButton = [InterfaceButtons showPlayGameButton];
     [playGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame)+5,CGRectGetMidY(self.frame)-40)];
     [self addChild:playGameButton];
     
     
-    scoreLabel = [GameMenu scoreLabel:score];
+    scoreLabel = [GameMenuItems scoreLabel:score];
     scoreLabelMid = scoreLabel.fontSize / 4;
     scoreLabel.position = CGPointMake( CGRectGetMidX( self.frame ), CGRectGetMidX(self.frame) - scoreLabelMid );
     [self addChild:scoreLabel];
@@ -321,6 +323,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     // Bird hit anything visible and dies, stop scene
     moving.speed = 0;
     gameOver = YES;
+    [scoreLabel removeFromParent];
     [self removeAllActions];
     bird.physicsBody.collisionBitMask = worldCategory;
     bird.speed = 0;
@@ -337,40 +340,22 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 }
 
 -(void) showGameOverMenu{
-    // Show final score
-    scoreLabel.zPosition = 100;
-    scoreLabel.fontSize = 300;
-    scoreLabel.alpha = 1;
-    scoreLabel.position = CGPointMake( CGRectGetMidX( self.frame ), CGRectGetHeight(self.frame) - 5 * scoreLabelMid / 4);
-    
-    SKLabelNode* scoreLabelText = [GameMenu showScoreLabelText];
-    scoreLabelText.position = CGPointMake(scoreLabel.position.x, scoreLabel.position.y + scoreLabel.fontSize / 2);
-    [self addChild:scoreLabelText];
-    
     
     if ([self checkHighScore]){
         NSLog(@"yay");
     }
     
+    GameMenu* gameOverMenu = [[GameMenu alloc] initWithSize: CGSizeMake(CGRectGetMidX(self.frame) / 2, CGRectGetHeight(self.frame)) and:score and:highScore];
+    gameOverMenu.size = CGSizeMake(CGRectGetMidX(self.frame) / 2, CGRectGetHeight(self.frame) - 100);
+    gameOverMenu.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) );
+    gameOverMenu.zPosition = 100;
+    gameOverMenu.color = [SKColor colorWithWhite:1 alpha:0.8];
+    [self addChild:gameOverMenu];
     
-    SKLabelNode* highScoreLabelText = [GameMenu highScoreLabelText];
-    highScoreLabelText.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + highScoreLabelText.fontSize);
-    [self addChild:highScoreLabelText];
-    
-    SKLabelNode* highScoreLabel = [GameMenu highScoreLabel:highScore];
-    highScoreLabel.position = CGPointMake(CGRectGetMidX(self.frame), highScoreLabelText.position.y - highScoreLabel.fontSize / 2 );
-    [self addChild:highScoreLabel];
-
     // Save points
     [self savePoints];
     
-    retryGameButton = [GameMenu showRetryMenu];
-    [retryGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)-150)];
-    [self addChild:retryGameButton];
-    
-    shopGameButton = [GameMenu showShopMenu];
-    [shopGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame),retryGameButton.position.y-50)];
-    [self addChild:shopGameButton];
+
 
 }
 
@@ -507,17 +492,9 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
 
 -(void) addFireButton{
-    fireButton = [GameMenu showFireButton];
+    fireButton = [InterfaceButtons showFireButton:numLasers];
     [fireButton setPosition:CGPointMake(CGRectGetWidth(self.frame) / 3 + 10, CGRectGetHeight(self.frame) / 10 + 10)];
     fireButton.zPosition = 100;
-    
-    // Show amount of lasers left
-    fireLabel = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];
-    fireLabel.text = [NSString stringWithFormat:@"%li", (long)numLasers];
-    fireLabel.fontSize = 300;
-    fireLabel.position = CGPointMake(CGRectGetWidth(self.frame) / 100, CGRectGetHeight(self.frame) / 100 - 75);
-    fireLabel.zPosition = 120;
-    [fireButton addChild:fireLabel];
     [self addChild:fireButton];
     
 }

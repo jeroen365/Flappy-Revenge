@@ -7,72 +7,46 @@
 //
 
 #import "GameMenu.h"
+#import "GameMenuItems.h"
 
 
 
 @implementation GameMenu
 
-+(id) showGameMenu{
-    SKSpriteNode* playGameButton = [SKSpriteNode spriteNodeWithImageNamed:@"Playbutton"];
-    playGameButton.scale = 0.5;
-    return playGameButton;
-}
+- (id)initWithSize: (CGSize)size and:(NSInteger)score and:(NSInteger)highScore {
+    self = [super init];
+    
+    SKLabelNode* scoreLabelText = [GameMenuItems showScoreLabelText];
+    NSLog(@"size height %f", size.height);
+    scoreLabelText.position = CGPointMake(CGRectGetMidX(self.frame), 300);
+    scoreLabelText.zPosition = 500;
+    [self addChild:scoreLabelText];
+    
+    SKLabelNode* scoreLabel = [GameMenuItems scoreLabel:score];
+    scoreLabel.zPosition = 100;
+    scoreLabel.fontSize = 300;
+    scoreLabel.alpha = 1;
+    scoreLabel.position = CGPointMake( CGRectGetMidX(self.frame), scoreLabelText.position.y - scoreLabel.fontSize / 2);
+    [self addChild:scoreLabel];
 
-+(id) showRetryMenu{
-    SKSpriteNode* retryGameButton = [SKSpriteNode spriteNodeWithImageNamed:@"Retrybutton"];
-    retryGameButton.scale = 0.5;
-    retryGameButton.zPosition = 100;
-    return retryGameButton;
-}
+    
+    SKLabelNode* highScoreLabelText = [GameMenuItems highScoreLabelText];
+    highScoreLabelText.position = CGPointMake(CGRectGetMidX(self.frame), scoreLabel.position.y - highScoreLabelText.fontSize);
+    [self addChild:highScoreLabelText];
+    
+    SKLabelNode* highScoreLabel = [GameMenuItems highScoreLabel:highScore];
+    highScoreLabel.position = CGPointMake(CGRectGetMidX(self.frame), highScoreLabelText.position.y - highScoreLabel.fontSize / 2 );
+    [self addChild:highScoreLabel];
+    
+    SKLabelNode* retryGameButton = [GameMenuItems showRetryMenu];
+    [retryGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame),highScoreLabel.position.y - retryGameButton.frame.size.height)];
+    [self addChild:retryGameButton];
+    
+    SKLabelNode* shopGameButton = [GameMenuItems showShopMenu];
+    [shopGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame),retryGameButton.position.y- shopGameButton.frame.size.height)];
+    [self addChild:shopGameButton];
 
-+(id) showShopMenu{
-    SKSpriteNode* shopGameButton = [SKSpriteNode spriteNodeWithImageNamed:@"Shopbutton"];
-    shopGameButton.scale = 0.5;
-    shopGameButton.zPosition = 100;
-    return shopGameButton;
-}
 
-+(id) showFireButton{
-    SKSpriteNode* showFireButton = [SKSpriteNode spriteNodeWithImageNamed:@"FireButton"];
-    showFireButton.scale = 0.2;
-    showFireButton.name = @"fireButton";
-    return showFireButton;
+    return self;
 }
-
-+(SKLabelNode*) scoreLabel:(NSInteger)score{
-    // Initialize label and create a label which holds the score
-    SKLabelNode* scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];
-    scoreLabel.fontSize = 800;
-    scoreLabel.alpha = 0.5;
-    scoreLabel.zPosition = -50;
-    scoreLabel.text = [NSString stringWithFormat:@"%ld", (long)score];
-    return scoreLabel;
-}
-
-+(SKLabelNode*) showScoreLabelText{
-    SKLabelNode* scoreLabelText = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];
-    scoreLabelText.fontSize = 50;
-    scoreLabelText.fontColor = [SKColor blackColor];
-    scoreLabelText.zPosition = 110;
-    scoreLabelText.text = [NSString stringWithFormat:@"Score"];
-    return scoreLabelText;
-}
-
-+(SKLabelNode*) highScoreLabel:(NSInteger)highScore{
-    SKLabelNode* highScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];
-    highScoreLabel.fontSize = 300;
-    highScoreLabel.zPosition = 100;
-    highScoreLabel.text = [NSString stringWithFormat:@"%ld", (long)highScore];
-    return highScoreLabel;
-}
-
-+(SKLabelNode*) highScoreLabelText{
-    SKLabelNode* highScoreLabelText = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];
-    highScoreLabelText.fontSize = 50;
-    highScoreLabelText.fontColor = [SKColor blackColor];
-    highScoreLabelText.zPosition = 110;
-    highScoreLabelText.text = [NSString stringWithFormat:@"Highscore"];
-    return highScoreLabelText;
-}
-
 @end
