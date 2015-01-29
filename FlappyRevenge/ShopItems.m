@@ -2,6 +2,9 @@
 //  ShopItems.m
 //  FlappyRevenge
 //
+//  This file adds items to the itemlist ShopItems, which will be presented
+//  to ShopScene.
+//
 //  Created by Jeroen van der Es on 22-01-15.
 //  Copyright (c) 2015 mprog. All rights reserved.
 //
@@ -12,25 +15,6 @@
 
 @implementation ShopItems
 
-
-//+ (id) laserBundle{
-//    SKTexture* laserBundleTexture = [SKTexture textureWithImageNamed:@"Laserbundle"];
-//    laserBundleTexture.filteringMode = SKTextureFilteringNearest;
-//    SKSpriteNode* laserBundle = [SKSpriteNode spriteNodeWithTexture:laserBundleTexture];
-//    
-//    NSInteger cost = 15;
-//    	
-//    NSUserDefaults* Points = [NSUserDefaults standardUserDefaults];
-//    NSInteger totalPoints =[Points integerForKey:@"totalPoints"];
-//    
-//    if (totalPoints < cost){
-//        laserBundle.color = [SKColor grayColor];
-//    }
-//    else {
-//        //laserBundle.purchasable = YES;
-//    }
-//    return laserBundle;
-//}
 
 - (id)initWithSize: (CGSize)size {
     self = [super init];

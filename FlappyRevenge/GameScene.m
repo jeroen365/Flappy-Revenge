@@ -2,6 +2,10 @@
 //  GameScene.m
 //  FlappyBirdXL
 //
+//  This scene presents the gameplay. Every game object is loaded from the imported header files and
+//  positioned as well as animated in this scene.
+//  It transitions to the shop.
+//
 //  Created by Jeroen van der Es on 20-12-14.
 //  Copyright (c) 2014 Jeroen van der Es. All rights reserved.
 //
@@ -89,8 +93,6 @@ static const uint32_t scoreCategory = 1 << 4;
 }
 
 -(void)initializeGame{
-    // initialize world
-    
     // Set global node for moving the world
     moving = [SKNode node];
     [self addChild:moving];
@@ -209,13 +211,11 @@ static const uint32_t scoreCategory = 1 << 4;
 -(void) savePointsToInventory{
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     NSInteger totalPoints = [Inventory integerForKey:@"totalPoints"];
-    totalPoints += score + 100;
+    totalPoints += score;
     [Inventory setInteger:totalPoints forKey:@"totalPoints"];
     [Inventory synchronize];
 
 }
-
-
 
 -(void) beginGame{
     // Start moving the world

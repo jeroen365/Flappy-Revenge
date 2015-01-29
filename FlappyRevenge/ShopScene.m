@@ -2,6 +2,10 @@
 //  ShopScene.m
 //  FlappyRevenge
 //
+//  This scene presents the game shop. It imports upgrades from ShopItems header.
+//  It sends and receives data to and from GameScene via NSUserdefaults.
+//  It transitions back to GameScene.
+//
 //  Created by Jeroen van der Es on 22-01-15.
 //  Copyright (c) 2015 mprog. All rights reserved.
 //

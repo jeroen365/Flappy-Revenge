@@ -2,6 +2,9 @@
 //  GameMusic.m
 //  FlappyRevenge
 //
+//  This file loads in the background music for both the GameScene and ShopScene.
+//  Sends an AVAudioPlayer for both the GameScene and ShopScene.
+//
 //  Created by Jeroen van der Es on 29-01-15.
 //  Copyright (c) 2015 mprog. All rights reserved.
 //

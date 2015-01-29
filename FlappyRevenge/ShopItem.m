@@ -2,6 +2,8 @@
 //  ShopItem.m
 //  FlappyRevenge
 //
+//  This class initializes a individual shop Item and passes them to ShopItems.
+//
 //  Created by Jeroen van der Es on 22-01-15.
 //  Copyright (c) 2015 mprog. All rights reserved.
 //

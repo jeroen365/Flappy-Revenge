@@ -2,6 +2,8 @@
 //  InterfaceButtons.m
 //  FlappyRevenge
 //
+//  This file loads game interface buttons and passes them to GameScene.
+//
 //  Created by Jeroen van der Es on 29-01-15.
 //  Copyright (c) 2015 mprog. All rights reserved.
 //

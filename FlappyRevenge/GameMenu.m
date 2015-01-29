@@ -2,6 +2,8 @@
 //  GameMenu.m
 //  FlappyRevenge
 //
+//  This file presents the GameMenu to GameScene. Positions all the GameMenuItems inside the GameMenu node.
+//
 //  Created by Jeroen van der Es on 18-01-15.
 //  Copyright (c) 2015 mprog. All rights reserved.
 //
@@ -16,15 +18,7 @@
 - (id)initWithSize: (CGSize)size and:(NSInteger)score and:(NSInteger)highScore {
     self = [super init];
     
-//    SKTexture* backgroundMenu = [SKTexture textureWithImageNamed:@"GameMenu"];
-//    backgroundMenu.filteringMode = SKTextureFilteringNearest;
-//    SKSpriteNode* background = [SKSpriteNode spriteNodeWithTexture:backgroundMenu];
-//    background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + 75);
-//    background.size = size;
-//    background.alpha = 0.8;
-//    [self addChild:background];
-    
-    // Initialize first label, then position other labels under the next
+    // Initialize first Game label, then position other labels under the next
     SKLabelNode* scoreLabelText = [GameMenuItems showScoreLabelText];
     scoreLabelText.position = CGPointMake(CGRectGetMidX(self.frame), 300);
     [self addChild:scoreLabelText];

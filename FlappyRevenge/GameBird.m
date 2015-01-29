@@ -2,6 +2,9 @@
 //  GameBird.m
 //  FlappyBirdXL
 //
+//  This file loads the game bird and sets it physical properties.
+//  Includes two actions the bird can run.
+//
 //  Created by Jeroen van der Es on 08-01-15.
 //  Copyright (c) 2015 Jeroen van der Es. All rights reserved.
 //

@@ -2,6 +2,8 @@
 //  GameBackGround.m
 //  FlappyRevenge
 //
+//  This file loads several background textures and passes them to GameScene.
+//
 //  Created by Jeroen van der Es on 18-01-15.
 //  Copyright (c) 2015 mprog. All rights reserved.
 //

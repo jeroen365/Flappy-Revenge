@@ -2,6 +2,8 @@
 //  GameMenuItems.m
 //  FlappyRevenge
 //
+//  This file loads all the buttons to be presented in the GameMenu.
+//
 //  Created by Jeroen van der Es on 29-01-15.
 //  Copyright (c) 2015 mprog. All rights reserved.
 //

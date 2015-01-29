@@ -58,7 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		17B345E91A66811200946A2E /* FlappyRevenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyRevenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17B345E91A66811200946A2E /* Revenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Revenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B345ED1A66811200946A2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17B345EE1A66811200946A2E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		17B346021A66811200946A2E /* FlappyRevengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyRevengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,7 +141,7 @@
 		17B345EA1A66811200946A2E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				17B345E91A66811200946A2E /* FlappyRevenge.app */,
+				17B345E91A66811200946A2E /* Revenge.app */,
 				17B346021A66811200946A2E /* FlappyRevengeTests.xctest */,
 			);
 			name = Products;
@@ -275,7 +275,7 @@
 			);
 			name = Revenge;
 			productName = FlappyRevenge;
-			productReference = 17B345E91A66811200946A2E /* FlappyRevenge.app */;
+			productReference = 17B345E91A66811200946A2E /* Revenge.app */;
 			productType = "com.apple.product-type.application";
 		};
 		17B346011A66811200946A2E /* FlappyRevengeTests */ = {
