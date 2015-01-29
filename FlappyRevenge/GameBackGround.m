@@ -17,7 +17,7 @@
 @implementation GameBackGround
 
 
-+ (id) addPipeDown{
++ (SKSpriteNode*) addPipeDown{
     SKTexture* pipeTextureDown = [SKTexture textureWithImageNamed:@"Pipe1"];
     pipeTextureDown.filteringMode = SKTextureFilteringNearest;
 
@@ -27,12 +27,10 @@
     pipeDown.name = @"pipe";
     pipeDown.physicsBody.dynamic = NO;
  
-    
-    
     return pipeDown;
 }
 
-+(id) addPipeTop{
++(SKSpriteNode*) addPipeTop{
     SKTexture* pipeTextureTop = [SKTexture textureWithImageNamed:@"Pipe2"];
     pipeTextureTop.filteringMode = SKTextureFilteringNearest;
     
@@ -41,10 +39,22 @@
     pipeTop.name = @"pipe";
     pipeTop.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeTop.size];
     pipeTop.physicsBody.dynamic = NO;
-
-    
     
     return pipeTop;
-
 }
+
++(SKTexture*) loadGround{
+    SKTexture* groundTexture = [SKTexture textureWithImageNamed:
+                     @"Ground"];
+    groundTexture.filteringMode = SKTextureFilteringNearest;
+    return groundTexture;
+}
+
++(SKTexture*) loadSkyline{
+    SKTexture* skylineTexture = [SKTexture textureWithImageNamed:@"Skyline"];
+    skylineTexture.filteringMode = SKTextureFilteringNearest;
+    return skylineTexture;
+}
+
+
 @end

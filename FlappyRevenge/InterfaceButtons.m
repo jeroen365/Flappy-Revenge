@@ -24,9 +24,9 @@
     SKLabelNode* fireLabel = [SKLabelNode labelNodeWithFontNamed:@"VisitorTT2BRK"];
     fireLabel.text = [NSString stringWithFormat:@"%li", (long)numLasers];
     fireLabel.fontSize = 300;
-    fireLabel.fontColor = [SKColor blackColor];
     fireLabel.position = CGPointMake(fireButton.frame.size.width - fireLabel.fontSize / 3, fireButton.frame.size.height - fireLabel.fontSize / 2  );
     fireLabel.zPosition = 120;
+    fireLabel.name = @"fireButton";
     [fireButton addChild:fireLabel];
     return fireButton;
 }

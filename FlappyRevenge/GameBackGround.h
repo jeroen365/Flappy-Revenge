@@ -10,7 +10,10 @@
 
 @interface GameBackGround : SKNode
 
-+(id) addPipeDown;
-+(id) addPipeTop;
++(SKSpriteNode*) addPipeDown;
++(SKSpriteNode*) addPipeTop;
+
++(SKTexture*) loadGround;
++(SKTexture*) loadSkyline;
 
 @end

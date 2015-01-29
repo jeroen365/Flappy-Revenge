@@ -44,6 +44,7 @@
 		44ED6D0C1A7A6E1700857F9C /* GameMenuItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */; };
 		44ED6D0F1A7A77EA00857F9C /* InterfaceButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D0E1A7A77EA00857F9C /* InterfaceButtons.m */; };
 		44ED6D111A7A862900857F9C /* HighScoreSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 44ED6D101A7A862900857F9C /* HighScoreSound.mp3 */; };
+		44ED6D141A7A9D8100857F9C /* BirdLaser.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D131A7A9D8100857F9C /* BirdLaser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,8 @@
 		44ED6D0D1A7A77EA00857F9C /* InterfaceButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceButtons.h; sourceTree = "<group>"; };
 		44ED6D0E1A7A77EA00857F9C /* InterfaceButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterfaceButtons.m; sourceTree = "<group>"; };
 		44ED6D101A7A862900857F9C /* HighScoreSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HighScoreSound.mp3; sourceTree = "<group>"; };
+		44ED6D121A7A9D8100857F9C /* BirdLaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdLaser.h; sourceTree = "<group>"; };
+		44ED6D131A7A9D8100857F9C /* BirdLaser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdLaser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,8 @@
 				17B346201A66821000946A2E /* GameViewController.m */,
 				17B3461B1A66821000946A2E /* GameScene.h */,
 				17B3461C1A66821000946A2E /* GameScene.m */,
+				44ED6D121A7A9D8100857F9C /* BirdLaser.h */,
+				44ED6D131A7A9D8100857F9C /* BirdLaser.m */,
 				44DBD0681A7079390059123F /* ShopScene.h */,
 				44DBD0691A7079390059123F /* ShopScene.m */,
 				440A98BD1A766BB40054121F /* ShopMusic.h */,
@@ -376,6 +381,7 @@
 			files = (
 				440A98BF1A766BB40054121F /* ShopMusic.m in Sources */,
 				17B346211A66821000946A2E /* GameBird.m in Sources */,
+				44ED6D141A7A9D8100857F9C /* BirdLaser.m in Sources */,
 				17B346141A6681FC00946A2E /* AppDelegate.m in Sources */,
 				44DBD06A1A7079390059123F /* ShopScene.m in Sources */,
 				44DBD06D1A7145580059123F /* ShopItems.m in Sources */,
