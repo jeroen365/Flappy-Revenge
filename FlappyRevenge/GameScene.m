@@ -51,6 +51,7 @@
     CGFloat gameSpeed;
     NSInteger kVerticalPipeGap;
     NSInteger numLasers;
+    CGFloat distanceToMove;
     
     // Music actions
     SKAction* moveAndRemovePipes;
@@ -60,6 +61,7 @@
     SKAction* buttonPressSoundAction;
     SKAction* scoreSoundAction;
     SKAction* highScoreSoundAction;
+    SKAction* explosionSoundAction;
 }
 
 
@@ -81,7 +83,7 @@ static const uint32_t scoreCategory = 1 << 4;
 
 
 -(void)didMoveToView:(SKView *)view {
-    // Load music once
+    // Load music once to prevent lagg
     [self setupGameMusic];
     laserFireSoundAction = [SKAction playSoundFileNamed:@"LaserSound2.mp3" waitForCompletion:NO];
     birdJumpSoundAction = [SKAction playSoundFileNamed:@"JumpSound.wav" waitForCompletion:NO];
@@ -89,7 +91,8 @@ static const uint32_t scoreCategory = 1 << 4;
     buttonPressSoundAction = [SKAction playSoundFileNamed:@"ButtonPress.mp3" waitForCompletion:NO];
     scoreSoundAction = [SKAction playSoundFileNamed:@"Score.wav" waitForCompletion:NO];
     highScoreSoundAction = [SKAction playSoundFileNamed:@"HighScoreSound.mp3" waitForCompletion:NO];
-
+    explosionSoundAction = [SKAction playSoundFileNamed:@"Explosion.wav" waitForCompletion:NO];
+    
     [self initializeGame];
 }
 
@@ -98,8 +101,9 @@ static const uint32_t scoreCategory = 1 << 4;
     moving = [SKNode node];
     [self addChild:moving];
     
-    // Lower is faster
+    // Setting variables
     gameSpeed = 0.005;
+    distanceToMove = self.frame.size.width + 2 * pipeDown.size.width;
     
     // Reset score
     score = 0;
@@ -112,13 +116,13 @@ static const uint32_t scoreCategory = 1 << 4;
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     self.physicsBody.categoryBitMask = worldCategory;
     
-    // Show Play Game Button
+    // Show UI
     playGameButton = [InterfaceButtons showPlayGameButton];
     [playGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame)+5,CGRectGetMidY(self.frame)-40)];
     [self addChild:playGameButton];
     
     scoreLabel = [GameMenuItems scoreLabel:score];
-    scoreLabel.position = CGPointMake( CGRectGetMidX( self.frame ), CGRectGetMidX(self.frame) - scoreLabel.fontSize / 4 );
+    scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidX(self.frame) - scoreLabel.fontSize / 4 );
     [self addChild:scoreLabel];
     
     // Set zero gravity to keep the bird in centre
@@ -188,8 +192,12 @@ static const uint32_t scoreCategory = 1 << 4;
         }
         else if( ( contact.bodyA.categoryBitMask ) == laserCategory|| ( contact.bodyB.categoryBitMask) == laserCategory ) {
             // Laser hit Pipe
-
-            [self runExplosion:contact.bodyB.node.position.x and:contact.bodyB.node.position.y];
+            // Body B is the laser, use the laser's coordinates
+            if (contact.bodyB.node.position.x > contact.bodyA.node.position.x)
+                [self runExplosion:contact.bodyB.node.position.x and:contact.bodyB.node.position.y];
+            // Body A is the laser, use the laser's coordinates
+            else
+                [self runExplosion:contact.bodyA.node.position.x and:contact.bodyA.node.position.y];
             [contact.bodyA.node removeFromParent];
             [contact.bodyB.node removeFromParent];
         }
@@ -200,13 +208,6 @@ static const uint32_t scoreCategory = 1 << 4;
             [self showGameOverMenu];
         }
     }
-}
-
--(void) runExplosion:(CGFloat)x and:(CGFloat)y{
-    GameExplosion* explosion = [GameExplosion loadExplosion];
-    NSLog(@"boom at x:%f y: %f", x, y);
-    explosion.position = CGPointMake(x, y);
-    [self addChild:explosion];
 }
 
 -(void) updateScore{
@@ -403,7 +404,6 @@ static const uint32_t scoreCategory = 1 << 4;
 
 -(void) loadAnimationPipes{
     // Moving Pipes function
-    CGFloat distanceToMove = self.frame.size.width + 2 * pipeDown.size.width;
     SKAction* movePipes = [SKAction moveByX:-distanceToMove y:0 duration:gameSpeed * distanceToMove];
     SKAction* removePipes = [SKAction removeFromParent];
     moveAndRemovePipes = [SKAction sequence:@[movePipes, removePipes]];
@@ -504,6 +504,16 @@ static const uint32_t scoreCategory = 1 << 4;
     
     [self addChild:birdLaser];
 }
+
+-(void) runExplosion:(CGFloat)x and:(CGFloat)y{
+    GameExplosion* explosion = [GameExplosion loadExplosion];
+    explosion.position = CGPointMake(x + explosion.size.width / 2, y);
+    SKAction* moveExplosion = [SKAction moveByX:-distanceToMove y:0 duration:gameSpeed * distanceToMove];
+    [explosion runAction:moveExplosion];
+    [self runAction:explosionSoundAction];
+    [self addChild:explosion];
+}
+
 
 -(void) switchToShopScene{
     // initiate switch to shopscene

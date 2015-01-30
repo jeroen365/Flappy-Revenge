@@ -31,8 +31,9 @@
     SKAction* explode = [SKAction animateWithTextures:@[explosionTexture1,explosionTexture2,explosionTexture3,explosionTexture4,explosionTexture5,explosionTexture6,explosionTexture7,explosionTexture8,explosionTexture9] timePerFrame:0.1];
     
 
-    SKAction*  remove = [SKAction sequence:@[ [SKAction waitForDuration:1], [SKAction runBlock:^{[explosion removeFromParent];}]]];
+    SKAction*  remove = [SKAction sequence:@[ [SKAction waitForDuration:0.9], [SKAction runBlock:^{[explosion removeFromParent];}]]];
     [explosion runAction:explode];
+    NSLog(@"created");
     [explosion runAction:remove];
     
     return explosion;

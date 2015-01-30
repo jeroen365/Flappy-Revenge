@@ -37,6 +37,7 @@
 		44DBEA4E1A6D278400345928 /* VISITOR.FON in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA491A6D278400345928 /* VISITOR.FON */; };
 		44DBEA4F1A6D278400345928 /* VISITOR.FON in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA491A6D278400345928 /* VISITOR.FON */; };
 		44DF67201A7B90AC00938E44 /* GameExplosion.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DF671F1A7B90AC00938E44 /* GameExplosion.m */; };
+		44DF67221A7BA04B00938E44 /* Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 44DF67211A7BA04B00938E44 /* Explosion.wav */; };
 		44ED6D0C1A7A6E1700857F9C /* GameMenuItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */; };
 		44ED6D0F1A7A77EA00857F9C /* InterfaceButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D0E1A7A77EA00857F9C /* InterfaceButtons.m */; };
 		44ED6D111A7A862900857F9C /* HighScoreSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 44ED6D101A7A862900857F9C /* HighScoreSound.mp3 */; };
@@ -95,6 +96,7 @@
 		44DBEA491A6D278400345928 /* VISITOR.FON */ = {isa = PBXFileReference; lastKnownFileType = file; path = VISITOR.FON; sourceTree = "<group>"; };
 		44DF671E1A7B90AC00938E44 /* GameExplosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameExplosion.h; sourceTree = "<group>"; };
 		44DF671F1A7B90AC00938E44 /* GameExplosion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameExplosion.m; sourceTree = "<group>"; };
+		44DF67211A7BA04B00938E44 /* Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Explosion.wav; sourceTree = "<group>"; };
 		44ED6D0A1A7A6E1700857F9C /* GameMenuItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuItems.h; sourceTree = "<group>"; };
 		44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuItems.m; sourceTree = "<group>"; };
 		44ED6D0D1A7A77EA00857F9C /* InterfaceButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceButtons.h; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		44DBEA431A6D254100345928 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				44DF67211A7BA04B00938E44 /* Explosion.wav */,
 				44DBEA471A6D278400345928 /* visitor1.ttf */,
 				44DBEA481A6D278400345928 /* visitor2.ttf */,
 				44DBEA491A6D278400345928 /* VISITOR.FON */,
@@ -334,6 +337,7 @@
 				44DBEA451A6D256F00345928 /* Fipps-Regular.otf in Resources */,
 				442F0CEF1A793EC500B26392 /* Score.wav in Resources */,
 				17B346361A6682B700946A2E /* Main.storyboard in Resources */,
+				44DF67221A7BA04B00938E44 /* Explosion.wav in Resources */,
 				4405BA1B1A782CE600CBE398 /* GameSceneMusic.mp3 in Resources */,
 				17B346251A66821000946A2E /* GameScene.sks in Resources */,
 				442F0CF11A79409600B26392 /* ButtonPress.mp3 in Resources */,
