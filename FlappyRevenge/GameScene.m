@@ -225,7 +225,7 @@ static const uint32_t scoreCategory = 1 << 4;
 -(void) savePointsToInventory{
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     NSInteger totalPoints = [Inventory integerForKey:@"totalPoints"];
-    totalPoints += score + 100;
+    totalPoints += score;
     [Inventory setInteger:totalPoints forKey:@"totalPoints"];
     [Inventory synchronize];
 
