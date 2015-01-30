@@ -15,10 +15,6 @@
 		17B346251A66821000946A2E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 17B3461D1A66821000946A2E /* GameScene.sks */; };
 		17B346271A66821000946A2E /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B346201A66821000946A2E /* GameViewController.m */; };
 		17B3462C1A66824D00946A2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462B1A66824D00946A2E /* Images.xcassets */; };
-		17B346311A66827400946A2E /* gameplay.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462D1A66827400946A2E /* gameplay.PNG */; };
-		17B346321A66827400946A2E /* menu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462E1A66827400946A2E /* menu.jpg */; };
-		17B346331A66827400946A2E /* shop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B3462F1A66827400946A2E /* shop.jpg */; };
-		17B346341A66827400946A2E /* Views.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17B346301A66827400946A2E /* Views.jpg */; };
 		17B346361A6682B700946A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B346351A6682B700946A2E /* Main.storyboard */; };
 		4405BA1B1A782CE600CBE398 /* GameSceneMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4405BA1A1A782CE600CBE398 /* GameSceneMusic.mp3 */; };
 		4405BA231A783EE100CBE398 /* LaserSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4405BA221A783EE100CBE398 /* LaserSound2.mp3 */; };
@@ -40,6 +36,7 @@
 		44DBEA4D1A6D278400345928 /* visitor2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA481A6D278400345928 /* visitor2.ttf */; };
 		44DBEA4E1A6D278400345928 /* VISITOR.FON in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA491A6D278400345928 /* VISITOR.FON */; };
 		44DBEA4F1A6D278400345928 /* VISITOR.FON in Resources */ = {isa = PBXBuildFile; fileRef = 44DBEA491A6D278400345928 /* VISITOR.FON */; };
+		44DF67201A7B90AC00938E44 /* GameExplosion.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DF671F1A7B90AC00938E44 /* GameExplosion.m */; };
 		44ED6D0C1A7A6E1700857F9C /* GameMenuItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */; };
 		44ED6D0F1A7A77EA00857F9C /* InterfaceButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ED6D0E1A7A77EA00857F9C /* InterfaceButtons.m */; };
 		44ED6D111A7A862900857F9C /* HighScoreSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 44ED6D101A7A862900857F9C /* HighScoreSound.mp3 */; };
@@ -74,10 +71,6 @@
 		17B3461F1A66821000946A2E /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		17B346201A66821000946A2E /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		17B3462B1A66824D00946A2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		17B3462D1A66827400946A2E /* gameplay.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay.PNG; sourceTree = "<group>"; };
-		17B3462E1A66827400946A2E /* menu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menu.jpg; sourceTree = "<group>"; };
-		17B3462F1A66827400946A2E /* shop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shop.jpg; sourceTree = "<group>"; };
-		17B346301A66827400946A2E /* Views.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Views.jpg; sourceTree = "<group>"; };
 		17B346351A6682B700946A2E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4405BA1A1A782CE600CBE398 /* GameSceneMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GameSceneMusic.mp3; sourceTree = "<group>"; };
 		4405BA221A783EE100CBE398 /* LaserSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LaserSound2.mp3; sourceTree = "<group>"; };
@@ -100,6 +93,8 @@
 		44DBEA471A6D278400345928 /* visitor1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = visitor1.ttf; sourceTree = "<group>"; };
 		44DBEA481A6D278400345928 /* visitor2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = visitor2.ttf; sourceTree = "<group>"; };
 		44DBEA491A6D278400345928 /* VISITOR.FON */ = {isa = PBXFileReference; lastKnownFileType = file; path = VISITOR.FON; sourceTree = "<group>"; };
+		44DF671E1A7B90AC00938E44 /* GameExplosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameExplosion.h; sourceTree = "<group>"; };
+		44DF671F1A7B90AC00938E44 /* GameExplosion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameExplosion.m; sourceTree = "<group>"; };
 		44ED6D0A1A7A6E1700857F9C /* GameMenuItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuItems.h; sourceTree = "<group>"; };
 		44ED6D0B1A7A6E1700857F9C /* GameMenuItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuItems.m; sourceTree = "<group>"; };
 		44ED6D0D1A7A77EA00857F9C /* InterfaceButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceButtons.h; sourceTree = "<group>"; };
@@ -151,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				4404203E1A6686260024952C /* GameMenu */,
-				4404203D1A6685E10024952C /* Screenshots */,
 				4404203C1A6685CA0024952C /* GameObjects */,
 				17B346351A6682B700946A2E /* Main.storyboard */,
 				17B3461D1A66821000946A2E /* GameScene.sks */,
@@ -202,23 +196,14 @@
 			children = (
 				44DBEA3D1A6BC07100345928 /* GameBackGround.h */,
 				44DBEA3E1A6BC07100345928 /* GameBackGround.m */,
+				44DF671E1A7B90AC00938E44 /* GameExplosion.h */,
+				44DF671F1A7B90AC00938E44 /* GameExplosion.m */,
 				17B346151A66821000946A2E /* GameBird.h */,
 				17B346161A66821000946A2E /* GameBird.m */,
 				44ED6D121A7A9D8100857F9C /* BirdLaser.h */,
 				44ED6D131A7A9D8100857F9C /* BirdLaser.m */,
 			);
 			name = GameObjects;
-			sourceTree = "<group>";
-		};
-		4404203D1A6685E10024952C /* Screenshots */ = {
-			isa = PBXGroup;
-			children = (
-				17B3462D1A66827400946A2E /* gameplay.PNG */,
-				17B3462E1A66827400946A2E /* menu.jpg */,
-				17B3462F1A66827400946A2E /* shop.jpg */,
-				17B346301A66827400946A2E /* Views.jpg */,
-			);
-			name = Screenshots;
 			sourceTree = "<group>";
 		};
 		4404203E1A6686260024952C /* GameMenu */ = {
@@ -347,16 +332,12 @@
 				440A98BC1A7669B60054121F /* pokecenter sound.mp3 in Resources */,
 				44DBEA4A1A6D278400345928 /* visitor1.ttf in Resources */,
 				44DBEA451A6D256F00345928 /* Fipps-Regular.otf in Resources */,
-				17B346331A66827400946A2E /* shop.jpg in Resources */,
-				17B346321A66827400946A2E /* menu.jpg in Resources */,
 				442F0CEF1A793EC500B26392 /* Score.wav in Resources */,
 				17B346361A6682B700946A2E /* Main.storyboard in Resources */,
 				4405BA1B1A782CE600CBE398 /* GameSceneMusic.mp3 in Resources */,
 				17B346251A66821000946A2E /* GameScene.sks in Resources */,
-				17B346341A66827400946A2E /* Views.jpg in Resources */,
 				442F0CF11A79409600B26392 /* ButtonPress.mp3 in Resources */,
 				44ED6D111A7A862900857F9C /* HighScoreSound.mp3 in Resources */,
-				17B346311A66827400946A2E /* gameplay.PNG in Resources */,
 				4405BA271A78450D00CBE398 /* BirdDied.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +368,7 @@
 				44DBD06D1A7145580059123F /* ShopItems.m in Sources */,
 				17B346271A66821000946A2E /* GameViewController.m in Sources */,
 				17B346241A66821000946A2E /* GameScene.m in Sources */,
+				44DF67201A7B90AC00938E44 /* GameExplosion.m in Sources */,
 				44DBEA421A6BFAB200345928 /* GameMenu.m in Sources */,
 				44ED6D0F1A7A77EA00857F9C /* InterfaceButtons.m in Sources */,
 				44DBEA3F1A6BC07100345928 /* GameBackGround.m in Sources */,

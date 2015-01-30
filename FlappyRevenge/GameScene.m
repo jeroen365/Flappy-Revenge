@@ -17,6 +17,7 @@
 #import "GameMenu.h"
 #import "GameMenuItems.h"
 #import "GameBackGround.h"
+#import "GameExplosion.h"
 #import "GameViewController.h"
 #import "ShopScene.h"
 #import "BirdLaser.h"
@@ -187,6 +188,8 @@ static const uint32_t scoreCategory = 1 << 4;
         }
         else if( ( contact.bodyA.categoryBitMask ) == laserCategory|| ( contact.bodyB.categoryBitMask) == laserCategory ) {
             // Laser hit Pipe
+
+            [self runExplosion:contact.bodyB.node.position.x and:contact.bodyB.node.position.y];
             [contact.bodyA.node removeFromParent];
             [contact.bodyB.node removeFromParent];
         }
@@ -197,6 +200,13 @@ static const uint32_t scoreCategory = 1 << 4;
             [self showGameOverMenu];
         }
     }
+}
+
+-(void) runExplosion:(CGFloat)x and:(CGFloat)y{
+    GameExplosion* explosion = [GameExplosion loadExplosion];
+    NSLog(@"boom at x:%f y: %f", x, y);
+    explosion.position = CGPointMake(x, y);
+    [self addChild:explosion];
 }
 
 -(void) updateScore{
