@@ -11,6 +11,7 @@
 @interface InterfaceButtons : SKSpriteNode
 
 + (id) showPlayGameButton;
++(id) showPlayEasyModeButton;
 +(id) showFireButton:(NSInteger) numLasers;
 
 @end

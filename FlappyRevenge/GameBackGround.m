@@ -20,9 +20,11 @@
 
 
 + (SKSpriteNode*) addPipeDown{
+    // Load textures
     SKTexture* pipeTextureDown = [SKTexture textureWithImageNamed:@"Pipe1"];
     pipeTextureDown.filteringMode = SKTextureFilteringNearest;
 
+    // Set physicsbody
     SKSpriteNode* pipeDown = [SKSpriteNode spriteNodeWithTexture:pipeTextureDown];
     [pipeDown setScale:2];
     pipeDown.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeDown.size];
@@ -33,9 +35,11 @@
 }
 
 +(SKSpriteNode*) addPipeTop{
+    // Load textures
     SKTexture* pipeTextureTop = [SKTexture textureWithImageNamed:@"Pipe2"];
     pipeTextureTop.filteringMode = SKTextureFilteringNearest;
     
+    // Set physicsbody
     SKSpriteNode* pipeTop = [SKSpriteNode spriteNodeWithTexture:pipeTextureTop];
     [pipeTop setScale:2];
     pipeTop.name = @"pipe";
@@ -46,6 +50,7 @@
 }
 
 +(SKTexture*) loadGround{
+    // Load textures
     SKTexture* groundTexture = [SKTexture textureWithImageNamed:
                      @"Ground"];
     groundTexture.filteringMode = SKTextureFilteringNearest;
@@ -53,6 +58,7 @@
 }
 
 +(SKTexture*) loadSkyline{
+    // Load textures
     SKTexture* skylineTexture = [SKTexture textureWithImageNamed:@"Skyline"];
     skylineTexture.filteringMode = SKTextureFilteringNearest;
     return skylineTexture;

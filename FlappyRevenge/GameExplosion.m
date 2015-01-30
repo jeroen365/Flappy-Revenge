@@ -33,7 +33,6 @@
 
     SKAction*  remove = [SKAction sequence:@[ [SKAction waitForDuration:0.9], [SKAction runBlock:^{[explosion removeFromParent];}]]];
     [explosion runAction:explode];
-    NSLog(@"created");
     [explosion runAction:remove];
     
     return explosion;

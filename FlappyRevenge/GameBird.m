@@ -31,6 +31,7 @@
         birdTexture2.filteringMode = SKTextureFilteringNearest;
     }
     else{
+        // Load normal textures
         birdTexture1 = [SKTexture textureWithImageNamed:@"InitFlappyL"];
         birdTexture1.filteringMode = SKTextureFilteringNearest;
         birdTexture2 = [SKTexture textureWithImageNamed:@"InitFlappyH"];
@@ -38,12 +39,13 @@
 
     }
     
+    // Create flapping animation
     SKAction* flap = [SKAction repeatActionForever:[SKAction animateWithTextures:@[birdTexture1, birdTexture2] timePerFrame: 0.5]];
     GameBird *bird = [GameBird spriteNodeWithTexture:birdTexture1];
     
     
 
-    
+    // Create physicsbody
     bird.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:bird.size.height/2];
     bird.physicsBody.dynamic = YES;
     bird.physicsBody.allowsRotation = NO;
@@ -55,6 +57,7 @@
 
 - (void)fly
 {
+    // Apply impuls to fly
     self.physicsBody.velocity = CGVectorMake(0, 0);
     [self.physicsBody applyImpulse:CGVectorMake(0, 180)];
 }
@@ -62,23 +65,11 @@
 
 - (void)flyIddle
 {
-    // zero gravity =
-    
+    // zero gravity fly up and down forever
     SKAction* wiggleUp =[SKAction sequence:@[[SKAction runBlock:^{ [self.physicsBody applyImpulse: CGVectorMake(0, 20)];}], [SKAction waitForDuration:0.8], [SKAction runBlock:^{ [self.physicsBody applyImpulse: CGVectorMake( 0, -15)];}],[SKAction waitForDuration:0.4], [SKAction runBlock:^{ [self.physicsBody applyImpulse: CGVectorMake( 0, -5)];}]]];
     SKAction* wiggleDown =[SKAction sequence:@[[SKAction runBlock:^{ [self.physicsBody applyImpulse: CGVectorMake(0, -20)];}], [SKAction waitForDuration:0.8], [SKAction runBlock:^{ [self.physicsBody applyImpulse: CGVectorMake( 0, 15)];}],[SKAction waitForDuration:0.4], [SKAction runBlock:^{ [self.physicsBody applyImpulse: CGVectorMake( 0, 5)];}]]];
     SKAction* wiggleForever = [SKAction repeatActionForever:[SKAction sequence:@[wiggleUp,wiggleDown]]];
     [self runAction:wiggleForever withKey:@"flyIddle"];
-     
-    
-    // 1 gravity =
-    
-    /*
-    self.physicsBody.velocity = CGVectorMake(0, 0);
-    SKAction* wiggle = [SKAction sequence:@[[SKAction runBlock:^{ [self.physicsBody applyImpulse: CGVectorMake(0, 75)];}],[SKAction waitForDuration:1]]];
-    SKAction* wiggleForever = [SKAction repeatActionForever:wiggle];
-    [self runAction:wiggleForever withKey:@"stop"];
-     */
-    
 }
 
 @end

@@ -17,7 +17,6 @@
 +(id) setupShopMusic{
     NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
     resourcePath = [resourcePath stringByAppendingString:@"/pokecenter sound.mp3"];
-    NSLog(@"Path to play: %@", resourcePath);
     NSError* err;
     
     //Initialize our player pointing to the path to our resource

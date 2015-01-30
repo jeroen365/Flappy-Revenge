@@ -31,6 +31,8 @@
     SKSpriteNode* pipeDown;
     SKSpriteNode* pipeTop;
     SKNode* pipePair;
+    SKSpriteNode* birdLaser;
+    GameExplosion* explosion;
     
     // Animations
     SKAction* moveGroundSpritesForever;
@@ -38,8 +40,8 @@
     
     // Menu labels
     SKSpriteNode* playGameButton;
+    SKSpriteNode* playEasyModeButton;
     SKSpriteNode* fireButton;
-    SKSpriteNode* birdLaser;
     SKLabelNode* scoreLabel;
 
     // GamePlay variables
@@ -51,6 +53,7 @@
     CGFloat gameSpeed;
     NSInteger kVerticalPipeGap;
     NSInteger numLasers;
+    NSInteger easyGameTokens;
     CGFloat distanceToMove;
     
     // Music actions
@@ -105,10 +108,15 @@ static const uint32_t scoreCategory = 1 << 4;
     gameSpeed = 0.005;
     distanceToMove = self.frame.size.width + 2 * pipeDown.size.width;
     
+    // Set zero gravity to keep the bird in centre
+    self.physicsWorld.gravity = CGVectorMake( 0.0, 0.0 );
+    self.physicsWorld.contactDelegate = self;
+    
     // Reset score
     score = 0;
     moving.speed = 1;
     startGame = NO;
+
     
     // Background color
     skyColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
@@ -117,17 +125,15 @@ static const uint32_t scoreCategory = 1 << 4;
     self.physicsBody.categoryBitMask = worldCategory;
     
     // Show UI
-    playGameButton = [InterfaceButtons showPlayGameButton];
-    [playGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame)+5,CGRectGetMidY(self.frame)-40)];
-    [self addChild:playGameButton];
+    [self addPlayGameButton];
     
-    scoreLabel = [GameMenuItems scoreLabel:score];
-    scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidX(self.frame) - scoreLabel.fontSize / 4 );
-    [self addChild:scoreLabel];
+    [self addScoreLabel];
     
-    // Set zero gravity to keep the bird in centre
-    self.physicsWorld.gravity = CGVectorMake( 0.0, 0.0 );
-    self.physicsWorld.contactDelegate = self;
+    // Add Objects
+    [self addBird];
+    [bird flyIddle];
+    [self addGround];
+    [self addSkyline];
     
     // Get items from Inventory
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
@@ -136,12 +142,6 @@ static const uint32_t scoreCategory = 1 << 4;
     [self checkForEasyGameTokens];
     if (numLasers > 0)
         [self addFireButton];
-
-    // Add Objects
-    [self addBird];
-    [bird flyIddle];
-    [self addGround];
-    [self addSkyline];
 
 }
 
@@ -161,10 +161,8 @@ static const uint32_t scoreCategory = 1 << 4;
             [self runAction:birdJumpSoundAction];
             // Fire laser is fireButton is touched while player has a laser
             if (numLasers > 0) {
-                if ([node.name isEqualToString:@"fireButton"]){
-                    NSLog(@"yes");
+                if ([node.name isEqualToString:@"fireButton"])
                     [self fireLaser];
-                }
             }
         }
         // Touches in the game over menu
@@ -227,7 +225,7 @@ static const uint32_t scoreCategory = 1 << 4;
 -(void) savePointsToInventory{
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     NSInteger totalPoints = [Inventory integerForKey:@"totalPoints"];
-    totalPoints += score;
+    totalPoints += score + 100;
     [Inventory setInteger:totalPoints forKey:@"totalPoints"];
     [Inventory synchronize];
 
@@ -238,6 +236,7 @@ static const uint32_t scoreCategory = 1 << 4;
     startGame = YES;
     moving.speed = 1;
     [playGameButton removeFromParent];
+    [playEasyModeButton removeFromParent];
     [self removeAllActions];
     [bird removeActionForKey:@"flyIddle"];
     self.physicsWorld.gravity = CGVectorMake( 0.0, -7 );
@@ -264,19 +263,18 @@ static const uint32_t scoreCategory = 1 << 4;
 -(void) checkForEasyGameTokens{
     // Loads easyGameTokens
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
-    NSInteger easyGameTokens = [Inventory integerForKey:@"easyGameTokens"];
+    easyGameTokens = [Inventory integerForKey:@"easyGameTokens"];
     // If any tokens, widen the pipeGap
     if (easyGameTokens > 0){
         kVerticalPipeGap = 170;
-        NSLog(@"easy");
+        [playGameButton removeFromParent];
+        [self addPlayEasyModeButton];
         easyGameTokens -= 1;
         [Inventory setInteger:easyGameTokens forKey:@"easyGameTokens"];
         [Inventory synchronize];
     }
-    else{
+    else
         kVerticalPipeGap = 140;
-        NSLog(@"normal");
-    }
 }
 -(void)stopScene{
     // Stops animating the scene
@@ -468,7 +466,23 @@ static const uint32_t scoreCategory = 1 << 4;
     [self addChild:fireButton];
     
 }
+-(void) addPlayGameButton{
+    playGameButton = [InterfaceButtons showPlayGameButton];
+    [playGameButton setPosition:CGPointMake(CGRectGetMidX(self.frame)+5,CGRectGetMidY(self.frame)-40)];
+    [self addChild:playGameButton];
+}
 
+-(void) addPlayEasyModeButton{
+    playEasyModeButton = [InterfaceButtons showPlayEasyModeButton];
+    [playEasyModeButton setPosition:CGPointMake(CGRectGetMidX(self.frame)+5,CGRectGetMidY(self.frame)-40)];
+    [self addChild:playEasyModeButton];
+}
+
+-(void) addScoreLabel{
+    scoreLabel = [GameMenuItems scoreLabel:score];
+    scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidX(self.frame) - scoreLabel.fontSize / 4 );
+    [self addChild:scoreLabel];
+}
 -(void) fireLaser{
     // Get amount of lasers
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
@@ -506,14 +520,17 @@ static const uint32_t scoreCategory = 1 << 4;
 }
 
 -(void) runExplosion:(CGFloat)x and:(CGFloat)y{
-    GameExplosion* explosion = [GameExplosion loadExplosion];
+    explosion = [GameExplosion loadExplosion];
     explosion.position = CGPointMake(x + explosion.size.width / 2, y);
-    SKAction* moveExplosion = [SKAction moveByX:-distanceToMove y:0 duration:gameSpeed * distanceToMove];
-    [explosion runAction:moveExplosion];
-    [self runAction:explosionSoundAction];
+    [self animateExplosion];
     [self addChild:explosion];
 }
 
+-(void) animateExplosion{
+    SKAction* moveExplosion = [SKAction moveByX:-distanceToMove y:0 duration:gameSpeed * distanceToMove];
+    [explosion runAction:moveExplosion];
+    [self runAction:explosionSoundAction];
+}
 
 -(void) switchToShopScene{
     // initiate switch to shopscene
@@ -572,8 +589,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
 -(void)update:(CFTimeInterval)currentTime {
     // Rotates bird according to velocity
-    if(startGame == YES){
+    if(startGame == YES)
         bird.zRotation = clamp( -1, 0.5, bird.physicsBody.velocity.dy * ( bird.physicsBody.velocity.dy < 0 ? 0.003 : 0.001 ) );
-    }
 }
 @end

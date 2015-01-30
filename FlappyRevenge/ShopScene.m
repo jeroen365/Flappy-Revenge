@@ -67,16 +67,12 @@
 }
 
 -(void)loadInterface{
-    // Set background image
-    [self addBackGround];
-    
     // Retrieve total points
     [self getPoints];
     
-    // Set back label
+    // Setup the scene
+    [self addBackGround];
     [self addBackButton];
-    
-    // Set score label
     [self addScoreLabel];
     
     // Add Shopitems
@@ -89,11 +85,14 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
+    // Set variables
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     
+    // Back button is touched
     if ([node.name isEqualToString:@"back button"]) {
+        // Prepare switch to GameScene
         [self runAction:buttonPressSoundAction];
         SKTransition *reveal = [SKTransition fadeWithDuration:1];
         GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
@@ -101,7 +100,8 @@
         [self doVolumeFade];
         [self.view presentScene:scene transition:reveal];
     }
-
+    
+    // LaserBundle is touched
     if ([node.name isEqualToString:@"laserBundle"]){
         ShopItem* laserBundle = (ShopItem*) node;
         itemCost = laserBundle.cost;
@@ -110,6 +110,7 @@
             [self boughtLaserBundle];
         }
     }
+    // EasyMode is touched
     if ([node.name isEqualToString:@"easyMode"]){
         ShopItem* easyMode = (ShopItem*) node;
         itemCost = easyMode.cost;
@@ -118,6 +119,7 @@
             [self boughtEasyMode];
         }
     }
+    // MechaFlappyItem is touched
     if ([node.name isEqualToString:@"mechaFlappyItem"]){
         ShopItem* mechaFlappyItem = (ShopItem*) node;
         itemCost = mechaFlappyItem.cost;
@@ -133,8 +135,6 @@
 -(void)getPoints{
     NSUserDefaults* Inventory = [NSUserDefaults standardUserDefaults];
     totalPoints = [Inventory integerForKey:@"totalPoints"];
-    NSLog(@"total points %ld", totalPoints);
-    
 }
 
 -(void)updateInterface{

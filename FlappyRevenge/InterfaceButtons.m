@@ -18,6 +18,12 @@
     return playGameButton;
 }
 
++(id) showPlayEasyModeButton{
+    SKSpriteNode* playEasyModeButton = [SKSpriteNode spriteNodeWithImageNamed:@"PlaybuttonEasyMode"];
+    playEasyModeButton.scale = 0.5;
+    return playEasyModeButton;
+}
+
 +(id) showFireButton: (NSInteger) numLasers{
     SKSpriteNode* fireButton = [SKSpriteNode spriteNodeWithImageNamed:@"FireButton"];
     fireButton.scale = 0.2;
