@@ -7,5 +7,8 @@ Flappy has spent countless hours pointlessly flying past, and dying to, tubes an
 ![views](https://github.com/jeroen365/Flappy-Revenge/blob/master/Doc/VIEWS.png)
 
 
+
+####Copyright
+This apps uses sounds provided by freesound.org.
 Created by Jeroen van der Es.
 Copyright (c) 2014 Jeroen van der Es. All rights reserved.
